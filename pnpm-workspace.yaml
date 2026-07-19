@@ -1,0 +1,5 @@
+# pnpm reads install settings from here rather than package.json.
+# esbuild's postinstall places its platform binary; without an explicit decision
+# pnpm refuses to run it and aborts every subsequent command.
+allowBuilds:
+  esbuild: true

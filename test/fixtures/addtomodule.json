@@ -1,0 +1,62 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddToModule",
+          "moduleEntryId": "conversationthread-1900000000000000001",
+          "moduleItems": [
+            {
+              "entryId": "conversationthread-1900000000000000001-tweet-1900000000000000060",
+              "item": {
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000060",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "rest_id": "61",
+                            "legacy": { "screen_name": "hidden", "name": "Hidden Reply" }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "created_at": "Tue Apr 07 20:00:00 +0000 2026",
+                        "conversation_id_str": "1900000000000000001",
+                        "in_reply_to_status_id_str": "1900000000000000002",
+                        "in_reply_to_screen_name": "robin",
+                        "full_text": "the reply that was folded behind \"show more replies\"",
+                        "lang": "en",
+                        "favorite_count": 4,
+                        "retweet_count": 0,
+                        "reply_count": 0,
+                        "quote_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "conversationthread-1900000000000000001-cursor-showmorethreads-8",
+              "item": {
+                "itemContent": {
+                  "itemType": "TimelineTimelineCursor",
+                  "value": "MODULE-CURSOR",
+                  "cursorType": "ShowMoreThreads"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "TimelineTerminateTimeline",
+          "direction": "Top"
+        }
+      ]
+    }
+  }
+}

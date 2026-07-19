@@ -1,0 +1,166 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1900000000000000001",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000001",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "12",
+                            "is_blue_verified": true,
+                            "legacy": {
+                              "screen_name": "robin",
+                              "name": "Robin Novak",
+                              "profile_image_url_https": "https://pbs.twimg.com/profile_images/12/av_normal.jpg",
+                              "verified": false
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "created_at": "Wed Mar 21 20:50:14 +0000 2006",
+                        "conversation_id_str": "1900000000000000001",
+                        "full_text": "just setting up my twttr, see https://t.co/aaaa https://t.co/media1",
+                        "display_text_range": [0, 47],
+                        "lang": "en",
+                        "favorite_count": 12345,
+                        "retweet_count": 678,
+                        "reply_count": 90,
+                        "quote_count": 12,
+                        "bookmark_count": 5,
+                        "entities": {
+                          "urls": [
+                            {
+                              "url": "https://t.co/aaaa",
+                              "expanded_url": "https://example.com/twttr-origins",
+                              "display_url": "example.com/twttr-origins"
+                            }
+                          ],
+                          "media": [{ "url": "https://t.co/media1" }]
+                        },
+                        "extended_entities": {
+                          "media": [
+                            {
+                              "type": "photo",
+                              "url": "https://t.co/media1",
+                              "media_url_https": "https://pbs.twimg.com/media/ABC123.jpg",
+                              "ext_alt_text": "A desk with a laptop and a coffee mug",
+                              "original_info": { "width": 2048, "height": 1536 }
+                            }
+                          ]
+                        }
+                      },
+                      "views": { "count": "3400000" }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "conversationthread-1900000000000000001",
+              "content": {
+                "entryType": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "items": [
+                  {
+                    "entryId": "conversationthread-1900000000000000001-tweet-1900000000000000002",
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1900000000000000002",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "12",
+                                  "is_blue_verified": true,
+                                  "legacy": { "screen_name": "robin", "name": "Robin Novak" }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "created_at": "Wed Mar 21 20:52:00 +0000 2006",
+                              "conversation_id_str": "1900000000000000001",
+                              "in_reply_to_status_id_str": "1900000000000000001",
+                              "in_reply_to_screen_name": "robin",
+                              "full_text": "follow-up thought",
+                              "lang": "en",
+                              "favorite_count": 402,
+                              "retweet_count": 31,
+                              "reply_count": 1,
+                              "quote_count": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-1900000000000000001-tweet-1900000000000000003",
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1900000000000000003",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "99",
+                                  "legacy": { "screen_name": "alice", "name": "Alice" }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "created_at": "Wed Mar 21 21:00:00 +0000 2006",
+                              "conversation_id_str": "1900000000000000001",
+                              "in_reply_to_status_id_str": "1900000000000000002",
+                              "in_reply_to_screen_name": "robin",
+                              "full_text": "@robin congrats — this is going to be big",
+                              "display_text_range": [7, 41],
+                              "lang": "en",
+                              "favorite_count": 3,
+                              "retweet_count": 0,
+                              "reply_count": 0,
+                              "quote_count": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "entryId": "cursor-bottom-8888",
+              "content": {
+                "entryType": "TimelineTimelineCursor",
+                "value": "CURSOR-BOTTOM-VALUE",
+                "cursorType": "Bottom"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

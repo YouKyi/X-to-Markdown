@@ -1,0 +1,29 @@
+{
+  // Extension source only. Node globals are deliberately absent here: nothing in
+  // src/ may reference process, Buffer or node: modules, and this config is what
+  // enforces that. Tests and build tooling use tsconfig.tools.json.
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": [],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Required by Node's native type stripping (`node --test test/**/*.test.ts`):
+    // no enum, no namespace, no parameter properties, no decorators;
+    // `import type` must be explicit; relative imports written as `./foo.ts`.
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src"]
+}

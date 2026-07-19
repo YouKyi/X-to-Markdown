@@ -1,0 +1,9 @@
+node_modules/
+dist/
+artifacts/
+.env
+.DS_Store
+*.log
+web-ext-artifacts/
+vault/
+docs/

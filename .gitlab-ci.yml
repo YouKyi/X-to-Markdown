@@ -1,0 +1,87 @@
+# Verify on every push; submit to AMO on a version tag.
+#
+# Runner requirements: a Docker executor, or any runner with Node 24+ available.
+# Node 24 is not optional — tests run .ts files directly via native type
+# stripping, so an older runtime cannot execute the suite at all.
+#
+# CI/CD variables to set (Settings → CI/CD → Variables), both **Masked** and
+# **Protected** so they are only exposed to protected tags:
+#
+#   AMO_JWT_ISSUER   JWT issuer from addons.mozilla.org → Developer Hub → Manage API Keys
+#   AMO_JWT_SECRET   the matching secret
+#
+# Protect your version tags (Settings → Repository → Protected tags, pattern `v*`)
+# or the secrets will not be available to the sign job — and, more importantly,
+# anyone able to push an unprotected tag could otherwise submit a release.
+
+stages:
+  - verify
+  - sign
+
+default:
+  image: node:24-alpine
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@11.11.0 --activate
+    - pnpm install --frozen-lockfile
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+
+variables:
+  PNPM_HOME: /root/.pnpm
+  # Keep the store inside the workspace so the cache above actually catches it.
+  npm_config_store_dir: .pnpm-store
+
+# typecheck + 226 tests + build + web-ext lint. The same gate that runs locally.
+check:
+  stage: verify
+  script:
+    - pnpm check
+  artifacts:
+    when: on_failure
+    paths:
+      - dist/
+    expire_in: 1 day
+
+# Guards against the single most common release mistake: tagging without
+# bumping. AMO rejects a version it has already seen, and it does so after the
+# upload rather than before, so catching it here is cheaper.
+version-matches-tag:
+  stage: verify
+  rules:
+    - if: $CI_COMMIT_TAG
+  before_script: []
+  script:
+    - apk add --no-cache jq
+    - PKG=$(jq -r .version package.json)
+    - TAG=${CI_COMMIT_TAG#v}
+    - test "$PKG" = "$TAG" || { echo "tag $CI_COMMIT_TAG does not match package.json $PKG"; exit 1; }
+    - echo "version $PKG"
+
+sign:
+  stage: sign
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - pnpm build
+    # --approval-timeout=0 submits and exits. On the listed channel review is
+    # human and can take days; a CI job must not sit waiting for it. The signed
+    # XPI is published by AMO once approved, and existing users update
+    # automatically — nothing here needs to hold the file.
+    - >
+      pnpm exec web-ext sign
+      --source-dir=dist
+      --artifacts-dir=artifacts
+      --channel=listed
+      --approval-timeout=0
+      --no-input
+      --api-key="$AMO_JWT_ISSUER"
+      --api-secret="$AMO_JWT_SECRET"
+  artifacts:
+    paths:
+      - artifacts/
+    expire_in: 90 days

@@ -1,0 +1,81 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1900000000000000020",
+              "content": {
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "TweetWithVisibilityResults",
+                      "limitedActionResults": {
+                        "limited_actions": [{ "action": "Reply" }]
+                      },
+                      "tweet": {
+                        "__typename": "Tweet",
+                        "rest_id": "1900000000000000020",
+                        "core": {
+                          "user_results": {
+                            "result": {
+                              "rest_id": "55",
+                              "legacy": { "screen_name": "restricted", "name": "Restricted Account" }
+                            }
+                          }
+                        },
+                        "legacy": {
+                          "created_at": "Tue Jan 07 12:00:00 +0000 2025",
+                          "conversation_id_str": "1900000000000000020",
+                          "full_text": "this one is behind a visibility interstitial",
+                          "lang": "en",
+                          "favorite_count": 7,
+                          "retweet_count": 1,
+                          "reply_count": 0,
+                          "quote_count": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "tweet-1900000000000000021",
+              "content": {
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "TweetTombstone",
+                      "tombstone": {
+                        "text": { "text": "This Post is unavailable." }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "who-to-follow-1",
+              "content": {
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": { "result": { "rest_id": "1" } }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

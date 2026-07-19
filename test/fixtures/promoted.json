@@ -1,0 +1,115 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1900000000000000070",
+              "content": {
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000070",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "rest_id": "70",
+                            "legacy": { "screen_name": "author", "name": "Author" }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "created_at": "Thu Jul 09 12:00:09 +0000 2026",
+                        "conversation_id_str": "1900000000000000070",
+                        "full_text": "the real post",
+                        "lang": "en",
+                        "favorite_count": 10,
+                        "retweet_count": 1,
+                        "reply_count": 1,
+                        "quote_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "promoted-tweet-1900000000000000071",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "promotedMetadata": {
+                    "advertiser_results": { "result": { "rest_id": "999" } },
+                    "disclosureType": "Promoted",
+                    "impressionId": "abc123"
+                  },
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000071",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "rest_id": "999",
+                            "legacy": { "screen_name": "bigbrand", "name": "Big Brand" }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "created_at": "Wed Jul 08 09:00:00 +0000 2026",
+                        "conversation_id_str": "1900000000000000071",
+                        "full_text": "BUY OUR THING NOW, limited offer",
+                        "lang": "en",
+                        "favorite_count": 1257,
+                        "retweet_count": 87,
+                        "reply_count": 300,
+                        "quote_count": 4
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "tweet-1900000000000000072",
+              "content": {
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000072",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "rest_id": "72",
+                            "legacy": { "screen_name": "replier", "name": "Replier" }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "created_at": "Thu Jul 09 12:10:00 +0000 2026",
+                        "conversation_id_str": "1900000000000000070",
+                        "in_reply_to_status_id_str": "1900000000000000070",
+                        "in_reply_to_screen_name": "author",
+                        "full_text": "a genuine reply",
+                        "lang": "en",
+                        "favorite_count": 2,
+                        "retweet_count": 0,
+                        "reply_count": 0,
+                        "quote_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

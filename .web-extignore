@@ -1,0 +1,3 @@
+# dist/ is already the packaging source dir, so this only guards against strays.
+**/*.map
+**/.DS_Store

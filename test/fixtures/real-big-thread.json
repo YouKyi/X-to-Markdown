@@ -1,0 +1,3715 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "entries": [
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475565253769957383-tweet-2475565253769957383",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1998937626204848128/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun May 29 08:25:37 +0000 2011",
+                                    "name": "Alex Rivera",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 12:58:13 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                61
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "connect value graph result format graph system query conn @bo",
+                              "id_str": "2475565253769957383",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475565253769957383",
+                            "views": {
+                              "count": "1049"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475565253769957383"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475220561777577992-tweet-2475220561777577992",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1901093219879813120/z7flyMsZjFYR-m8.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Apr 18 23:56:45 +0000 2012",
+                                    "name": "Sam Sato",
+                                    "screen_name": "cyd"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/wsWuWKWWq7"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/wsWuWKWWq7"
+                                  },
+                                  "rest_id": "100137"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 14:08:32 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                71
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "field context draft connect build parse write index export thread gr @bo",
+                              "id_str": "2475220561777577992",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475220561777577992",
+                            "views": {
+                              "count": "2984"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475220561777577992"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475522208663761364-tweet-2475522208663761364",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/774950795049598976/WaX0x-ScMsGlR4g.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon Aug 22 15:10:16 +0000 2016",
+                                    "name": "Jules Dubois",
+                                    "screen_name": "dex"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/eR5fSKhCAF"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/eR5fSKhCAF"
+                                  },
+                                  "rest_id": "100274"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 10:07:10 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                71
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "build query export query idea archive graph ship connect graph tool @bo",
+                              "id_str": "2475522208663761364",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475522208663761364",
+                            "views": {
+                              "count": "982"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475522208663761364"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2476616228563816944-promoted-tweet-2476616228563816944-3d980d03b92f1ff1",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "promotedMetadata": {
+                          "advertiser_results": {
+                            "result": {
+                              "__typename": "User",
+                              "avatar": {
+                                "image_url": "https://pbs.twimg.com/profile_images/2059966448802643970/DF5rMCo6ECil-D-.jpg"
+                              },
+                              "core": {
+                                "created_at": "Wed Apr 22 10:07:14 +0000 2026",
+                                "name": "Charlie Okafor",
+                                "screen_name": "eli"
+                              },
+                              "is_blue_verified": true,
+                              "legacy": {
+                                "entities": {
+                                  "url": {
+                                    "urls": [
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "url": "https://t.co/sddHFwBgLF"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "url": "https://t.co/sddHFwBgLF"
+                              },
+                              "rest_id": "100411"
+                            }
+                          }
+                        },
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2059966448802643970/DF5rMCo6ECil-D-.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Apr 22 10:07:14 +0000 2026",
+                                    "name": "Charlie Okafor",
+                                    "screen_name": "eli"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/sddHFwBgLF"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/sddHFwBgLF"
+                                  },
+                                  "rest_id": "100411"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 1027,
+                              "conversation_id_str": "2476616228563816944",
+                              "created_at": "Mon Jul 13 10:34:25 +0000 2026",
+                              "display_text_range": [
+                                0,
+                                157
+                              ],
+                              "entities": {},
+                              "favorite_count": 526,
+                              "full_text": "pattern ship resul\n\nsystem parse structure parse write capture structure draft memory structure search parse tool index thread pattern reply thread build g",
+                              "id_str": "2476616228563816944",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 3,
+                              "reply_count": 25,
+                              "retweet_count": 79
+                            },
+                            "rest_id": "2476616228563816944",
+                            "views": {
+                              "count": "2629798"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2476616228563816944"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475224368947294560-tweet-2475224368947294560",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1692901106588786688/ANbeqosr9kPbID3.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Jul 16 15:16:31 +0000 2023",
+                                    "name": "Morgan Lindqvist",
+                                    "screen_name": "fen"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/YpoleDcEc8"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/YpoleDcEc8"
+                                  },
+                                  "rest_id": "100548"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 14:23:40 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                37
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "note parse ship connect note rend @bo",
+                              "id_str": "2475224368947294560",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475224368947294560",
+                            "views": {
+                              "count": "2033"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475224368947294560"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475502960843669812-tweet-2475502960843669812",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2076084764323573760/_TONFmpex6qquEr.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Jul 11 00:39:26 +0000 2021",
+                                    "name": "Noa Marek",
+                                    "screen_name": "gus"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/aUpO27CUm3"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/aUpO27CUm3"
+                                  },
+                                  "rest_id": "100685"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 1,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 08:50:41 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                49
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  {
+                                    "id_str": "2264452692221022210",
+                                    "name": "Kim Rivera",
+                                    "screen_name": "hal"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 15,
+                              "full_text": "record store thread graph system idea par @bo @hal",
+                              "id_str": "2475502960843669812",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 4,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475502960843669812",
+                            "views": {
+                              "count": "2753"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475502960843669812"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475189837238591931-tweet-2475189837238591931",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2063816273201684481/ACggo1Ly4VnMVBS.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Oct 16 10:33:10 +0000 2022",
+                                    "name": "Alex Novak",
+                                    "screen_name": "ivo"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/D3iHClWfHh"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/D3iHClWfHh"
+                                  },
+                                  "rest_id": "100822"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 12:06:27 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                20
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 5,
+                              "full_text": "capture ship rec @bo",
+                              "id_str": "2475189837238591931",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "in",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475189837238591931",
+                            "views": {
+                              "count": "2518"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475189837238591931"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475299357717631200-tweet-2475299357717631200",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1023340627554004992/JHloqdB8cQKog_o.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Jul 13 02:22:15 +0000 2008",
+                                    "name": "Robin Sato",
+                                    "screen_name": "jun"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/w16k5h6Jmq"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/w16k5h6Jmq"
+                                  },
+                                  "rest_id": "100959"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 19:21:38 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                57
+                              ],
+                              "entities": {
+                                "urls": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "url": "https://t.co/0nGeCIP4Rj"
+                                  }
+                                ],
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "ship export idea archive draft @bo     https://t.co/0nGeCIP4Rj",
+                              "id_str": "2475299357717631200",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475299357717631200",
+                            "views": {
+                              "count": "373"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475299357717631200"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2476665565792682356-tweet-2476665565792682356",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1521054995973820416/zWV99B-dWI7nRG0.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sat Feb 04 09:38:04 +0000 2017",
+                                    "name": "Sam Dubois",
+                                    "screen_name": "kit"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/9WyBG0m5zr"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/9WyBG0m5zr"
+                                  },
+                                  "rest_id": "101096"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Mon Jul 13 13:50:28 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                152
+                              ],
+                              "entities": {
+                                "urls": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "url": "https://t.co/d8BS74VpsW"
+                                  }
+                                ],
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "search value parse link @bo\nvalue memory draft note reply export pattern link parse value connect render result reply tool me\n\nhttps://t.co/d8BS74VpsW",
+                              "id_str": "2476665565792682356",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2476665565792682356",
+                            "views": {
+                              "count": "114"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2476665565792682356"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475229818136777036-tweet-2475229818136777036",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2002425099966717952/ZOPhEbF98Wdg117.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon Sep 10 12:46:21 +0000 2012",
+                                    "name": "Jules | Okafor Field Notes",
+                                    "screen_name": "lex"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/HijGtGIzuE"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/HijGtGIzuE"
+                                  },
+                                  "rest_id": "101233"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 14:45:19 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                59
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "query build thread index reply ship context entry index @bo",
+                              "id_str": "2475229818136777036",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475229818136777036",
+                            "views": {
+                              "count": "302"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475229818136777036"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475218998006788288-tweet-2475218998006788288",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2078681987666022400/HPBrBBFe_ZjV4bX.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Jan 11 01:27:01 +0000 2023",
+                                    "name": "Charlie Lindqvist",
+                                    "screen_name": "mo"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/lWM8ArSGeS"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/lWM8ArSGeS"
+                                  },
+                                  "rest_id": "101370"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 14:02:19 +0000 2026",
+                              "display_text_range": [
+                                27,
+                                40
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  {
+                                    "id_str": "1949597379443269632",
+                                    "name": "Morgan Marek 📱",
+                                    "screen_name": "nia"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "connect reply result thread sign @bo @nia",
+                              "id_str": "2475218998006788288",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475218998006788288",
+                            "views": {
+                              "count": "493"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475218998006788288"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475224983052198283-tweet-2475224983052198283",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2046175959401857025/QwkFpJXenKJ0w8k.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Jun 19 18:26:54 +0000 2024",
+                                    "name": "Noa Rivera",
+                                    "screen_name": "ola"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/kQkjCmA4lJ"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/kQkjCmA4lJ"
+                                  },
+                                  "rest_id": "101507"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 14:26:06 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                96
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "draft context read connect system export system system search record entry graph draft signa @bo",
+                              "id_str": "2475224983052198283",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475224983052198283",
+                            "views": {
+                              "count": "265"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475224983052198283"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475294657265700877-tweet-2475294657265700877",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1938955632763105280/Xs8s2pPAfA3g4hg.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sat Oct 06 20:04:48 +0000 2007",
+                                    "name": "Kim | Novak Field Notes 🇬🇧",
+                                    "screen_name": "pax"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mP5YtKmAWs"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mP5YtKmAWs"
+                                  },
+                                  "rest_id": "101644"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 19:02:58 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                31
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "archive write pattern write @bo",
+                              "id_str": "2475294657265700877",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": true,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "quoted_status_result": {
+                              "result": {
+                                "__typename": "Tweet",
+                                "core": {
+                                  "user_results": {
+                                    "result": {
+                                      "__typename": "User",
+                                      "avatar": {
+                                        "image_url": "https://pbs.twimg.com/profile_images/1938955632763105280/Xs8s2pPAfA3g4hg.jpg"
+                                      },
+                                      "core": {
+                                        "created_at": "Sat Oct 06 20:04:48 +0000 2007",
+                                        "name": "Kim | Novak Field Notes 🇬🇧",
+                                        "screen_name": "pax"
+                                      },
+                                      "is_blue_verified": true,
+                                      "legacy": {
+                                        "entities": {
+                                          "url": {
+                                            "urls": [
+                                              {
+                                                "display_url": "example.com/link",
+                                                "expanded_url": "https://example.com/link",
+                                                "url": "https://t.co/mP5YtKmAWs"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "url": "https://t.co/mP5YtKmAWs"
+                                      },
+                                      "rest_id": "101644"
+                                    }
+                                  }
+                                },
+                                "legacy": {
+                                  "bookmark_count": 10,
+                                  "conversation_id_str": "2475008020187095240",
+                                  "created_at": "Thu Jul 09 00:03:58 +0000 2026",
+                                  "display_text_range": [
+                                    0,
+                                    65
+                                  ],
+                                  "entities": {
+                                    "media": [
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "id_str": "2475008014013108224",
+                                        "media_url_https": "https://pbs.twimg.com/media/hD0DYRwEyzNwsmT.jpg",
+                                        "original_info": {
+                                          "height": 524,
+                                          "width": 524
+                                        },
+                                        "type": "photo",
+                                        "url": "https://t.co/93KHWmAJaw"
+                                      },
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "id_str": "2475008014008905730",
+                                        "media_url_https": "https://pbs.twimg.com/media/w8SRS3k42-PT0qx.jpg",
+                                        "original_info": {
+                                          "height": 630,
+                                          "width": 630
+                                        },
+                                        "type": "photo",
+                                        "url": "https://t.co/93KHWmAJaw"
+                                      }
+                                    ]
+                                  },
+                                  "extended_entities": {
+                                    "media": [
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "id_str": "2475008014013108224",
+                                        "media_url_https": "https://pbs.twimg.com/media/hD0DYRwEyzNwsmT.jpg",
+                                        "original_info": {
+                                          "height": 524,
+                                          "width": 524
+                                        },
+                                        "type": "photo",
+                                        "url": "https://t.co/93KHWmAJaw"
+                                      },
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "id_str": "2475008014008905730",
+                                        "media_url_https": "https://pbs.twimg.com/media/w8SRS3k42-PT0qx.jpg",
+                                        "original_info": {
+                                          "height": 630,
+                                          "width": 630
+                                        },
+                                        "type": "photo",
+                                        "url": "https://t.co/93KHWmAJaw"
+                                      }
+                                    ]
+                                  },
+                                  "favorite_count": 24,
+                                  "full_text": "tool entry parse read index read archive\nreply draft item struc https://t.co/93KHWmAJaw",
+                                  "id_str": "2475008020187095240",
+                                  "is_quote_status": true,
+                                  "lang": "en",
+                                  "quote_count": 1,
+                                  "reply_count": 7,
+                                  "retweet_count": 4
+                                },
+                                "rest_id": "2475008020187095240",
+                                "views": {
+                                  "count": "121345"
+                                }
+                              }
+                            },
+                            "rest_id": "2475294657265700877",
+                            "views": {
+                              "count": "513"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475294657265700877"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475195812821303740-tweet-2475195812821303740",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2076120179134590977/OOO09Nza1NbVL66.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu May 29 11:47:16 +0000 2014",
+                                    "name": "Alex Sato",
+                                    "screen_name": "quin"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101781"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 12:30:11 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                17
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "thread value @bo",
+                              "id_str": "2475195812821303740",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "und",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475195812821303740",
+                            "views": {
+                              "count": "547"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475195812821303740"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475706662241923574-tweet-2475706662241923574",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2001124673510133764/rofyrWa8VWzaWBw.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sat Jul 01 14:07:14 +0000 2023",
+                                    "name": "Robin Dubois",
+                                    "screen_name": "rex"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101918"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 22:20:07 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                32
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "structure draft format reply @bo",
+                              "id_str": "2475706662241923574",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475706662241923574",
+                            "views": {
+                              "count": "125"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475706662241923574"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475230542375608787-tweet-2475230542375608787",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1987311140280455168/cHnbzdJxDw3bu70.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Aug 29 21:28:00 +0000 2023",
+                                    "name": "Sam Okafor",
+                                    "screen_name": "sol"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/doBvONSww6"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/doBvONSww6"
+                                  },
+                                  "rest_id": "102055"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 14:48:11 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                15
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "reply idea s @bo",
+                              "id_str": "2475230542375608787",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "qme",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475230542375608787",
+                            "views": {
+                              "count": "405"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475230542375608787"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475329840832545129-tweet-2475329840832545129",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2014424307363926016/pgxZzYsYImJ4YGU.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Oct 27 04:01:26 +0000 2021",
+                                    "name": "Jules Lindqvist",
+                                    "screen_name": "tam"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/FJO3SCMC5A"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/FJO3SCMC5A"
+                                  },
+                                  "rest_id": "102192"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 21:22:46 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                27
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  {
+                                    "id_str": "400000000964826941",
+                                    "name": "Charlie Marek",
+                                    "screen_name": "uma"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "build read note pat @bo @uma",
+                              "id_str": "2475329840832545129",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "qam",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475329840832545129",
+                            "views": {
+                              "count": "1152"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475329840832545129"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475211434636787883-tweet-2475211434636787883",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1992473205517516800/apcyjJLfwMQvqfO.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Jul 14 08:50:57 +0000 2024",
+                                    "name": "Morgan Rivera",
+                                    "screen_name": "vik"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/YBCHsGyZPW"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/YBCHsGyZPW"
+                                  },
+                                  "rest_id": "102329"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 3,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 13:32:16 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                271
+                              ],
+                              "entities": {
+                                "media": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "id_str": "2475211423232446464",
+                                    "media_url_https": "https://pbs.twimg.com/media/CPxspjmP9kMA7tg.jpg",
+                                    "original_info": {
+                                      "height": 1024,
+                                      "width": 1536
+                                    },
+                                    "type": "photo",
+                                    "url": "https://t.co/BqOvwGCzFC"
+                                  }
+                                ],
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "extended_entities": {
+                                "media": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "id_str": "2475211423232446464",
+                                    "media_url_https": "https://pbs.twimg.com/media/CPxspjmP9kMA7tg.jpg",
+                                    "original_info": {
+                                      "height": 1024,
+                                      "width": 1536
+                                    },
+                                    "type": "photo",
+                                    "url": "https://t.co/BqOvwGCzFC"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 8,
+                              "full_text": "store value result result item build write source pattern format @bo\n\nsource ship system index signal reply store export graph pattern record index item source format capture read draft query graph signal link draft re\n\ndraft archive index record record result archive https://t.co/BqOvwGCzFC",
+                              "id_str": "2475211434636787883",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475211434636787883",
+                            "views": {
+                              "count": "842"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475211434636787883"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475195148850384909-tweet-2475195148850384909",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1943666344622186496/cNHu1-hB582tWCB.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sat Oct 26 18:00:41 +0000 2019",
+                                    "name": "Noa Novak",
+                                    "screen_name": "wren"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/d2kJBU7oGt"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/d2kJBU7oGt"
+                                  },
+                                  "rest_id": "102466"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 12:27:33 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                64
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "result parse thread archive structure graph source draft sig @bo",
+                              "id_str": "2475195148850384909",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475195148850384909",
+                            "views": {
+                              "count": "1617"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475195148850384909"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475188567496855806-tweet-2475188567496855806",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1961517212415770624/TaxorCbkM7ORlIv.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Dec 03 17:32:34 +0000 2023",
+                                    "name": "Kim Sato",
+                                    "screen_name": "xan"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mG4KofQQop"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mG4KofQQop"
+                                  },
+                                  "rest_id": "102603"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 12:01:24 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                35
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "memory structure note parse sou @bo",
+                              "id_str": "2475188567496855806",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475188567496855806",
+                            "views": {
+                              "count": "1595"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475188567496855806"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2478859651706228862-promoted-tweet-2478859651706228862-3d9864ac2b243f89",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "promotedMetadata": {
+                          "advertiser_results": {
+                            "result": {
+                              "__typename": "UserUnavailable"
+                            }
+                          }
+                        },
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1966535987464478720/xOvqVSb2fvoi_A0.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri Nov 15 13:44:26 +0000 2024",
+                                    "name": "Alex Dubois",
+                                    "screen_name": "yon"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/TGbyd1WtfU"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/TGbyd1WtfU"
+                                  },
+                                  "rest_id": "102740"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 1,
+                              "conversation_id_str": "2478859651706228862",
+                              "created_at": "Sun Jul 19 15:08:58 +0000 2026",
+                              "display_text_range": [
+                                0,
+                                66
+                              ],
+                              "entities": {},
+                              "favorite_count": 3,
+                              "full_text": "write ship link link format record read note store tool thread st",
+                              "id_str": "2478859651706228862",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2478859651706228862",
+                            "views": {
+                              "count": "3394"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2478859651706228862"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475196805088702940-tweet-2475196805088702940",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2054896225581699074/exkfL-1_V-ecLrv.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri Apr 07 21:18:13 +0000 2017",
+                                    "name": "Robin Okafor",
+                                    "screen_name": "zev"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/yY7p6SGSuB"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/yY7p6SGSuB"
+                                  },
+                                  "rest_id": "102877"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 12:34:08 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                51
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "index context field build format signal thread qu @bo",
+                              "id_str": "2475196805088702940",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475196805088702940",
+                            "views": {
+                              "count": "779"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475196805088702940"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475189725321945153-tweet-2475189725321945153",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2059450074808324096/GzyRdWwR1Sz_TKL.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Jul 19 10:55:28 +0000 2009",
+                                    "name": "Sam Lindqvist",
+                                    "screen_name": "ada1"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/3YXpqewDde"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/3YXpqewDde"
+                                  },
+                                  "rest_id": "103014"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 12:06:00 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                27
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  {
+                                    "id_str": "1422500126747590656",
+                                    "name": "Jules Marek",
+                                    "screen_name": "bo1"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "signal parse source @bo @bo1",
+                              "id_str": "2475189725321945153",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "qam",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475189725321945153",
+                            "views": {
+                              "count": "712"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475189725321945153"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475416163048112236-tweet-2475416163048112236",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1671060102042775553/yR9ATq_f3EW32W9.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Sep 02 06:54:21 +0000 2007",
+                                    "name": "Charlie Rivera",
+                                    "screen_name": "cyd1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/27vGP0EmnR"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/27vGP0EmnR"
+                                  },
+                                  "rest_id": "103151"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 03:05:47 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                276
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "value item search write format note format index pattern graph reply graph reply export capture index reply index index link ship record result memory link draft pattern system pattern search parse search record archive query format graph source search idea field result p @bo",
+                              "id_str": "2475416163048112236",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475416163048112236",
+                            "views": {
+                              "count": "608"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475416163048112236"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475451869661732867-tweet-2475451869661732867",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2075813664251428864/ydvPk6h7D42mZSM.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon Apr 24 05:51:03 +0000 2023",
+                                    "name": "Morgan Novak",
+                                    "screen_name": "dex1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/0Y8x9Wyctm"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/0Y8x9Wyctm"
+                                  },
+                                  "rest_id": "103288"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 05:27:40 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                199
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "ship write idea structure item structure link store @bo\n\nrender field item reply entry index draft thread record index format query query record reply field context reply context draft item signal i",
+                              "id_str": "2475451869661732867",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475451869661732867",
+                            "views": {
+                              "count": "797"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475451869661732867"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475397129401676065-tweet-2475397129401676065",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2063286134403457024/dfMFQFC_0zUVqpa.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri Nov 22 15:37:00 +0000 2013",
+                                    "name": "Noa Sato",
+                                    "screen_name": "eli1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "103425"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 1,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 01:50:09 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                97
+                              ],
+                              "entities": {
+                                "media": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "id_str": "2475397104474943488",
+                                    "media_url_https": "https://pbs.twimg.com/media/bZTeDh3Ng-s85DR.png",
+                                    "original_info": {
+                                      "height": 720,
+                                      "width": 720
+                                    },
+                                    "type": "photo",
+                                    "url": "https://t.co/2Y4SayInhe"
+                                  }
+                                ],
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "extended_entities": {
+                                "media": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "id_str": "2475397104474943488",
+                                    "media_url_https": "https://pbs.twimg.com/media/bZTeDh3Ng-s85DR.png",
+                                    "original_info": {
+                                      "height": 720,
+                                      "width": 720
+                                    },
+                                    "type": "photo",
+                                    "url": "https://t.co/2Y4SayInhe"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "export build idea source link signal rende @bo\nidea record store system search signal thread rend https://t.co/2Y4SayInhe",
+                              "id_str": "2475397129401676065",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475397129401676065",
+                            "views": {
+                              "count": "637"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475397129401676065"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2476224261740765443-tweet-2476224261740765443",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2076540780823666688/Ng-eYVMU-lBA_tm.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Apr 26 04:09:45 +0000 2022",
+                                    "name": "Kim Dubois",
+                                    "screen_name": "fen1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "103562"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Sun Jul 12 08:36:53 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                212
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "read write reply render index system query idea signal capture archive thread idea query note search query draft read tool item query source context memory w @bo\n\ngraph search note signal reply graph reply idea",
+                              "id_str": "2476224261740765443",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2476224261740765443",
+                            "views": {
+                              "count": "105"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2476224261740765443"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475610400985600182-tweet-2475610400985600182",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2062025779517755392/tk3e6DYdvAX2OJ7.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue May 03 12:50:40 +0000 2022",
+                                    "name": "Alex Okafor",
+                                    "screen_name": "gus1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "103699"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 15:57:37 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                178
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "source tool memory link draft draft context parse format note ship write render entry field result entry result signal tool tool pattern build thread parse archive reply expo @bo",
+                              "id_str": "2475610400985600182",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475610400985600182",
+                            "views": {
+                              "count": "312"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475610400985600182"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2477034690842665197-tweet-2477034690842665197",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2003301615097221120/nD4-lHqAboDguww.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Mar 26 20:01:57 +0000 2013",
+                                    "name": "Robin Lindqvist",
+                                    "screen_name": "hal1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/N5KYgJTYC3"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/N5KYgJTYC3"
+                                  },
+                                  "rest_id": "103836"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Tue Jul 14 14:17:14 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                252
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "capture thread read graph read entry idea read build archive thread result idea entry build draft query connect archive idea idea render search result reply record parse format read connect archive export context capture query connect capture value @bo",
+                              "id_str": "2477034690842665197",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "es",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2477034690842665197",
+                            "views": {
+                              "count": "23"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2477034690842665197"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475381662305943858-tweet-2475381662305943858",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1863473441715752960/mz3sC1ocFVfsp8V.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Nov 19 02:47:54 +0000 2024",
+                                    "name": "Sam Marek",
+                                    "screen_name": "ivo1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/3LAVYn6T8m"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/3LAVYn6T8m"
+                                  },
+                                  "rest_id": "103973"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 00:48:41 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                121
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "structure build archive field structure render signal format parse search tool value ship capture pattern field memor @bo",
+                              "id_str": "2475381662305943858",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475381662305943858",
+                            "views": {
+                              "count": "496"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475381662305943858"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2458319900804833482-promoted-tweet-2458319900804833482-3d98bc065a352969",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "promotedMetadata": {
+                          "advertiser_results": {
+                            "result": {
+                              "__typename": "User",
+                              "avatar": {
+                                "image_url": "https://pbs.twimg.com/profile_images/2042016434314752000/7e-5IaE1WVwfFWc.jpg"
+                              },
+                              "core": {
+                                "created_at": "Wed Apr 08 23:03:03 +0000 2026",
+                                "name": "Jules Rivera",
+                                "screen_name": "jun1"
+                              },
+                              "is_blue_verified": true,
+                              "legacy": {
+                                "entities": {
+                                  "url": {
+                                    "urls": [
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "url": "https://t.co/8lK8ILNFku"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "url": "https://t.co/8lK8ILNFku"
+                              },
+                              "rest_id": "104110"
+                            }
+                          }
+                        },
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "TweetWithVisibilityResults",
+                            "tweet": {
+                              "core": {
+                                "user_results": {
+                                  "result": {
+                                    "__typename": "User",
+                                    "avatar": {
+                                      "image_url": "https://pbs.twimg.com/profile_images/2042016434314752000/7e-5IaE1WVwfFWc.jpg"
+                                    },
+                                    "core": {
+                                      "created_at": "Wed Apr 08 23:03:03 +0000 2026",
+                                      "name": "Jules Rivera",
+                                      "screen_name": "jun1"
+                                    },
+                                    "is_blue_verified": true,
+                                    "legacy": {
+                                      "entities": {
+                                        "url": {
+                                          "urls": [
+                                            {
+                                              "display_url": "example.com/link",
+                                              "expanded_url": "https://example.com/link",
+                                              "url": "https://t.co/8lK8ILNFku"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "url": "https://t.co/8lK8ILNFku"
+                                    },
+                                    "rest_id": "104110"
+                                  }
+                                }
+                              },
+                              "legacy": {
+                                "bookmark_count": 222,
+                                "conversation_id_str": "2458319900804833482",
+                                "created_at": "Sat May 23 22:51:20 +0000 2026",
+                                "display_text_range": [
+                                  0,
+                                  161
+                                ],
+                                "entities": {},
+                                "favorite_count": 314,
+                                "full_text": "item entry capture shi\n\nparse draft query build item index build build capture cont\nsearch memory result note resul\n\nmemory store render read render write sh",
+                                "id_str": "2458319900804833482",
+                                "is_quote_status": false,
+                                "lang": "en",
+                                "quote_count": 4,
+                                "reply_count": 0,
+                                "retweet_count": 22
+                              },
+                              "rest_id": "2458319900804833482",
+                              "views": {
+                                "count": "3867676"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2458319900804833482"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475263670595289582-tweet-2475263670595289582",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2075078926293147648/7sLY742RuAueBTx.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun May 06 02:06:37 +0000 2018",
+                                    "name": "Charlie Novak",
+                                    "screen_name": "kit1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/GuJE4o4DUn"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/GuJE4o4DUn"
+                                  },
+                                  "rest_id": "104247"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 16:59:50 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                101
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "draft memory store system export draft export format thread note entry field signal result index @bo",
+                              "id_str": "2475263670595289582",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475263670595289582",
+                            "views": {
+                              "count": "1363"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475263670595289582"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475437916902617104-tweet-2475437916902617104",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2061622525524836352/4tVgzUXL-HPwIJu.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 02 14:42:22 +0000 2017",
+                                    "name": "Morgan Sato",
+                                    "screen_name": "lex1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "104384"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 04:32:13 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                84
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "search parse result memory draft capture connect render tool format result forma @bo",
+                              "id_str": "2475437916902617104",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475437916902617104",
+                            "views": {
+                              "count": "409"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475437916902617104"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475215297678917668-tweet-2475215297678917668",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2072372606288924673/Lk1OslhoP5hpXzw.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Apr 09 14:12:15 +0000 2024",
+                                    "name": "Noa Dubois",
+                                    "screen_name": "mo1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/iVVYlfCCxx"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/iVVYlfCCxx"
+                                  },
+                                  "rest_id": "104521"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 13:47:37 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                61
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "system write result ship structure query thread entry val @bo",
+                              "id_str": "2475215297678917668",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475215297678917668",
+                            "views": {
+                              "count": "855"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475215297678917668"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475903051156652063-tweet-2475903051156652063",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2078185681243799552/-aIEaOc_iDLo4rt.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed May 13 13:01:07 +0000 2020",
+                                    "name": "Kim Okafor",
+                                    "screen_name": "nia1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "104658"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Sat Jul 11 11:20:30 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                79
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "connect pattern s @bo\n\narchive write structu\n\nquery archive idea export field",
+                              "id_str": "2475903051156652063",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475903051156652063",
+                            "views": {
+                              "count": "152"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475903051156652063"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475253146041926027-tweet-2475253146041926027",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2077568665650651136/wCcOxBwpZvilO7B.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Sep 01 21:14:47 +0000 2021",
+                                    "name": "Alex Lindqvist",
+                                    "screen_name": "ola1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/bR06gc22vx"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/bR06gc22vx"
+                                  },
+                                  "rest_id": "104795"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 16:18:01 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                65
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "value graph build export draft value system graph memory resul @bo",
+                              "id_str": "2475253146041926027",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "es",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475253146041926027",
+                            "views": {
+                              "count": "475"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475253146041926027"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475297888289116352-tweet-2475297888289116352",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2046211323717939200/zdYYJr9u--ltOKe.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Jul 20 12:14:46 +0000 2010",
+                                    "name": "Robin Marek",
+                                    "screen_name": "pax1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/DB59QxLbiw"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/DB59QxLbiw"
+                                  },
+                                  "rest_id": "104932"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Thu Jul 09 19:15:48 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                111
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  {
+                                    "id_str": "2078922746120609793",
+                                    "name": "Sam Rivera",
+                                    "screen_name": "quin1"
+                                  },
+                                  {
+                                    "id_str": "1483130198042656768",
+                                    "name": "Jules Novak",
+                                    "screen_name": "rex1"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "record reply store result system result result render pattern entr @bo          @quin1\nmemory format ship field note @rex1",
+                              "id_str": "2475297888289116352",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475297888289116352",
+                            "views": {
+                              "count": "318"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475297888289116352"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2476234797479764219-tweet-2476234797479764219",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2066320267744305153/Ldu81jsD-NImnAk.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon Jun 15 00:26:14 +0000 2026",
+                                    "name": "Charlie Sato",
+                                    "screen_name": "sol1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/4zbhaarTq0"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/4zbhaarTq0"
+                                  },
+                                  "rest_id": "105069"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Sun Jul 12 09:18:44 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                58
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  {
+                                    "id_str": "2120665183188922368",
+                                    "name": "Morgan Dubois",
+                                    "screen_name": "tam1"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "note system record result archive search query li @bo @tam1",
+                              "id_str": "2476234797479764219",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2476234797479764219",
+                            "views": {
+                              "count": "70"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2476234797479764219"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2475388705259606049-tweet-2475388705259606049",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2072339022010359808/uC9QTON1K0fTBts.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Wed Aug 30 04:09:46 +0000 2023",
+                                    "name": "Noa Okafor",
+                                    "screen_name": "uma1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "105206"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2475188252877672732",
+                              "created_at": "Fri Jul 10 01:16:40 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                73
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1655500442898964481",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "index capture archive draft system archive export item query thread s @bo",
+                              "id_str": "2475388705259606049",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2475188252877672732",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2475388705259606049",
+                            "views": {
+                              "count": "603"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2475388705259606049"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2477046879779500477-promoted-tweet-2477046879779500477-3d9800f9ca02fdde",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "promotedMetadata": {
+                          "advertiser_results": {
+                            "result": {
+                              "__typename": "User",
+                              "avatar": {
+                                "image_url": "https://pbs.twimg.com/profile_images/1683124240831086592/2IXfWaVbZffU0T1.jpg"
+                              },
+                              "core": {
+                                "created_at": "Mon May 16 17:14:30 +0000 2011",
+                                "name": "Kim | Lindqvist Field Notes",
+                                "screen_name": "vik1"
+                              },
+                              "is_blue_verified": true,
+                              "legacy": {
+                                "entities": {
+                                  "url": {
+                                    "urls": [
+                                      {
+                                        "display_url": "example.com/link",
+                                        "expanded_url": "https://example.com/link",
+                                        "url": "https://t.co/3CoaK5p9Wz"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "url": "https://t.co/3CoaK5p9Wz"
+                              },
+                              "rest_id": "105343"
+                            }
+                          }
+                        },
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1683124240831086592/2IXfWaVbZffU0T1.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon May 16 17:14:30 +0000 2011",
+                                    "name": "Kim | Lindqvist Field Notes",
+                                    "screen_name": "vik1"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/3CoaK5p9Wz"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/3CoaK5p9Wz"
+                                  },
+                                  "rest_id": "105343"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 81,
+                              "conversation_id_str": "2477046879779500477",
+                              "created_at": "Tue Jul 14 15:05:40 +0000 2026",
+                              "display_text_range": [
+                                0,
+                                52
+                              ],
+                              "entities": {},
+                              "favorite_count": 118,
+                              "full_text": "context idea export item item draft signal write bu",
+                              "id_str": "2477046879779500477",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 4,
+                              "retweet_count": 7
+                            },
+                            "rest_id": "2477046879779500477",
+                            "views": {
+                              "count": "1281114"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2477046879779500477"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineCursor",
+                "cursorType": "Top",
+                "entryType": "TimelineTimelineCursor",
+                "value": "SYNTHETIC-CURSOR-VALUE"
+              },
+              "entryId": "cursor-top-2478878407667482342"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineCursor",
+                "cursorType": "Bottom",
+                "entryType": "TimelineTimelineCursor",
+                "value": "SYNTHETIC-CURSOR-VALUE"
+              },
+              "entryId": "cursor-bottom-2478878407667481950"
+            }
+          ],
+          "type": "TimelineAddEntries"
+        }
+      ]
+    }
+  }
+}

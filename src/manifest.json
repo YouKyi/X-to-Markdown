@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "X Thread → Markdown",
+  "version": "0.0.0",
+  "description": "Export an X.com thread, its replies, and quoted tweets to Markdown. Runs entirely locally; sends nothing anywhere.",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "x-thread-md@youkyi.fr",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+
+  "permissions": ["storage", "downloads", "clipboardWrite"],
+
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "action": {
+    "default_title": "X Thread → Markdown",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["main-world.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "world": "ISOLATED",
+      "all_frames": false
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  },
+
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  }
+}

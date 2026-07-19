@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>X Thread → Markdown — Options</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #16181c;
+        --muted: #536471;
+        --bg: #fff;
+        --line: #cfd9de;
+        --accent: #1d9bf0;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e7e9ea;
+          --muted: #8b98a5;
+          --bg: #15202b;
+          --line: #38444d;
+        }
+      }
+      body {
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        max-width: 44rem;
+        font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+      }
+      h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
+      h2 { font-size: 1rem; margin: 2rem 0 0.75rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--line); }
+      p.hint { color: var(--muted); margin: 0.2rem 0 0; font-size: 0.85rem; }
+      .row { display: grid; grid-template-columns: 15rem 1fr; gap: 0.75rem 1rem; align-items: start; margin: 0.9rem 0; }
+      .row > label:first-child { padding-top: 0.3rem; }
+      input[type="text"], input[type="number"], select {
+        width: 100%; padding: 0.4rem 0.5rem; font: inherit; color: var(--fg);
+        background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+      }
+      input[type="number"] { max-width: 9rem; }
+      .check { display: flex; gap: 0.5rem; align-items: baseline; }
+      button {
+        font: inherit; padding: 0.45rem 1rem; border-radius: 999px; border: 0;
+        background: var(--accent); color: #fff; cursor: pointer;
+      }
+      button.secondary { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+      footer { margin-top: 2rem; display: flex; gap: 0.75rem; align-items: center; }
+      #status { color: var(--muted); font-size: 0.85rem; }
+    </style>
+  </head>
+  <body>
+    <h1>X Thread → Markdown</h1>
+    <p class="hint">Everything runs locally. Nothing is ever sent anywhere.</p>
+
+    <form id="form">
+      <h2>Export</h2>
+      <div class="row">
+        <label for="action">On click</label>
+        <div>
+          <select id="action">
+            <option value="both">Copy to clipboard and download</option>
+            <option value="clipboard">Copy to clipboard</option>
+            <option value="download">Download .md</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <label for="filenameTemplate">Filename template</label>
+        <div>
+          <input type="text" id="filenameTemplate" spellcheck="false" />
+          <p class="hint">Variables: <code>{date}</code> <code>{handle}</code> <code>{id}</code> <code>{slug}</code></p>
+        </div>
+      </div>
+      <div class="row">
+        <label for="tags">Frontmatter tags</label>
+        <div>
+          <input type="text" id="tags" spellcheck="false" />
+          <p class="hint">Comma-separated.</p>
+        </div>
+      </div>
+
+      <h2>Markdown</h2>
+      <div class="row">
+        <label for="escapeMode">Escaping</label>
+        <div>
+          <select id="escapeMode">
+            <option value="minimal">Minimal — line-leading characters only</option>
+            <option value="strict">Strict — also inline emphasis characters</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <label>Options</label>
+        <div>
+          <div class="check"><input type="checkbox" id="obsidianCallouts" /><label for="obsidianCallouts">Obsidian callouts for quoted tweets</label></div>
+          <div class="check"><input type="checkbox" id="hardLineBreaks" /><label for="hardLineBreaks">Force line breaks (two trailing spaces)</label></div>
+          <div class="check"><input type="checkbox" id="includeVideoPosters" /><label for="includeVideoPosters">Include poster images for videos and GIFs</label></div>
+          <p class="hint">Without forced breaks, a tweet's single newlines collapse into one paragraph in strict CommonMark renderers. Obsidian preserves them either way.</p>
+        </div>
+      </div>
+
+      <h2>Collecting replies</h2>
+      <div class="row">
+        <label>Before exporting</label>
+        <div>
+          <div class="check"><input type="checkbox" id="autoScroll" /><label for="autoScroll">Scroll the page to load the rest of the conversation</label></div>
+          <div class="check"><input type="checkbox" id="expandCollapsed" /><label for="expandCollapsed">Also click &ldquo;show more replies&rdquo; controls</label></div>
+          <p class="hint">Expansion controls are identified structurally, never by their English label, and a control is only clicked when its row contains no tweet, no image and exactly one button &mdash; so it cannot land on a Follow button in a &ldquo;who to follow&rdquo; module. Hold Alt when clicking Markdown to export immediately without scrolling.</p>
+        </div>
+      </div>
+
+      <h2>Collection limits</h2>
+      <p class="hint">Hard ceilings apply. Lower values are honoured; higher ones are clamped.</p>
+      <div class="row"><label for="maxTweets">Max tweets</label><div><input type="number" id="maxTweets" min="1" /></div></div>
+      <div class="row"><label for="maxDepth">Max reply depth</label><div><input type="number" id="maxDepth" min="1" /></div></div>
+      <div class="row"><label for="maxChildrenPerNode">Max replies per tweet</label><div><input type="number" id="maxChildrenPerNode" min="1" /></div></div>
+      <div class="row"><label for="maxRounds">Max scroll rounds</label><div><input type="number" id="maxRounds" min="1" /></div></div>
+      <div class="row"><label for="maxWallClockMs">Time budget (ms)</label><div><input type="number" id="maxWallClockMs" min="1000" step="1000" /></div></div>
+
+      <h2>Debug</h2>
+      <div class="row">
+        <label>Diagnostics</label>
+        <div>
+          <div class="check"><input type="checkbox" id="debug" /><label for="debug">Verbose logging and raw payload retention</label></div>
+          <div class="check"><input type="checkbox" id="domMetrics" /><label for="domMetrics">Best-effort engagement counts in DOM fallback mode</label></div>
+          <p class="hint">With debug on, clicking the toolbar button on an x.com tab downloads the last few raw GraphQL payloads as a JSON file — that is how test fixtures are captured.</p>
+        </div>
+      </div>
+
+      <footer>
+        <button type="submit">Save</button>
+        <button type="button" class="secondary" id="reset">Reset to defaults</button>
+        <span id="status" role="status"></span>
+      </footer>
+    </form>
+
+    <script src="options.js"></script>
+  </body>
+</html>

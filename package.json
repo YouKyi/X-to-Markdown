@@ -1,0 +1,32 @@
+{
+  "name": "x-thread-md",
+  "version": "0.1.0",
+  "description": "Export an X.com thread, its replies, and quoted tweets to Markdown. Firefox extension. Runs entirely locally.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "build:dev": "node build.mjs --dev",
+    "watch": "node build.mjs --dev --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json",
+    "test": "node --test 'test/**/*.test.ts'",
+    "test:watch": "node --test --watch 'test/**/*.test.ts'",
+    "lint:ext": "web-ext lint --source-dir=dist",
+    "check": "pnpm typecheck && pnpm test && pnpm build && pnpm lint:ext",
+    "dev": "pnpm build:dev && web-ext run --source-dir=dist --target=firefox-desktop --url=https://x.com/i/status/20 --browser-console",
+    "package": "pnpm build && web-ext build --source-dir=dist --artifacts-dir=artifacts --overwrite-dest",
+    "sign": "pnpm check && node tools/sign.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "esbuild": "0.28.1",
+    "linkedom": "0.18.13",
+    "typescript": "7.0.2",
+    "web-ext": "10.5.0",
+    "yaml": "2.9.0"
+  }
+}

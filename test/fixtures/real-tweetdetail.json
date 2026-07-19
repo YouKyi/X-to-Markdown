@@ -1,0 +1,2153 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineClearCache"
+        },
+        {
+          "entries": [
+            {
+              "content": {
+                "__typename": "TimelineTimelineItem",
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "__typename": "TimelineTweet",
+                  "itemType": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "avatar": {
+                              "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                            },
+                            "core": {
+                              "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                              "name": "Alex | Rivera Field Notes 🇨🇭",
+                              "screen_name": "ada"
+                            },
+                            "is_blue_verified": true,
+                            "legacy": {
+                              "entities": {
+                                "url": {
+                                  "urls": [
+                                    {
+                                      "display_url": "example.com/link",
+                                      "expanded_url": "https://example.com/link",
+                                      "url": "https://t.co/mZP0tJQk8R"
+                                    }
+                                  ]
+                                }
+                              },
+                              "url": "https://t.co/mZP0tJQk8R"
+                            },
+                            "rest_id": "100000"
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "bookmark_count": 350,
+                        "conversation_id_str": "2441501452388954281",
+                        "created_at": "Tue Apr 07 13:00:50 +0000 2026",
+                        "display_text_range": [
+                          0,
+                          278
+                        ],
+                        "entities": {
+                          "media": [
+                            {
+                              "display_url": "example.com/link",
+                              "expanded_url": "https://example.com/link",
+                              "id_str": "2441501443975225344",
+                              "media_url_https": "https://pbs.twimg.com/media/V30_pzFwVz7flyM.jpg",
+                              "original_info": {
+                                "height": 1111,
+                                "width": 1284
+                              },
+                              "type": "photo",
+                              "url": "https://t.co/RyHfxr8L6w"
+                            }
+                          ]
+                        },
+                        "extended_entities": {
+                          "media": [
+                            {
+                              "display_url": "example.com/link",
+                              "expanded_url": "https://example.com/link",
+                              "id_str": "2441501443975225344",
+                              "media_url_https": "https://pbs.twimg.com/media/V30_pzFwVz7flyM.jpg",
+                              "original_info": {
+                                "height": 1111,
+                                "width": 1284
+                              },
+                              "type": "photo",
+                              "url": "https://t.co/RyHfxr8L6w"
+                            }
+                          ]
+                        },
+                        "favorite_count": 207,
+                        "full_text": "search link connect link signal link link memory source field context draft connect bu\n\nparse write index export thread graph connect read capture graph link result search parse reply structure tool signal memory field build system reco\nitem tool record signal export parse re https://t.co/RyHfxr8L6w",
+                        "id_str": "2441501452388954281",
+                        "is_quote_status": false,
+                        "lang": "fr",
+                        "quote_count": 2,
+                        "reply_count": 17,
+                        "retweet_count": 21
+                      },
+                      "note_tweet": {
+                        "note_tweet_results": {
+                          "result": {
+                            "entity_set": {
+                              "hashtags": [],
+                              "urls": [],
+                              "user_mentions": []
+                            },
+                            "text": "build build query export query idea archive graph ship connect graph tool index idea t\n\nentry structure reply idea pattern item system idea ship draft result idea result search system idea ship build connect read tool signal build patte\nship result system parse structure parse wri\n\n- capture structure draft memory structure search par\n- tool index thread pattern reply thread build\n- note reply read render format pattern structure structure source draft context read export system field graph memory con\n\nthread system render i\nrender idea result note parse shi\n\nconnect note render result index context reply tool signal format render link item format\n\nstore system structure note store context format field source parse query reply entry rec\nstore thread graph system idea parse note idea build\n\nbuild pattern value thread link field connect pattern reply c\n\nidea search render entry export ship parse thread link tool ship export ca\n- ship record archive export signal pattern format parse note item read memor\n- thread pattern build result pattern capture value item t\n- item export item draft reply memory value context ship system parse\n- structure entry record archive ship export idea archive draft graph connect index source source idea source pa\n\nconnect export item pattern memory tool graph result link write read build value reply item write memory i\n\nresult read store source entry query context\nsearch link search\nvalue parse link s\nvalue memory draft no\nreply export pattern link parse value connect render result reply\n\ntool memory write context context ship system read system source item connect parse build value value item sh\n\nexport archive ship\n\nbuild draft write index render\nquery build thread index reply ship co\n\nentry index export context note structure note note tool render result\n- ship connect entry read capture thread link patter\n- result read search store build system record connect reply result thread signal memory query draft system format archive capture render pattern archive archive graph query source draft thread struct\n- thread archive parse reply read entry thread draft draft context read connect system export system system search record ent\n\ngraph draft signal\nstructure sourc\nrecord value format context no\n\nrender note field build field build build reply structure item graph index draft thread read link search arch\nwrite pattern write ship syste\ngraph system write memory query sys\nlink graph reply query record s\nsearch result field signal ship link re\nread draft note connect quer\n\nitem search memory search field draft field value result context search graph format query tool entry pa\n\nread index read archive draft reply draft item structur\n\nreply context context graph source reply graph write graph rep\nread index thread entry entry thread value export structure pattern render link structure connect read item connect connect link write connect note query structure draft format reply parse export pattern read link parse archive qu\n\nsystem query value read store item graph system context read connect format for\nrecord capture connect item reply idea source\n\nbuild query write link capture record capture exp\n\nsignal archive field capture tool index build draft format entry record parse pattern parse item read build read note pattern read form\nread link ship archive thread render query reply memory store format render\n\ngraph read parse ship search build write graph format link idea conte\n\nquery structure format ship signal context source\nreply note item record build read memory format connect capture ship parse write build parse store\n\nvalue result result item build write source pattern format idea source ship system index signal re\nstore export graph pattern record index item source format capture read draft query graph signal link draft result draft archiv\n\nindex record record result archive pattern parse reply export store value result build note entry source value record connect idea id\n\nidea field archive draft parse query source context build index result parse thread archive structure graph source draft signal search read query\n\nstructure idea read draft thread item context\nsignal export store reply ship entry signal con"
+                          }
+                        }
+                      },
+                      "rest_id": "2441501452388954281",
+                      "views": {
+                        "count": "29080"
+                      }
+                    }
+                  }
+                }
+              },
+              "entryId": "tweet-2441501452388954281"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441508925661478939-tweet-2441508925661478939",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 12,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 13:30:31 +0000 2026",
+                              "display_text_range": [
+                                0,
+                                78
+                              ],
+                              "entities": {
+                                "urls": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "url": "https://t.co/fQQopqQbC6"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 11,
+                              "full_text": "link context store format index search read value re\n\nhttps://t.co/fQQopqQbC6",
+                              "id_str": "2441508925661478939",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 1
+                            },
+                            "rest_id": "2441508925661478939",
+                            "views": {
+                              "count": "1612"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441508925661478939"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441549207215931685-tweet-2441549207215931685",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 16:10:35 +0000 2026",
+                              "display_text_range": [
+                                0,
+                                97
+                              ],
+                              "entities": {
+                                "media": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "id_str": "2441549074558603264",
+                                    "media_url_https": "https://pbs.twimg.com/media/voi_A0vhBZD3xUF.png",
+                                    "original_info": {
+                                      "height": 177,
+                                      "width": 691
+                                    },
+                                    "type": "photo",
+                                    "url": "https://t.co/UyIWWOSAbT"
+                                  }
+                                ]
+                              },
+                              "extended_entities": {
+                                "media": [
+                                  {
+                                    "display_url": "example.com/link",
+                                    "expanded_url": "https://example.com/link",
+                                    "id_str": "2441549074558603264",
+                                    "media_url_https": "https://pbs.twimg.com/media/voi_A0vhBZD3xUF.png",
+                                    "original_info": {
+                                      "height": 177,
+                                      "width": 691
+                                    },
+                                    "type": "photo",
+                                    "url": "https://t.co/UyIWWOSAbT"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "tool thread structure render query draft render thread source value result index source render pa https://t.co/UyIWWOSAbT",
+                              "id_str": "2441549207215931685",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441549207215931685",
+                            "views": {
+                              "count": "1270"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441549207215931685"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441565894523179256-tweet-2441565894523179256",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2014316484936245249/LrvZ09P8thuVcTO.png"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Jan 22 12:37:28 +0000 2026",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100137"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 17:16:54 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                147
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 3,
+                              "full_text": "field build format signal thread query tool link link memory parse connect query memory graph search graph result search thread thread entry g @ada",
+                              "id_str": "2441565894523179256",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441565894523179256",
+                            "views": {
+                              "count": "567"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441565894523179256-tweet-2441577083827319258",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 18:01:22 +0000 2026",
+                              "display_text_range": [
+                                14,
+                                291
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "2414316406435680256",
+                                    "name": "Robin Novak",
+                                    "screen_name": "bo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 5,
+                              "full_text": "link context memory system capture render @bo\nidea system signal parse source link memory source note search format result render field system connect field value connect source field source connect build structure va\nrender reply reply record value item search write format note format in",
+                              "id_str": "2441577083827319258",
+                              "in_reply_to_screen_name": "bo",
+                              "in_reply_to_status_id_str": "2441565894523179256",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "note_tweet": {
+                              "note_tweet_results": {
+                                "result": {
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  },
+                                  "text": "pattern graph reply graph repl\nexport capture index reply index index link ship record result memory link draft pattern system pattern search parse search record archive query format graph source search\nidea field result pattern link parse store context draft entry build item system field value signal write search thread value graph resu"
+                                }
+                              }
+                            },
+                            "rest_id": "2441577083827319258",
+                            "views": {
+                              "count": "539"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441565894523179256-cursor-showmore-1805423848",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTimelineCursor",
+                        "cursorType": "ShowMore",
+                        "itemType": "TimelineTimelineCursor",
+                        "value": "SYNTHETIC-CURSOR-VALUE"
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441565894523179256"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441587174684926248-tweet-2441587174684926248",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2033643136723914752/X-xZCTMjYDr6rzu.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon Sep 06 15:00:28 +0000 2021",
+                                    "name": "Sam Sato",
+                                    "screen_name": "cyd"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100274"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 18:41:27 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                117
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 2,
+                              "full_text": "render field item reply entry index draft thread record index format query query record reply field context repl @ada",
+                              "id_str": "2441587174684926248",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441587174684926248",
+                            "views": {
+                              "count": "398"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441587174684926248-tweet-2441590417838260367",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 18:54:21 +0000 2026",
+                              "display_text_range": [
+                                13,
+                                245
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1834894212378644489",
+                                    "name": "Sam Sato",
+                                    "screen_name": "cyd"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 3,
+                              "full_text": "context draft item signal index pa @cyd\nrender thread tool memory tool idea result graph link index connect format format write read write index parse idea bu\n\nfield reply build result record source entry idea memory field graph entry record n",
+                              "id_str": "2441590417838260367",
+                              "in_reply_to_screen_name": "cyd",
+                              "in_reply_to_status_id_str": "2441587174684926248",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441590417838260367",
+                            "views": {
+                              "count": "356"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441587174684926248"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441526538986729665-tweet-2441526538986729665",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2059574260734070786/ZjOHEIgC8ymeCtv.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri Jun 02 08:56:16 +0000 2023",
+                                    "name": "Jules Dubois",
+                                    "screen_name": "dex"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100411"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 1,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 14:40:31 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                287
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 2,
+                              "full_text": "system search signal thread r @ada\n\nreply build source render captur\nindex thread index result draft idea note result record signal read write\nrender index system query idea signal capture archive thread idea query note search query draft read tool item query source context memory w",
+                              "id_str": "2441526538986729665",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "note_tweet": {
+                              "note_tweet_results": {
+                                "result": {
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  },
+                                  "text": "graph search note signa\n\nreply graph reply idea query rec\ndraft field parse entry system capture parse store note capture value repl\narchive item source tool memory link draft draft context parse format note ship write render entry field result entry result signal tool tool pattern build thread\n\narchive reply export pattern system field result draft export format not\nread pattern system build store query query format item draft graph tool draft store graph parse entry capture"
+                                }
+                              }
+                            },
+                            "rest_id": "2441526538986729665",
+                            "views": {
+                              "count": "845"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441526538986729665-tweet-2441535712340627651",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 2,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 15:16:58 +0000 2026",
+                              "display_text_range": [
+                                8,
+                                283
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "2064556453804343296",
+                                    "name": "Jules Dubois",
+                                    "screen_name": "dex"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 2,
+                              "full_text": "thread read grap @dex\n\nread entry idea read build archive thread result idea entry build draft query connect archive idea idea render search result reply record parse format read connect archive export context capture query connect capture value signal link field record idea value",
+                              "id_str": "2441535712340627651",
+                              "in_reply_to_screen_name": "dex",
+                              "in_reply_to_status_id_str": "2441526538986729665",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "note_tweet": {
+                              "note_tweet_results": {
+                                "result": {
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  },
+                                  "text": "parse system\n\nconnect render structure format item connect entry signal read query graph reply item store source reply structure build archive field structure render signal format parse search tool value ship capture pattern field memory item render result entry export read system value connect index query render tool connect parse result thread draft result draft signal pattern build thread index item entry capture ship parse draft query build item index build build capture context search memory result note result memory store render read render write ship item structure thread capture item field value memory store note store"
+                                }
+                              }
+                            },
+                            "rest_id": "2441535712340627651",
+                            "views": {
+                              "count": "754"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441526538986729665"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441560162813595691-tweet-2441560162813595691",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1848045216369922048/eBTxhVlf6P6evOk.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Sep 25 20:40:10 +0000 2022",
+                                    "name": "Charlie Okafor",
+                                    "screen_name": "eli"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100548"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 16:54:07 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                60
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 2,
+                              "full_text": "memory store system export draft export format thread n @ada",
+                              "id_str": "2441560162813595691",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441560162813595691",
+                            "views": {
+                              "count": "408"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441560162813595691-tweet-2441577852483592355",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 18:04:25 +0000 2026",
+                              "display_text_range": [
+                                8,
+                                40
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "1974136612317024256",
+                                    "name": "Charlie Okafor",
+                                    "screen_name": "eli"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "entry field signal result index pat @eli",
+                              "id_str": "2441577852483592355",
+                              "in_reply_to_screen_name": "eli",
+                              "in_reply_to_status_id_str": "2441560162813595691",
+                              "is_quote_status": false,
+                              "lang": "es",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441577852483592355",
+                            "views": {
+                              "count": "348"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441560162813595691"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441759439196180983-tweet-2441759439196180983",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1715502179639816192/4tVgzUXL-HPwIJu.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri Oct 20 22:24:36 +0000 2023",
+                                    "name": "Morgan Lindqvist",
+                                    "screen_name": "fen"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100685"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Wed Apr 08 06:05:59 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                52
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "search parse result memory draft capture connec @ada",
+                              "id_str": "2441759439196180983",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441759439196180983",
+                            "views": {
+                              "count": "151"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441759439196180983-tweet-2441760453852877293",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Wed Apr 08 06:10:00 +0000 2026",
+                              "display_text_range": [
+                                17,
+                                85
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "2115494104342114304",
+                                    "name": "Morgan Lindqvist",
+                                    "screen_name": "fen"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 2,
+                              "full_text": "render tool format result format thread draft value context record signal ship p @fen",
+                              "id_str": "2441760453852877293",
+                              "in_reply_to_screen_name": "fen",
+                              "in_reply_to_status_id_str": "2441759439196180983",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441760453852877293",
+                            "views": {
+                              "count": "139"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441759439196180983-cursor-showmore-577692547",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTimelineCursor",
+                        "cursorType": "ShowMore",
+                        "itemType": "TimelineTimelineCursor",
+                        "value": "SYNTHETIC-CURSOR-VALUE"
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441759439196180983"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441512444439249251-tweet-2441512444439249251",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2051263559317819392/P5hpXzwIxw0LFdc.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Jan 15 09:44:05 +0000 2009",
+                                    "name": "Noa Marek",
+                                    "screen_name": "gus"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/xxdz9HQVl4"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/xxdz9HQVl4"
+                                  },
+                                  "rest_id": "100822"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 13:44:30 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                118
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "value result write export system write context parse result ship idea thread pattern field structure record conne @ada",
+                              "id_str": "2441512444439249251",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441512444439249251",
+                            "views": {
+                              "count": "723"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441512444439249251-tweet-2441519248707580274",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 5,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 14:11:33 +0000 2026",
+                              "display_text_range": [
+                                12,
+                                284
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000000019016716",
+                                    "name": "Noa Marek",
+                                    "screen_name": "gus"
+                                  },
+                                  {
+                                    "id_str": "1787819775196221446",
+                                    "name": "Kim Rivera",
+                                    "screen_name": "hal"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 10,
+                              "full_text": "pattern structure archive write structure query archive idea export field query idea @gus      @hal\n\ncontext link note query format write store ship signal context item idea note record value item tool idea field field connect capture value graph build export draft value system graph mem",
+                              "id_str": "2441519248707580274",
+                              "in_reply_to_screen_name": "gus",
+                              "in_reply_to_status_id_str": "2441512444439249251",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 1,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "note_tweet": {
+                              "note_tweet_results": {
+                                "result": {
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "urls": [],
+                                    "user_mentions": [
+                                      {
+                                        "id_str": "1787819775196221446",
+                                        "name": "Kim Rivera",
+                                        "screen_name": "hal"
+                                      }
+                                    ]
+                                  },
+                                  "text": "result graph parse capture capture archive structure source store result resu @hal\n\nsignal record context archive render parse read item result structure capture signal note export connect record reply store result system result result render pattern entry memory format ship field note thread parse record source value ship record idea result reply archive signal pattern note draft entry write note export note note search store memor"
+                                }
+                              }
+                            },
+                            "rest_id": "2441519248707580274",
+                            "views": {
+                              "count": "1271"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2441512444439249251-cursor-showmore-1330450131",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTimelineCursor",
+                        "cursorType": "ShowMore",
+                        "itemType": "TimelineTimelineCursor",
+                        "value": "SYNTHETIC-CURSOR-VALUE"
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441512444439249251"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2478157881199796477-tweet-2478157881199796477",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1999257153744363524/1AEt-JTwzuC9QTO.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun May 12 10:01:52 +0000 2024",
+                                    "name": "Alex Novak",
+                                    "screen_name": "ivo"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100959"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Fri Jul 17 16:40:23 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                47
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "reply value archive graph render search id @ada",
+                              "id_str": "2478157881199796477",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2478157881199796477",
+                            "views": {
+                              "count": "47"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-2478157881199796477-tweet-2478159973675069725",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2005996715766157312/yvB6w-ZdbHP2m_H.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Nov 19 19:51:12 +0000 2015",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mZP0tJQk8R"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mZP0tJQk8R"
+                                  },
+                                  "rest_id": "100000"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Fri Jul 17 16:48:42 +0000 2026",
+                              "display_text_range": [
+                                17,
+                                27
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "2189596751533346816",
+                                    "name": "Alex Novak",
+                                    "screen_name": "ivo"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "record record index ca @ivo",
+                              "id_str": "2478159973675069725",
+                              "in_reply_to_screen_name": "ivo",
+                              "in_reply_to_status_id_str": "2478157881199796477",
+                              "is_quote_status": false,
+                              "lang": "en",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2478159973675069725",
+                            "views": {
+                              "count": "43"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2478157881199796477"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441669277145588048-tweet-2441669277145588048",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2075927969072058368/KjFJH7xME2IXfWa.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Mon Mar 16 09:56:44 +0000 2026",
+                                    "name": "Robin Sato",
+                                    "screen_name": "jun"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/uAyEEtYs03"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/uAyEEtYs03"
+                                  },
+                                  "rest_id": "101096"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Wed Apr 08 00:07:42 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                197
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "parse context note draft item memory result link write contex @ada\nidea export item item draft signal write build parse index capture struct\nwrite field graph signal build ship format item graph",
+                              "id_str": "2441669277145588048",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441669277145588048",
+                            "views": {
+                              "count": "66"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441669277145588048"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441615212906787288-tweet-2441615212906787288",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/794565988960321536/DbGPQyWG29rdNEh.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu Jul 21 15:39:50 +0000 2016",
+                                    "name": "Sam Dubois",
+                                    "screen_name": "kit"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101233"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 20:32:52 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                268
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "note memory value writ @ada\n\nexport note result reply capture context value item index parse structure thread draft note draft idea index field link build item link item rende\n\ntool idea export record connect connect reply tool context thread read memory result rend",
+                              "id_str": "2441615212906787288",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 1,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441615212906787288",
+                            "views": {
+                              "count": "193"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441615212906787288"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2442155562024984634-tweet-2442155562024984634",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2011011399779069952/b7V8hloJDaDlA-b.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Tue Mar 23 05:52:54 +0000 2021",
+                                    "name": "Jules Okafor",
+                                    "screen_name": "lex"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "example.com/link",
+                                            "expanded_url": "https://example.com/link",
+                                            "url": "https://t.co/mUQXVk2c2c"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "url": "https://t.co/mUQXVk2c2c"
+                                  },
+                                  "rest_id": "101370"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Thu Apr 09 08:20:02 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                18
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "record thread @ada",
+                              "id_str": "2442155562024984634",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2442155562024984634",
+                            "views": {
+                              "count": "58"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2442155562024984634"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441598154953367832-tweet-2441598154953367832",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1807383800248180737/J7QJ5ybCHRitMVP.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri May 12 15:25:55 +0000 2023",
+                                    "name": "Charlie Lindqvist",
+                                    "screen_name": "mo"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101507"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 19:25:05 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                31
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 1,
+                              "full_text": "value pattern search entry @ada",
+                              "id_str": "2441598154953367832",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441598154953367832",
+                            "views": {
+                              "count": "173"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441598154953367832"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2478158129762619688-tweet-2478158129762619688",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1999257153744363524/1AEt-JTwzuC9QTO.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun May 12 10:01:52 +0000 2024",
+                                    "name": "Alex Novak",
+                                    "screen_name": "ivo"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "100959"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Fri Jul 17 16:41:23 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                91
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "link read index index store structure pattern search value ship reply archive write id @ada",
+                              "id_str": "2478158129762619688",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2478158129762619688",
+                            "views": {
+                              "count": "33"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2478158129762619688"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441623468303593964-tweet-2441623468303593964",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1989059223137787904/5CwBbzA0eQcBv1g.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Sun Oct 16 08:21:15 +0000 2011",
+                                    "name": "Morgan Marek 🐱",
+                                    "screen_name": "nia"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101644"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Tue Apr 07 21:05:41 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                48
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "system idea write format export graph note s @ada",
+                              "id_str": "2441623468303593964",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441623468303593964",
+                            "views": {
+                              "count": "139"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441623468303593964"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441980022030774516-tweet-2441980022030774516",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/1955300958889558016/_J_uavZ4syJjATa.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Thu May 21 11:07:41 +0000 2020",
+                                    "name": "Noa Rivera 🦖",
+                                    "screen_name": "ola"
+                                  },
+                                  "is_blue_verified": false,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101781"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Wed Apr 08 20:42:30 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                169
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "search export signal note store write format draft archive record export memory render draft idea memory connect thread idea parse format source parse write result @ada",
+                              "id_str": "2441980022030774516",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441980022030774516",
+                            "views": {
+                              "count": "65"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441980022030774516"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "conversationthread-2441811943254544472-tweet-2441811943254544472",
+                    "item": {
+                      "itemContent": {
+                        "__typename": "TimelineTweet",
+                        "itemType": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "avatar": {
+                                    "image_url": "https://pbs.twimg.com/profile_images/2064638326095679488/6oqZ36II5-TWGNm.jpg"
+                                  },
+                                  "core": {
+                                    "created_at": "Fri Mar 07 13:41:30 +0000 2025",
+                                    "name": "Kim Novak",
+                                    "screen_name": "pax"
+                                  },
+                                  "is_blue_verified": true,
+                                  "legacy": {
+                                    "entities": {},
+                                    "url": ""
+                                  },
+                                  "rest_id": "101918"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 0,
+                              "conversation_id_str": "2441501452388954281",
+                              "created_at": "Wed Apr 08 09:34:36 +0000 2026",
+                              "display_text_range": [
+                                10,
+                                69
+                              ],
+                              "entities": {
+                                "user_mentions": [
+                                  {
+                                    "id_str": "400000004228753449",
+                                    "name": "Alex | Rivera Field Notes 🇨🇭",
+                                    "screen_name": "ada"
+                                  }
+                                ]
+                              },
+                              "favorite_count": 0,
+                              "full_text": "capture build connect source graph query connect context parse i @ada",
+                              "id_str": "2441811943254544472",
+                              "in_reply_to_screen_name": "ada",
+                              "in_reply_to_status_id_str": "2441501452388954281",
+                              "is_quote_status": false,
+                              "lang": "fr",
+                              "quote_count": 0,
+                              "reply_count": 0,
+                              "retweet_count": 0
+                            },
+                            "rest_id": "2441811943254544472",
+                            "views": {
+                              "count": "58"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "entryId": "conversationthread-2441811943254544472"
+            },
+            {
+              "content": {
+                "__typename": "TimelineTimelineCursor",
+                "cursorType": "Bottom",
+                "entryType": "TimelineTimelineCursor",
+                "value": "SYNTHETIC-CURSOR-VALUE"
+              },
+              "entryId": "cursor-bottom-2478813729905966933"
+            }
+          ],
+          "type": "TimelineAddEntries"
+        },
+        {
+          "type": "TimelineTerminateTimeline"
+        }
+      ]
+    }
+  }
+}

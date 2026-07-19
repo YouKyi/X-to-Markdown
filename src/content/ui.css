@@ -1,0 +1,121 @@
+/* Styles for the shadow root. Bundled as a string constant by esbuild, so there
+   is no separate CSS file and no web_accessible_resources entry. */
+
+:host {
+  all: initial;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgb(207 217 222);
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(15 20 25);
+  font: 600 13px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 120ms ease;
+}
+
+.btn:hover {
+  background: rgba(15, 20, 25, 0.1);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+/* X ships three themes. prefers-color-scheme only distinguishes two of them,
+   so the dim theme falls under the dark branch; both need light-on-dark. */
+@media (prefers-color-scheme: dark) {
+  .btn {
+    border-color: rgb(83 100 113);
+    color: rgb(231 233 234);
+  }
+  .btn:hover {
+    background: rgba(239, 243, 244, 0.1);
+  }
+}
+
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgb(15 20 25);
+  color: rgb(231 233 234);
+  font: 400 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.toast[hidden] {
+  display: none;
+}
+
+.toast.error {
+  background: rgb(120 24 24);
+}
+
+.toast.done {
+  background: rgb(0 96 57);
+}
+
+.toast .msg {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast .cancel {
+  flex: none;
+  padding: 4px 10px;
+  border: 1px solid rgba(231, 233, 234, 0.4);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.toast .cancel[hidden] {
+  display: none;
+}
+
+/* Floating fallback, used when the tweet action bar cannot be found. */
+.floating {
+  position: fixed;
+  right: 16px;
+  bottom: 68px;
+  z-index: 2147483646;
+  background: rgb(29 155 240);
+  border-color: transparent;
+  color: #fff;
+  height: 36px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.floating:hover {
+  background: rgb(26 140 216);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

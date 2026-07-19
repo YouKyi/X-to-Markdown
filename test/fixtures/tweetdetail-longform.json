@@ -1,0 +1,73 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1900000000000000010",
+              "content": {
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000010",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "rest_id": "77",
+                            "legacy": { "screen_name": "longwriter", "name": "Long Writer" }
+                          }
+                        }
+                      },
+                      "note_tweet": {
+                        "is_expandable": true,
+                        "note_tweet_results": {
+                          "result": {
+                            "id": "Tm90ZVR3ZWV0OjE=",
+                            "text": "The full essay, well past 280 characters, continues past the point where legacy.full_text would have been cut off. It links to https://t.co/NOTE1 which only the note entity set knows about.",
+                            "entity_set": {
+                              "urls": [
+                                {
+                                  "url": "https://t.co/NOTE1",
+                                  "expanded_url": "https://example.com/the-real-essay",
+                                  "display_url": "example.com/the-real-essay"
+                                }
+                              ],
+                              "hashtags": [],
+                              "user_mentions": []
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "created_at": "Mon Jun 02 09:00:00 +0000 2025",
+                        "conversation_id_str": "1900000000000000010",
+                        "full_text": "The full essay, well past 280 characters, continues past the point where legacy.full_text would have been cut… https://t.co/TRUNCATED",
+                        "lang": "en",
+                        "favorite_count": 10,
+                        "retweet_count": 2,
+                        "reply_count": 0,
+                        "quote_count": 0,
+                        "entities": {
+                          "urls": [
+                            {
+                              "url": "https://t.co/TRUNCATED",
+                              "expanded_url": "https://twitter.com/i/web/status/1900000000000000010",
+                              "display_url": "twitter.com/i/web/status/1…"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

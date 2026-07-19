@@ -1,0 +1,14 @@
+{
+  // Tests and build tooling. Same strictness, plus Node globals.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    // The .mjs build/tooling scripts are plain JS by design; typechecking them
+    // would mean JSDoc annotations on throwaway generators for no safety gain.
+    // Everything that ships is .ts and is checked.
+    "checkJs": false
+  },
+  "include": ["test", "tools", "build.mjs", "src"]
+}

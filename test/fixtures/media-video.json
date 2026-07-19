@@ -1,0 +1,77 @@
+{
+  "data": {
+    "tweetResult": {
+      "result": {
+        "__typename": "Tweet",
+        "rest_id": "1900000000000000040",
+        "core": {
+          "user_results": {
+            "result": { "rest_id": "44", "legacy": { "screen_name": "vid", "name": "Vid" } }
+          }
+        },
+        "legacy": {
+          "created_at": "Fri Apr 04 16:20:00 +0000 2025",
+          "conversation_id_str": "1900000000000000040",
+          "full_text": "clip and a gif https://t.co/vidtco https://t.co/giftco",
+          "lang": "en",
+          "favorite_count": 1,
+          "retweet_count": 0,
+          "reply_count": 0,
+          "quote_count": 0,
+          "entities": {
+            "media": [{ "url": "https://t.co/vidtco" }]
+          },
+          "extended_entities": {
+            "media": [
+              {
+                "type": "video",
+                "url": "https://t.co/vidtco",
+                "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/44/pu/img/poster.jpg",
+                "ext_alt_text": "a short clip",
+                "original_info": { "width": 1280, "height": 720 },
+                "video_info": {
+                  "duration_millis": 32400,
+                  "variants": [
+                    {
+                      "content_type": "application/x-mpegURL",
+                      "url": "https://video.twimg.com/ext_tw_video/44/pu/pl/playlist.m3u8"
+                    },
+                    {
+                      "bitrate": 632000,
+                      "content_type": "video/mp4",
+                      "url": "https://video.twimg.com/ext_tw_video/44/pu/vid/320x180/low.mp4"
+                    },
+                    {
+                      "bitrate": 2176000,
+                      "content_type": "video/mp4",
+                      "url": "https://video.twimg.com/ext_tw_video/44/pu/vid/1280x720/high.mp4"
+                    },
+                    {
+                      "bitrate": 832000,
+                      "content_type": "video/mp4",
+                      "url": "https://video.twimg.com/ext_tw_video/44/pu/vid/640x360/mid.mp4"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "animated_gif",
+                "url": "https://t.co/giftco",
+                "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/gif1.png",
+                "original_info": { "width": 480, "height": 270 },
+                "video_info": {
+                  "variants": [
+                    {
+                      "content_type": "video/mp4",
+                      "url": "https://video.twimg.com/tweet_video/gif1.mp4"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
