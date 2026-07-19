@@ -1,7 +1,7 @@
 # X Thread to Markdown
 
-A Firefox extension that exports an x.com thread — the post, the author's
-self-thread, quoted tweets and the reply tree — to Markdown, in one click.
+A Firefox extension that exports an x.com thread - the post, the author's
+self-thread, quoted tweets and the reply tree - to Markdown, in one click.
 
 Built because handing an authenticated x.com session to a closed-source
 extension is a bad trade. Everything runs locally, nothing is sent anywhere, and
@@ -21,8 +21,8 @@ later.
 
 On any `x.com/*/status/*` page, click **Markdown** in the post's action bar.
 
-- **Click** — scroll the conversation to load the rest, then export.
-- **Alt+click** — export what is already loaded, immediately.
+- **Click** - scroll the conversation to load the rest, then export.
+- **Alt+click** - export what is already loaded, immediately.
 - **Cancel** in the toast stops collecting and exports what was gathered.
 
 Defaults to clipboard *and* a `.md` download. Change that in the extension's
@@ -30,7 +30,7 @@ options, along with the filename template, tags and collection limits.
 
 ## What you get
 
-Below is `test/golden/simple-thread.md`, produced by the test suite — so this
+Below is `test/golden/simple-thread.md`, produced by the test suite - so this
 example cannot drift away from the real output format.
 
 ````markdown
@@ -93,16 +93,16 @@ with their alt text, and `t.co` links expanded to their real destination.
 The principle throughout: **a partial result you know about beats a truncated one
 you believe is complete.**
 
-- `collection: complete | partial | unknown` — whether collecting reached the
+- `collection: complete | partial | unknown` - whether collecting reached the
   end. `unknown` is a real answer: after an Alt+click there was no collection
   pass, so the export genuinely cannot vouch for completeness.
-- `replies_not_captured: N` — replies X's own counters say exist but that were
+- `replies_not_captured: N` - replies X's own counters say exist but that were
   never loaded. Reported rather than treated as failure, because it also covers
   deleted, hidden and muted replies no amount of scrolling would reach.
-- `*… N more replies dropped by a collection limit*` — we had these and cut them.
+- `*… N more replies dropped by a collection limit*` - we had these and cut them.
   Distinct from `*… X reports N more replies here, not captured*`, which means we
   never got them.
-- `warnings:` — orphaned replies, mixed sources, suspected schema drift.
+- `warnings:` - orphaned replies, mixed sources, suspected schema drift.
 
 Ads injected into conversations are dropped. They are not replies, and their own
 reply counts would otherwise swamp these figures.
@@ -141,7 +141,7 @@ section. [BUILD.md](BUILD.md) repeats it with more commentary.
 | | |
 |---|---|
 | Operating system | Any that runs Node 24. Built and tested on **macOS 15** (arm64) and the **`node:24-alpine`** Docker image (x86-64). No platform-specific steps. |
-| Node.js | **24.0.0 or later** — required, not preferred |
+| Node.js | **24.0.0 or later** - required, not preferred |
 | pnpm | **11.11.0** |
 | Network | Needed once, for `pnpm install` |
 | Disk | ~250 MB, almost all of it `node_modules` |
@@ -154,7 +154,7 @@ different.
 ### Installing the tools
 
 ```sh
-# Node 24 — any one of these
+# Node 24 - any one of these
 nvm install 24 && nvm use 24          # https://github.com/nvm-sh/nvm
 brew install node@24                  # macOS
 docker run --rm -it -v "$PWD":/src -w /src node:24-alpine sh
@@ -209,8 +209,8 @@ No code generation, no template engine, and **no minification**:
 | `src/options/options.ts` | `dist/options/options.js` |
 
 esbuild strips TypeScript types and bundles the module graph into one file per
-entry point — `iife`, targeted at `firefox140`, `minify: false`,
-`legalComments: 'inline'` — so the shipped JavaScript reads as ordinary source
+entry point - `iife`, targeted at `firefox140`, `minify: false`,
+`legalComments: 'inline'` - so the shipped JavaScript reads as ordinary source
 and maps onto the files under `src/`. `src/manifest.json` is copied with
 `version` substituted from `package.json`; `src/icons/` and
 `src/options/options.html` are copied unchanged. `src/content/ui.css` is
@@ -230,7 +230,7 @@ and `linkedom` are used by tests alone.
 ## Development
 
 ```sh
-pnpm check        # typecheck + tests + build + web-ext lint — the gate
+pnpm check        # typecheck + tests + build + web-ext lint - the gate
 pnpm dev          # throwaway Firefox with the extension loaded
 pnpm test         # node:test, no test framework dependency
 pnpm package      # build the archive for submission
@@ -243,7 +243,7 @@ changing anything under `src/`.
 scripts into already-open tabs; the old instance retires itself, leaving no
 button until you refresh.
 
-Tests run `.ts` directly — Node 24 strips types natively, so there is no test
+Tests run `.ts` directly - Node 24 strips types natively, so there is no test
 framework and no transpile step. There are **zero runtime dependencies**: the
 build and test tools never enter the package.
 

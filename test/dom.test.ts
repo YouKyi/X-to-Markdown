@@ -1,7 +1,7 @@
 // Tests for the DOM fallback.
 //
-// Scope is deliberate. The pure logic — permalink parsing, text reconstruction,
-// aria-label counts — is pinned here, because it is real logic that can be
+// Scope is deliberate. The pure logic - permalink parsing, text reconstruction,
+// aria-label counts - is pinned here, because it is real logic that can be
 // wrong in ways nobody notices. The selector walk is exercised on a
 // representative fragment rather than exhaustively: any X redesign rewrites it,
 // and tests over it would be rewritten with it rather than catching anything.
@@ -181,7 +181,7 @@ describe('degradation ladder', () => {
     assert.equal(outcome.ok, true);
     assert.match(outcome.message, /^Degraded export\./);
     assert.match(outcome.markdown!, /^source: dom$/m);
-    // The warning contains ": ", so the YAML emitter quotes it — which is
+    // The warning contains ": ", so the YAML emitter quotes it - which is
     // exactly the behaviour the frontmatter tests pin.
     assert.match(outcome.markdown!, /^ {2}- "Read from the page instead of the network: /m);
   });

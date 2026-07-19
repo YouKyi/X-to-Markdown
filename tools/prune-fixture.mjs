@@ -5,8 +5,8 @@
 // Two reasons this exists, both important:
 //
 //   Privacy. A raw TweetDetail response carries relationship_perspectives for
-//   every participant — whether *you* follow, are followed by, block, mute or
-//   can DM each of them — plus other session-adjacent state. None of it is
+//   every participant - whether *you* follow, are followed by, block, mute or
+//   can DM each of them - plus other session-adjacent state. None of it is
 //   parser input, and none of it belongs in a public repository.
 //
 //   Reviewability. Raw responses are 1–5 MB. Pruned ones are 5–40 KB and can be
@@ -47,7 +47,7 @@ const KEEP = new Set([
   'media', 'media_url_https', 'ext_alt_text', 'original_info', 'width', 'height',
   'video_info', 'duration_millis', 'variants', 'bitrate', 'content_type',
 
-  // author — both schema eras
+  // author - both schema eras
   'core', 'user_results', 'screen_name', 'name', 'is_blue_verified', 'verified',
   'avatar', 'image_url', 'profile_image_url_https',
 ]);

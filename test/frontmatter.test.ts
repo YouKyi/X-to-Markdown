@@ -4,7 +4,7 @@
 // mis-quoted scalar does not throw, it produces a document that a note app
 // reads back wrong, or refuses to index, or truncates at the wrong delimiter.
 // Reasoning about YAML quoting rules is not verification, so this asserts
-// against the `yaml` package — a devDependency only, never shipped in the XPI.
+// against the `yaml` package - a devDependency only, never shipped in the XPI.
 
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
@@ -136,7 +136,7 @@ describe('rendered frontmatter is valid YAML', () => {
     const fm = frontmatterOf(renderWith({}));
     // Unquoted and in this exact shape, because Obsidian's property system
     // infers a Date type from it and only then is the field sortable. That
-    // inference is Obsidian's, not YAML's — the 1.2 core schema resolves this
+    // inference is Obsidian's, not YAML's - the 1.2 core schema resolves this
     // to a plain string, which is all this test can honestly assert.
     assert.equal(fm['date'], '2026-04-07');
     assert.match(renderWith({}), /^date: 2026-04-07$/m, 'must stay unquoted');

@@ -96,7 +96,7 @@ describe('media helpers', () => {
   });
 });
 
-describe('dispatch — TweetDetail conversation', () => {
+describe('dispatch - TweetDetail conversation', () => {
   it('walks tweet-*, conversationthread-* and skips cursor-*', async () => {
     const result = dispatch(await loadFixture('tweetdetail-simple.json'));
     assert.deepEqual(
@@ -166,7 +166,7 @@ describe('dispatch — TweetDetail conversation', () => {
   });
 });
 
-describe('dispatch — long-form posts', () => {
+describe('dispatch - long-form posts', () => {
   it('prefers note_tweet over the truncated full_text', async () => {
     const { tweets } = dispatch(await loadFixture('tweetdetail-longform.json'));
     const tweet = tweets[0]!;
@@ -189,7 +189,7 @@ describe('dispatch — long-form posts', () => {
   });
 });
 
-describe('dispatch — visibility wrappers and tombstones', () => {
+describe('dispatch - visibility wrappers and tombstones', () => {
   it('unwraps TweetWithVisibilityResults instead of dropping it', async () => {
     const { tweets } = dispatch(await loadFixture('tweetdetail-visibility.json'));
     const tweet = byId(tweets, '1900000000000000020');
@@ -205,7 +205,7 @@ describe('dispatch — visibility wrappers and tombstones', () => {
   });
 });
 
-describe('dispatch — author schema migration', () => {
+describe('dispatch - author schema migration', () => {
   it('reads the 2025+ core.* author shape', async () => {
     const { tweets } = dispatch(await loadFixture('user-core-shape.json'));
     const tweet = tweets[0]!;
@@ -218,7 +218,7 @@ describe('dispatch — author schema migration', () => {
   });
 });
 
-describe('dispatch — video and gif', () => {
+describe('dispatch - video and gif', () => {
   it('selects the best mp4, keeps the poster, and reads duration', async () => {
     const { tweets } = dispatch(await loadFixture('media-video.json'));
     const [video, gif] = tweets[0]!.media;
@@ -239,7 +239,7 @@ describe('dispatch — video and gif', () => {
   });
 });
 
-describe('dispatch — quoted tweets', () => {
+describe('dispatch - quoted tweets', () => {
   it('nests quotes recursively up to the depth cap', async () => {
     const { tweets } = dispatch(await loadFixture('quoted-nested.json'));
     const bob = tweets[0]!;
@@ -255,7 +255,7 @@ describe('dispatch — quoted tweets', () => {
   });
 });
 
-describe('dispatch — malformed input', () => {
+describe('dispatch - malformed input', () => {
   const junk: [string, unknown][] = [
     ['null', null],
     ['undefined', undefined],
@@ -315,7 +315,7 @@ describe('dispatch — malformed input', () => {
   });
 });
 
-describe('dispatch — replies loaded by a "show more replies" click', () => {
+describe('dispatch - replies loaded by a "show more replies" click', () => {
   it('reads tweets out of TimelineAddToModule', async () => {
     // The bug this pins: clicking the control worked, X answered, and the
     // payload parsed to nothing because the tweets arrive under `moduleItems`
@@ -338,10 +338,10 @@ describe('dispatch — replies loaded by a "show more replies" click', () => {
   });
 });
 
-describe('dispatch — promoted content', () => {
+describe('dispatch - promoted content', () => {
   it('drops ads injected into the conversation', async () => {
     // X serves ads inline among the replies. They answer nothing, so they land
-    // in the orphan bucket and read as though someone replied to the thread —
+    // in the orphan bucket and read as though someone replied to the thread -
     // and their reply counts, often in the hundreds, swamp the "not captured"
     // total.
     const result = dispatch(await loadFixture('promoted.json'));
@@ -360,7 +360,7 @@ describe('dispatch — promoted content', () => {
   });
 });
 
-describe('dispatch — collapsed reply branches', () => {
+describe('dispatch - collapsed reply branches', () => {
   // X marks a branch it did not send in full with a cursor *item* inside an
   // ordinary conversationthread entry, not with a cursor-* entry. Carrying no
   // tweet, those items were skipped in silence and the branch simply ended
@@ -449,9 +449,9 @@ describe('dispatch — collapsed reply branches', () => {
   });
 });
 
-describe('dispatch — timeline roots not on the list', () => {
+describe('dispatch - timeline roots not on the list', () => {
   // TIMELINE_ROOTS is only ever as current as the last capture, and a payload
-  // whose root is unlisted was not partially parsed — it was dropped whole.
+  // whose root is unlisted was not partially parsed - it was dropped whole.
   // ModeratedTimeline (the replies an author has hidden) is one such root.
   const tweet = (id: string) => ({
     __typename: 'Tweet',
@@ -519,7 +519,7 @@ describe('dispatch — timeline roots not on the list', () => {
   });
 });
 
-describe('dispatch — a timeline that is not a conversation', () => {
+describe('dispatch - a timeline that is not a conversation', () => {
   // x.com serves plenty of timelines that carry no tweets. The trends sidebar
   // (ExploreSidebar) is one, and it does hold Timeline* instructions, so the
   // shape test alone matches it. Walking it is harmless in output but must not
@@ -559,7 +559,7 @@ describe('dispatch — a timeline that is not a conversation', () => {
 
   it('still reports shapes once an unlisted root does yield tweets', () => {
     // The quiet pass only answers "is this a conversation". Once the answer is
-    // yes, its unfamiliar entries are exactly what we want to hear about — an
+    // yes, its unfamiliar entries are exactly what we want to hear about - an
     // unlisted root is the likeliest place for X to have changed something.
     const payload = {
       data: {

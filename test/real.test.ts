@@ -1,7 +1,7 @@
 // Tests against captured payloads.
 //
 // The synthetic fixtures prove the parser is internally consistent. These
-// fixtures prove our reading of X's schema matches what X actually sends —
+// fixtures prove our reading of X's schema matches what X actually sends -
 // a different and more important claim. When X changes something, this is the
 // file that breaks first.
 //
@@ -27,7 +27,7 @@ async function parse() {
   return dispatch(await loadFixture('real-tweetdetail.json'));
 }
 
-describe('real capture — parsing', () => {
+describe('real capture - parsing', () => {
   it('parses every eligible entry', async () => {
     const result = await parse();
     assert.equal(result.tweets.length, 25);
@@ -83,7 +83,7 @@ describe('real capture — parsing', () => {
   });
 });
 
-describe('real capture — assembly', () => {
+describe('real capture - assembly', () => {
   it('builds a clean thread with no warnings', async () => {
     const { tweets } = await parse();
     const doc = assemble(tweets, FOCAL, { ...DEFAULT_CAPS, capturedAt: CAPTURED });
@@ -118,7 +118,7 @@ describe('real capture — assembly', () => {
   });
 });
 
-describe('real capture — rendering', () => {
+describe('real capture - rendering', () => {
   it('produces a document whose blockquotes never break', async () => {
     const { tweets } = await parse();
     const doc = assemble(tweets, FOCAL, { ...DEFAULT_CAPS, capturedAt: CAPTURED });
@@ -141,7 +141,7 @@ describe('real capture — rendering', () => {
   });
 });
 
-describe('real capture — a busy thread with ads', () => {
+describe('real capture - a busy thread with ads', () => {
   async function parseBig() {
     return dispatch(await loadFixture('real-big-thread.json'));
   }
@@ -183,7 +183,7 @@ describe('real capture — a busy thread with ads', () => {
 
   it('drops every promoted tweet', async () => {
     // Ads arrive as items inside ordinary conversationthread entries, with
-    // `promoted-tweet` in the middle of the item id — not as promoted-* entries,
+    // `promoted-tweet` in the middle of the item id - not as promoted-* entries,
     // which is what an earlier guess assumed and why they leaked for a while.
     const promoted = new Set(await promotedIdsInFixture());
     const { tweets } = await parseBig();

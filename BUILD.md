@@ -10,7 +10,7 @@ this source.
 ```
 
 That is the whole build. It checks the requirements, installs dependencies from
-the lockfile, and produces `dist/` — which **is** the extension. The submitted
+the lockfile, and produces `dist/` - which **is** the extension. The submitted
 archive is `dist/` zipped by `web-ext build`, with nothing added or removed.
 
 ## Build environment
@@ -18,14 +18,14 @@ archive is `dist/` zipped by `web-ext build`, with nothing added or removed.
 | | |
 |---|---|
 | Operating system | Any that runs Node 24. Built and tested on **macOS 15** (arm64) and on the **`node:24-alpine`** Docker image (x86-64). No platform-specific steps. |
-| Node.js | **24.0.0 or later** — required, not preferred |
+| Node.js | **24.0.0 or later** - required, not preferred |
 | pnpm | **11.11.0** |
 | Network | Needed once, for `pnpm install` |
 | Disk | ~250 MB, almost all of it `node_modules` |
 
 Node 24 is a hard requirement because `build.mjs` and the test suite execute
 `.ts` files directly through Node's native type stripping. Earlier versions
-cannot run them at all — the build fails immediately rather than producing
+cannot run them at all - the build fails immediately rather than producing
 something subtly different.
 
 ### Installing Node 24
@@ -33,7 +33,7 @@ something subtly different.
 Any of these:
 
 ```sh
-# nvm — https://github.com/nvm-sh/nvm
+# nvm - https://github.com/nvm-sh/nvm
 nvm install 24 && nvm use 24
 
 # Homebrew, macOS
@@ -69,7 +69,7 @@ pnpm install --frozen-lockfile
 # 2. build
 pnpm build
 
-# 3. optional: the full gate — typecheck, 227 tests, build, web-ext lint
+# 3. optional: the full gate - typecheck, 227 tests, build, web-ext lint
 pnpm check
 
 # 4. optional: reproduce the submitted archive
@@ -142,8 +142,8 @@ declared package is build- or test-time only:
 | `typescript` | `tsc --noEmit` only; it emits nothing |
 | `@types/node` | types for the test and tooling configs |
 | `web-ext` | packaging, linting and signing |
-| `yaml` | tests only — round-trips the hand-written frontmatter emitter through a real parser, because a mis-quoted scalar fails silently |
-| `linkedom` | tests only — provides a DOM for the fallback scraper and for the auto-click safety filter |
+| `yaml` | tests only - round-trips the hand-written frontmatter emitter through a real parser, because a mis-quoted scalar fails silently |
+| `linkedom` | tests only - provides a DOM for the fallback scraper and for the auto-click safety filter |
 
 ## Tests
 

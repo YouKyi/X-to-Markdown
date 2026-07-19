@@ -26,7 +26,7 @@ const labelsOf = (root: ParentNode): string[] =>
 const showMore = (label: string) =>
   `<div data-testid="cellInnerDiv"><div role="button" tabindex="0"><span>${label}</span></div></div>`;
 
-describe('expansionControls — what it accepts', () => {
+describe('expansionControls - what it accepts', () => {
   it('finds a show-more row whatever language it is in', () => {
     const root = dom(
       [
@@ -56,7 +56,7 @@ describe('expansionControls — what it accepts', () => {
   });
 });
 
-describe('expansionControls — what it refuses', () => {
+describe('expansionControls - what it refuses', () => {
   it('never returns a Follow button from a who-to-follow module', () => {
     // The collision that motivates this whole filter: same cell container, but
     // it carries an avatar and more than one control.
@@ -179,7 +179,7 @@ function fakeStore(options: { tweets?: number; cursor?: string | null } = {}) {
 }
 
 /**
- * A page `pageHeights` viewports tall that never loads anything new — the exact
+ * A page `pageHeights` viewports tall that never loads anything new - the exact
  * situation on a thread X delivered in one payload.
  */
 function fakeEnv(viewports: number, onRound?: (y: number) => void): PaginationEnv & { y: number } {
@@ -202,7 +202,7 @@ function fakeEnv(viewports: number, onRound?: (y: number) => void): PaginationEn
   return env;
 }
 
-describe('drivePagination — quiescence', () => {
+describe('drivePagination - quiescence', () => {
   it('traverses the whole page before calling it quiet', async () => {
     // The bug this pins: X sends the conversation up front, so mid-page rounds
     // produce nothing new. Counting those as quiescence stopped the run two
@@ -250,7 +250,7 @@ describe('drivePagination — quiescence', () => {
   });
 });
 
-describe('drivePagination — stopping', () => {
+describe('drivePagination - stopping', () => {
   const opts = { maxRounds: 150, maxWallClockMs: 60_000, maxTweets: 500, expandCollapsed: false };
 
   it('honours the round cap', async () => {
@@ -309,7 +309,7 @@ describe('drivePagination — stopping', () => {
   });
 });
 
-describe('drivePagination — expansion clicking', () => {
+describe('drivePagination - expansion clicking', () => {
   const opts = { maxRounds: 150, maxWallClockMs: 60_000, maxTweets: 500, expandCollapsed: true };
 
   it('clicks every round, because controls appear as you scroll', async () => {

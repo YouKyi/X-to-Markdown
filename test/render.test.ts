@@ -86,7 +86,7 @@ describe('escapeLine', () => {
   });
 });
 
-describe('escapeText — hard line breaks', () => {
+describe('escapeText - hard line breaks', () => {
   it('appends two spaces so single newlines survive strict CommonMark', () => {
     assert.deepEqual(escapeText('one\ntwo'), ['one  ', 'two']);
   });
@@ -134,7 +134,7 @@ describe('yamlScalar', () => {
   });
 });
 
-describe('renderMarkdown — golden', () => {
+describe('renderMarkdown - golden', () => {
   it('matches the two-tweet thread with one reply and one image', async () => {
     const first = tweet('20', {
       author: {
@@ -173,7 +173,7 @@ describe('renderMarkdown — golden', () => {
   });
 });
 
-describe('renderMarkdown — structure', () => {
+describe('renderMarkdown - structure', () => {
   const root = () =>
     tweet('1900000000000000000', {
       createdAt: '2026-03-01T10:00:00Z',
@@ -268,7 +268,7 @@ describe('renderMarkdown — structure', () => {
   });
 });
 
-describe('renderMarkdown — frontmatter', () => {
+describe('renderMarkdown - frontmatter', () => {
   it('omits unknown metrics but renders zeroes', () => {
     const a = tweet('1900000000000000000', {
       metrics: { ...metrics(), likes: 0, retweets: null, replies: null, quotes: null, views: null },
@@ -336,6 +336,6 @@ describe('filename', () => {
   });
 
   it('slugifies without URLs or punctuation', () => {
-    assert.equal(slugify('Hello, World! https://t.co/abc — done'), 'hello-world-done');
+    assert.equal(slugify('Hello, World! https://t.co/abc - done'), 'hello-world-done');
   });
 });

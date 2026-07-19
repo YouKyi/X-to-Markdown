@@ -3,7 +3,7 @@
 //   node tools/anonymise-fixture.mjs <pruned.json> <out.json>
 //
 // Real captures are the only thing proving our reading of X's schema matches
-// what X actually sends — that is where all three parser bugs in this project's
+// what X actually sends - that is where all three parser bugs in this project's
 // history were caught. Their value is entirely structural, and none of it comes
 // from the content: nobody needs a stranger's post republished in a public
 // repository to verify that `note_tweet` is preferred over a truncated
@@ -57,7 +57,7 @@ const mediaKeys = new Map();
 const tcoCodes = new Map();
 
 /** Snowflake ids are remapped by a constant offset, which keeps their relative
- *  order — and therefore the sibling sort — exactly as captured. */
+ *  order - and therefore the sibling sort - exactly as captured. */
 const ID_OFFSET = 400000000000000000n;
 
 function mapTweetId(id) {

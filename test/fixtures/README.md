@@ -11,7 +11,7 @@ changes something.
 
 Anonymised means handles, display names, user and tweet ids, post text, media
 keys and t.co codes are all synthetic, while the JSON structure is preserved to
-the byte — including Snowflake ordering, line counts and list markers in text,
+the byte - including Snowflake ordering, line counts and list markers in text,
 `note_tweet` length, promoted markers, and a display name carrying a pipe and an
 emoji because that is a frontmatter test case. The structure is the entire value
 of these files. Nobody needs a stranger's post republished in a public
@@ -36,8 +36,8 @@ internal consistency, not schema truth.
 committed.**
 
 Pruning is about *you*. A raw `TweetDetail` response carries
-`relationship_perspectives` for every participant — whether you follow, are
-followed by, block, mute or can DM each of them — plus other session state. None
+`relationship_perspectives` for every participant - whether you follow, are
+followed by, block, mute or can DM each of them - plus other session state. None
 of it is parser input.
 
 Anonymising is about *everyone else*. This repository is public, and the people
@@ -60,8 +60,8 @@ and re-capture. Unpruned originals are deliberately never kept.
 | File | Origin | Pins |
 |---|---|---|
 | `real-tweetdetail.json` | captured, anonymised | 25 tweets, a two-tweet self-thread, eight reply chains two levels deep, a 4200-character `note_tweet`, one photo, `views.count` delivered as a string |
-| `real-big-thread.json` | captured, anonymised | Busy thread: promoted content as items inside ordinary `conversationthread-*` entries, deep reply chains, quoted tweets, a GIF. The only fixture exercising ad filtering — a test asserts it still contains ads, so it cannot start passing for the wrong reason |
-| `addtomodule.json` | synthetic | `TimelineAddToModule` — what a "show more replies" click returns; tweets under `moduleItems`, not `entries` |
+| `real-big-thread.json` | captured, anonymised | Busy thread: promoted content as items inside ordinary `conversationthread-*` entries, deep reply chains, quoted tweets, a GIF. The only fixture exercising ad filtering - a test asserts it still contains ads, so it cannot start passing for the wrong reason |
+| `addtomodule.json` | synthetic | `TimelineAddToModule` - what a "show more replies" click returns; tweets under `moduleItems`, not `entries` |
 | `promoted.json` | synthetic | An ad as a top-level `promoted-*` entry, a shape X also uses |
 | `tweetdetail-simple.json` | synthetic | Entry walking (`tweet-*`, `conversationthread-*`, `cursor-*`), legacy user shape, photo media, media t.co stripping, `display_text_range` |
 | `tweetdetail-longform.json` | synthetic | `note_tweet` preferred over truncated `full_text`, the note's own `entity_set` |

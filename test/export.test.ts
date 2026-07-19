@@ -262,7 +262,7 @@ describe('store growth is bounded', () => {
     const store = new PayloadStore();
 
     // BigInt, not Number: these ids are past MAX_SAFE_INTEGER, and plain
-    // arithmetic collapses them into collisions — the very hazard assemble.ts
+    // arithmetic collapses them into collisions - the very hazard assemble.ts
     // sorts around, and one this test fell into on the first attempt.
     const payload = (start: bigint, count: number) => ({
       __xtmd: 1 as const,
@@ -311,7 +311,7 @@ describe('store growth is bounded', () => {
   });
 });
 
-describe('runExport — collapsed branches', () => {
+describe('runExport - collapsed branches', () => {
   const root = tweet('1900000000000000000', {
     createdAt: '2026-03-01T10:00:00Z',
     text: 'root',
@@ -361,7 +361,7 @@ describe('runExport — collapsed branches', () => {
   });
 });
 
-describe('runExport — a collapsed branch means the capture is not complete', () => {
+describe('runExport - a collapsed branch means the capture is not complete', () => {
   const root = tweet('1900000000000000000', {
     createdAt: '2026-03-01T10:00:00Z',
     text: 'root',

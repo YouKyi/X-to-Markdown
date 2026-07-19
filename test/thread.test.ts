@@ -29,7 +29,7 @@ function find(node: ThreadNode, id: string): ThreadNode | null {
   return null;
 }
 
-describe('assemble — self-thread spine', () => {
+describe('assemble - self-thread spine', () => {
   it('follows a linear same-author chain', () => {
     const tweets = chain(['robin', 'robin', 'robin']);
     const doc = assemble(tweets, tweets[2]!.id, opts());
@@ -88,7 +88,7 @@ describe('assemble — self-thread spine', () => {
   });
 });
 
-describe('assemble — sibling ordering', () => {
+describe('assemble - sibling ordering', () => {
   it('orders by Snowflake id, not insertion order', () => {
     const root = tweet('1900000000000000000');
     const ids = ['1900000000000000009', '1900000000000000003', '1900000000000000007'];
@@ -149,7 +149,7 @@ describe('assemble — sibling ordering', () => {
   });
 });
 
-describe('assemble — roots and orphans', () => {
+describe('assemble - roots and orphans', () => {
   it('walks up to the highest captured ancestor', () => {
     const tweets = chain(['robin', 'alice', 'bob']);
     const doc = assemble(tweets, tweets[2]!.id, opts());
@@ -206,7 +206,7 @@ describe('assemble — roots and orphans', () => {
   });
 });
 
-describe('assemble — caps', () => {
+describe('assemble - caps', () => {
   function fan(count: number, parentId: string): Tweet[] {
     return Array.from({ length: count }, (_, i) =>
       tweet((BigInt('1900000000000000100') + BigInt(i)).toString(), {
@@ -244,7 +244,7 @@ describe('assemble — caps', () => {
   });
 });
 
-describe('assemble — stats and warnings', () => {
+describe('assemble - stats and warnings', () => {
   it('reports mixed sources', () => {
     const a = tweet('1900000000000000000');
     const b = tweet('1900000000000000001', {
@@ -274,7 +274,7 @@ describe('assemble — stats and warnings', () => {
   });
 });
 
-describe('assemble — uncaptured replies', () => {
+describe('assemble - uncaptured replies', () => {
   it('counts replies X declares but we never captured', () => {
     // The "Voir les réponses" case: X says this reply has one of its own, and
     // the branch is still folded behind a control we did not open.
@@ -302,7 +302,7 @@ describe('assemble — uncaptured replies', () => {
       }),
     );
     const doc = assemble([root, ...replies], root.id, opts({ maxChildrenPerNode: 1 }));
-    // Two were dropped by the cap — we had them, so they are not "uncaptured".
+    // Two were dropped by the cap - we had them, so they are not "uncaptured".
     assert.equal(doc.root.truncatedChildren, 2);
     assert.equal(doc.root.uncapturedReplies, 0);
   });
@@ -324,7 +324,7 @@ describe('assemble — uncaptured replies', () => {
   });
 });
 
-describe('assemble — truncation drops whole subtrees', () => {
+describe('assemble - truncation drops whole subtrees', () => {
   it('does not resurface a capped reply\'s children as orphans', () => {
     // The defect this pins: marking only the capped tweet left its descendants
     // unvisited, so the orphan pass lifted each of them to depth 1. One capped
@@ -386,7 +386,7 @@ describe('assemble — truncation drops whole subtrees', () => {
   });
 });
 
-describe('assemble — author-thread scope', () => {
+describe('assemble - author-thread scope', () => {
   const root = tweet('1900000000000000000', {
     author: 'robin',
     conversationId: '1900000000000000000',
@@ -429,7 +429,7 @@ describe('assemble — author-thread scope', () => {
 
   it('does not sweep other people back in as orphans', () => {
     // Everyone else is unvisited by construction here, so the orphan pass would
-    // otherwise re-add the whole conversation at depth 1 — the exact content
+    // otherwise re-add the whole conversation at depth 1 - the exact content
     // the scope exists to exclude.
     const doc = assemble(all, root.id, caps);
     assert.equal(doc.stats.orphans, 0);

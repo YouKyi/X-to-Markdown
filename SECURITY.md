@@ -58,7 +58,7 @@ navigation (`store.reset()`) and on reload. Nothing is written to
 The one exception is **Debug mode**, which retains the last five raw GraphQL
 payloads in memory so they can be dumped as a fixture. Those payloads contain
 your `viewer_results` and other session-adjacent state. If you dump one, prune
-it with `tools/prune-fixture.mjs` before sharing it — that tool exists precisely
+it with `tools/prune-fixture.mjs` before sharing it - that tool exists precisely
 to strip everything the parser does not read.
 
 ## The MAIN-world script
@@ -85,7 +85,7 @@ observer, not a capability.
 
 MAIN → ISOLATED messages are validated on `event.source`, `event.origin` and an
 envelope tag. **These checks are anti-confusion, not anti-attack.** A hostile
-script already running on x.com could forge the envelope — but it is already on
+script already running on x.com could forge the envelope - but it is already on
 x.com and already has this data, so nothing is gained by forging it.
 
 The real requirement is that the ISOLATED side treats every bridged byte as
@@ -102,7 +102,7 @@ untrusted input:
 
 Auto-scroll opens folded "show more replies" controls. X renders those rows and
 "who to follow" modules with the same container, and the latter contain **Follow
-buttons** — so a careless auto-click takes a real action on your account.
+buttons** - so a careless auto-click takes a real action on your account.
 
 The filter is structural, not label-based (a label match would also simply fail
 on a non-English UI). A control is clicked only when its cell contains no
@@ -116,7 +116,7 @@ Turn it off entirely with **Options → Collecting replies**.
 
 The shipped bundle is **not minified**, on purpose. Unzip a signed `.xpi` and the
 JavaScript maps line-for-line onto this repository. There are **zero runtime
-dependencies** — `esbuild`, `typescript`, `web-ext`, `yaml` and `linkedom` are
+dependencies** - `esbuild`, `typescript`, `web-ext`, `yaml` and `linkedom` are
 build- and test-time only, and none of them enter the package.
 
 ```sh

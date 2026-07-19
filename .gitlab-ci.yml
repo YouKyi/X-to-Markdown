@@ -1,7 +1,7 @@
 # Verify on every push; submit to AMO on a version tag.
 #
 # Runner requirements: a Docker executor, or any runner with Node 24+ available.
-# Node 24 is not optional — tests run .ts files directly via native type
+# Node 24 is not optional - tests run .ts files directly via native type
 # stripping, so an older runtime cannot execute the suite at all.
 #
 # CI/CD variables to set (Settings → CI/CD → Variables), both **Masked** and
@@ -11,7 +11,7 @@
 #   AMO_JWT_SECRET   the matching secret
 #
 # Protect your version tags (Settings → Repository → Protected tags, pattern `v*`)
-# or the secrets will not be available to the sign job — and, more importantly,
+# or the secrets will not be available to the sign job - and, more importantly,
 # anyone able to push an unprotected tag could otherwise submit a release.
 
 stages:
@@ -71,7 +71,7 @@ sign:
     # --approval-timeout=0 submits and exits. On the listed channel review is
     # human and can take days; a CI job must not sit waiting for it. The signed
     # XPI is published by AMO once approved, and existing users update
-    # automatically — nothing here needs to hold the file.
+    # automatically - nothing here needs to hold the file.
     - >
       pnpm exec web-ext sign
       --source-dir=dist

@@ -4,7 +4,7 @@
 #
 #   ./build.sh
 #
-# Output: dist/ — this directory IS the extension. The submitted archive is
+# Output: dist/ - this directory IS the extension. The submitted archive is
 # dist/ zipped, with nothing added or removed.
 #
 # Requirements are checked below and the script fails loudly rather than

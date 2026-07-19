@@ -2,8 +2,8 @@
 // goes all the way to a complete .md file, byte-compared against a golden, with
 // no browser involved anywhere.
 //
-// If this passes, the entire core — envelope walking, tweet normalisation, media
-// and entity handling, thread assembly, Markdown rendering — is verified by
+// If this passes, the entire core - envelope walking, tweet normalisation, media
+// and entity handling, thread assembly, Markdown rendering - is verified by
 // `node --test` alone.
 
 import { describe, it } from 'node:test';
