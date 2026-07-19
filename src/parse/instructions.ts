@@ -139,7 +139,10 @@ interface EntryHarvest {
   collapsed: number;
 }
 
-function fromEntry(entry: unknown, out: unknown[]): EntryHarvest {
+/** Same signature as `shape`; a no-op during a speculative walk. */
+type Report = (key: string, ...args: unknown[]) => void;
+
+function fromEntry(entry: unknown, out: unknown[], report: Report): EntryHarvest {
   const before = out.length;
   let skippedPromoted = 0;
   let collapsed = 0;
@@ -160,7 +163,7 @@ function fromEntry(entry: unknown, out: unknown[]): EntryHarvest {
       continue;
     }
     if (isPromoted(str(item, 'entryId') ?? '', item)) {
-      shape('promoted-conversation-item');
+      report('promoted-conversation-item');
       skippedPromoted += 1;
       continue;
     }
@@ -180,11 +183,11 @@ function fromEntry(entry: unknown, out: unknown[]): EntryHarvest {
  * so clicking the control worked, X answered, and the replies were dropped on
  * the floor — the export looked as though the branch simply did not exist.
  */
-function fromModuleItems(instruction: unknown, out: unknown[]): number {
+function fromModuleItems(instruction: unknown, out: unknown[], report: Report): number {
   let added = 0;
   for (const item of arr(instruction, 'moduleItems')) {
     if (isPromoted(str(item, 'entryId') ?? '', item)) {
-      shape('promoted-module-item');
+      report('promoted-module-item');
       continue;
     }
     const result = get(item, 'item.itemContent.tweet_results.result');
@@ -196,7 +199,20 @@ function fromModuleItems(instruction: unknown, out: unknown[]): number {
   return added;
 }
 
-export function walkInstructions(payload: unknown): WalkResult {
+export interface WalkOptions {
+  /**
+   * Suppress shape reporting.
+   *
+   * For a speculative walk whose result may be discarded: reporting from one
+   * would name the unfamiliar entries of a payload we then decided was not a
+   * conversation at all, which is noise in the one channel that has to stay
+   * clean to be worth reading.
+   */
+  quiet?: boolean;
+}
+
+export function walkInstructions(payload: unknown, options: WalkOptions = {}): WalkResult {
+  const report = options.quiet ? () => {} : shape;
   const results: unknown[] = [];
   let cursorBottom: string | null = null;
   let eligible = 0;
@@ -212,7 +228,7 @@ export function walkInstructions(payload: unknown): WalkResult {
 
     // A "show more replies" click answers with TimelineAddToModule rather than
     // entries; handled first because it carries no `entries` at all.
-    const fromModule = fromModuleItems(instruction, results);
+    const fromModule = fromModuleItems(instruction, results, report);
     if (fromModule > 0) {
       eligible += fromModule;
       parsed += fromModule;
@@ -225,7 +241,7 @@ export function walkInstructions(payload: unknown): WalkResult {
     const entries = replacement ? [replacement] : arr(instruction, 'entries');
     if (entries.length === 0) {
       if (type !== null && !CONTENTLESS_INSTRUCTIONS.has(type)) {
-        shape(`instruction-without-entries:${type}`);
+        report(`instruction-without-entries:${type}`);
       }
       continue;
     }
@@ -242,11 +258,11 @@ export function walkInstructions(payload: unknown): WalkResult {
 
       if (isPromoted(entryId, entry)) {
         // Not a miss: an ad is not part of the conversation.
-        shape('promoted-entry');
+        report('promoted-entry');
         continue;
       }
 
-      const harvest = fromEntry(entry, results);
+      const harvest = fromEntry(entry, results, report);
       collapsedBranches += harvest.collapsed;
 
       // An entry that held nothing but ads is not a miss and must not fall
@@ -272,12 +288,12 @@ export function walkInstructions(payload: unknown): WalkResult {
       const found: unknown[] = [];
       scan(entry, found);
       if (found.length > 0) {
-        shape(`unknown-entry-shape:${prefix}`, entryId);
+        report(`unknown-entry-shape:${prefix}`, entryId);
         results.push(...found);
         parsed += 1;
       } else {
         // Promoted content, "who to follow" modules and similar carry no tweet.
-        shape(`empty-entry:${prefix}`, entryId);
+        report(`empty-entry:${prefix}`, entryId);
         eligible -= 1;
       }
     }

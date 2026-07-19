@@ -11,7 +11,7 @@ import { arr, get } from './accessors.ts';
 import { walkInstructions } from './instructions.ts';
 import { parseTweet } from './tweet.ts';
 import type { ParseTweetOptions } from './tweet.ts';
-import { shape } from '../shared/log.ts';
+import { debug, shape } from '../shared/log.ts';
 
 export interface DispatchResult {
   tweets: Tweet[];
@@ -115,14 +115,36 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
 
   // No listed root matched. Before giving up, look for the instructions array by
   // shape — see findInstructions.
-  let instructions: unknown[] | null = null;
-  if (!root) {
-    instructions = findInstructions(payload);
-    if (instructions) shape('timeline-root-found-by-shape');
+  //
+  // The result is kept only if it actually yielded tweets. x.com serves plenty
+  // of timelines that are not conversations — the trends sidebar (ExploreSidebar)
+  // is one, and it does carry Timeline* instructions, so the shape test alone
+  // matches it. Walking those is harmless but not free: every one of them would
+  // report its `frame-*` and `trend-*` entries as unfamiliar shapes and bury the
+  // schema-drift signal this parser depends on.
+  //
+  // Yielding tweets is the honest test of "was this worth walking", and it costs
+  // one walk of a payload we were about to discard entirely.
+  let walked = root ? walkInstructions(root) : null;
+
+  if (!walked) {
+    const instructions = findInstructions(payload);
+    if (instructions) {
+      const attempt = walkInstructions(instructions, { quiet: true });
+      if (attempt.results.length > 0) {
+        // debug(), not shape(): finding a root this way is a recovery that
+        // worked, not a shape we failed to understand.
+        debug('timeline root found by shape:', attempt.results.length, 'results');
+        // Walk it again, this time reporting. The quiet pass only answered "is
+        // this a conversation"; now that the answer is yes, its unfamiliar
+        // entries are exactly the drift signal we want — and an unlisted root is
+        // the likeliest place to find one.
+        walked = walkInstructions(instructions);
+      }
+    }
   }
 
-  if (root || instructions) {
-    const walked = walkInstructions(root ?? instructions);
+  if (walked) {
     raw = walked.results;
     cursorBottom = walked.cursorBottom;
     eligible = walked.eligible;

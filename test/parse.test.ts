@@ -5,6 +5,7 @@ import { dispatch } from '../src/parse/dispatch.ts';
 import { get, num, str, toIso, unwrapTweet, firstOf } from '../src/parse/accessors.ts';
 import { originalResolution, bestVariant } from '../src/parse/media.ts';
 import { loadFixture } from './helpers.ts';
+import { setDebug, resetShapes, seenShapeKeys } from '../src/shared/log.ts';
 
 const byId = <T extends { id: string }>(tweets: T[], id: string): T | undefined =>
   tweets.find((t) => t.id === id);
@@ -515,5 +516,109 @@ describe('dispatch — timeline roots not on the list', () => {
 
   it('still returns nothing for a payload that carries no timeline at all', () => {
     assert.equal(dispatch({ data: { user: { result: { legacy: {} } } } }).tweets.length, 0);
+  });
+});
+
+describe('dispatch — a timeline that is not a conversation', () => {
+  // x.com serves plenty of timelines that carry no tweets. The trends sidebar
+  // (ExploreSidebar) is one, and it does hold Timeline* instructions, so the
+  // shape test alone matches it. Walking it is harmless in output but must not
+  // spend the schema-drift channel: its trend-* and frame-* entries are
+  // unfamiliar to this parser by design, and reporting them on every page would
+  // bury the one signal that tells us X changed something.
+  const sidebar = {
+    data: {
+      explore_sidebar: {
+        timeline: {
+          instructions: [
+            {
+              type: 'TimelineAddEntries',
+              entries: [
+                { entryId: 'trend-123', content: { itemContent: { trend: { name: 'x' } } } },
+                { entryId: 'frame-abc', content: { itemContent: {} } },
+              ],
+            },
+          ],
+        },
+      },
+    },
+  };
+
+  it('yields nothing', () => {
+    assert.equal(dispatch(sidebar).tweets.length, 0);
+  });
+
+  it('reports no unrecognised shapes', () => {
+    setDebug(true);
+    resetShapes();
+    dispatch(sidebar);
+    const keys = seenShapeKeys();
+    setDebug(false);
+    assert.deepEqual(keys, [], `speculative walk leaked shapes: ${keys.join(', ')}`);
+  });
+
+  it('still reports shapes once an unlisted root does yield tweets', () => {
+    // The quiet pass only answers "is this a conversation". Once the answer is
+    // yes, its unfamiliar entries are exactly what we want to hear about — an
+    // unlisted root is the likeliest place for X to have changed something.
+    const payload = {
+      data: {
+        tweet: {
+          result: {
+            timeline_response: {
+              timeline: {
+                instructions: [
+                  {
+                    type: 'TimelineAddEntries',
+                    entries: [
+                      {
+                        entryId: 'tweet-101',
+                        content: {
+                          itemContent: {
+                            tweet_results: {
+                              result: {
+                                __typename: 'Tweet',
+                                rest_id: '101',
+                                core: {
+                                  user_results: {
+                                    result: {
+                                      __typename: 'User',
+                                      rest_id: '5',
+                                      core: { screen_name: 'someone', name: 'Someone' },
+                                    },
+                                  },
+                                },
+                                legacy: {
+                                  created_at: 'Wed Mar 21 20:50:14 +0000 2006',
+                                  full_text: 'hidden reply',
+                                  conversation_id_str: '100',
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                      { entryId: 'somethingnew-9', content: { itemContent: {} } },
+                    ],
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    };
+
+    setDebug(true);
+    resetShapes();
+    const result = dispatch(payload);
+    const keys = seenShapeKeys();
+    setDebug(false);
+
+    assert.equal(result.tweets.length, 1);
+    assert.ok(
+      keys.some((k) => k.includes('somethingnew')),
+      `the unfamiliar entry was silenced: ${keys.join(', ')}`,
+    );
   });
 });
