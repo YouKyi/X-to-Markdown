@@ -118,12 +118,18 @@
   height: 16px;
 }
 
-/* Anchored to .bar, so it travels with the button when X re-renders the header
-   and the placement code re-parents the host. */
+/* position: fixed, not absolute.
+
+   Absolute positioning is clipped by any ancestor with overflow: hidden, and
+   the tweet action bar sits inside several — the menu rendered as a box sliced
+   off on two sides. A z-index cannot fix that: clipping is not stacking. Fixed
+   elements escape overflow clipping entirely, which is the same reason the
+   toast below has always rendered correctly from inside this moved host.
+
+   The cost is that coordinates cannot come from CSS, since there is no longer
+   an anchor. They are written by #positionMenu() on open. */
 .menu {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
+  position: fixed;
   z-index: 2147483647;
   min-width: 220px;
   padding: 10px 12px;
@@ -182,12 +188,6 @@
   background: rgb(26 140 216);
 }
 
-/* Opens upward when floating: the bar sits near the bottom of the viewport, so
-   a menu below it would render off screen. */
-.floating .menu {
-  top: auto;
-  bottom: calc(100% + 6px);
-}
 
 @media (prefers-reduced-motion: reduce) {
   .btn {

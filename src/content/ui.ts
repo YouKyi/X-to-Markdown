@@ -67,6 +67,7 @@ export class Ui {
   readonly #message: HTMLElement;
   readonly #cancel: HTMLButtonElement;
   #onDocumentClick: ((event: Event) => void) | null = null;
+  #onDismiss: (() => void) | null = null;
   #observer: MutationObserver | null = null;
   #placeTimer: ReturnType<typeof setInterval> | null = null;
   #timer: ReturnType<typeof setTimeout> | null = null;
@@ -186,9 +187,38 @@ export class Ui {
     else this.#closeMenu();
   }
 
+  /** Menu width used for edge clamping; matches min-width in the stylesheet. */
+  static readonly #MENU_WIDTH = 220;
+
+  /**
+   * Place the fixed-position menu against the caret.
+   *
+   * Computed here rather than in CSS because a fixed element has no anchor.
+   * Right-aligned to the bar, flipped above it when there is not enough room
+   * below — which is the normal case for the floating button, since it sits
+   * near the bottom of the viewport.
+   */
+  #positionMenu(): void {
+    const anchor = this.#bar.getBoundingClientRect();
+    const gap = 6;
+
+    this.#menu.style.left = `${Math.max(
+      8,
+      Math.min(anchor.right - Ui.#MENU_WIDTH, window.innerWidth - Ui.#MENU_WIDTH - 8),
+    )}px`;
+
+    // Measured rather than assumed: the hint line wraps differently depending on
+    // which of the two texts is showing, so the height is not a constant.
+    const height = this.#menu.offsetHeight || 90;
+    const below = anchor.bottom + gap;
+    this.#menu.style.top =
+      below + height > window.innerHeight ? `${Math.max(8, anchor.top - gap - height)}px` : `${below}px`;
+  }
+
   #openMenu(): void {
     this.#menu.hidden = false;
     this.#more.setAttribute('aria-expanded', 'true');
+    this.#positionMenu();
     // Dismiss on any click elsewhere. Registered on the document rather than on
     // the host so a click anywhere on x.com closes it; the listener is removed
     // again on close so nothing of ours stays attached to the page while idle.
@@ -197,12 +227,26 @@ export class Ui {
       this.#closeMenu();
     };
     document.addEventListener('click', this.#onDocumentClick, true);
+
+    // A fixed menu no longer travels with the page, so scrolling would leave it
+    // stranded beside whatever scrolled under it. Closing is the honest answer:
+    // repositioning on every scroll frame buys nothing for a menu the user is
+    // about to click anyway. Capture phase, because x.com scrolls an inner
+    // container rather than the window, and those events do not bubble to it.
+    this.#onDismiss = () => this.#closeMenu();
+    document.addEventListener('scroll', this.#onDismiss, true);
+    window.addEventListener('resize', this.#onDismiss);
   }
 
   #closeMenu(): void {
     if (this.#menu.hidden) return;
     this.#menu.hidden = true;
     this.#more.setAttribute('aria-expanded', 'false');
+    if (this.#onDismiss) {
+      document.removeEventListener('scroll', this.#onDismiss, true);
+      window.removeEventListener('resize', this.#onDismiss);
+      this.#onDismiss = null;
+    }
     if (this.#onDocumentClick) {
       document.removeEventListener('click', this.#onDocumentClick, true);
       this.#onDocumentClick = null;
@@ -254,6 +298,11 @@ export class Ui {
   }
 
   unmount(): void {
+    // First: the menu owns document-level scroll and click listeners, and
+    // removing the host would leave them attached to a page that no longer has
+    // any of our UI on it. This runs on retire(), which is exactly when an
+    // orphaned content script is trying to stop touching x.com.
+    this.#closeMenu();
     this.#observer?.disconnect();
     this.#observer = null;
     if (this.#placeTimer) clearInterval(this.#placeTimer);
