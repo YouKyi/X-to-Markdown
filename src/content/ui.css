@@ -5,9 +5,10 @@
   all: initial;
 }
 
-/* Wraps the button, its caret and the options menu. Positioned so the menu can
-   anchor to it; being in the same shadow root it follows the host wherever the
-   placement code moves it, with no repositioning logic of its own. */
+/* Wraps the button and its caret — nothing else. The menu deliberately lives
+   on the body-level overlay host: this subtree is re-parented into X's action
+   bar, under a transformed ancestor that would hijack the containing block of
+   any fixed descendant (see ui.ts). */
 .bar {
   position: relative;
   display: inline-flex;
@@ -118,16 +119,15 @@
   height: 16px;
 }
 
-/* position: fixed, not absolute.
+/* position: fixed, on the overlay host.
 
-   Absolute positioning is clipped by any ancestor with overflow: hidden, and
-   the tweet action bar sits inside several — the menu rendered as a box sliced
-   off on two sides. A z-index cannot fix that: clipping is not stacking. Fixed
-   elements escape overflow clipping entirely, which is the same reason the
-   toast below has always rendered correctly from inside this moved host.
-
-   The cost is that coordinates cannot come from CSS, since there is no longer
-   an anchor. They are written by #positionMenu() on open. */
+   Two failure modes led here, one each. absolute inside the action bar was
+   clipped by X's overflow: hidden ancestors (a z-index cannot help; clipping
+   is not stacking). fixed inside the action bar was displaced by exactly the
+   main column's origin, because an ancestor with a transform/filter becomes
+   the containing block for fixed descendants. Only fixed AND body-level
+   escapes both. Coordinates cannot come from CSS — there is no CSS anchor —
+   so #positionMenu() writes them from the bar's rect on open. */
 .menu {
   position: fixed;
   z-index: 2147483647;
@@ -167,8 +167,9 @@
 }
 
 /* Floating fallback, used when the tweet action bar cannot be found. The class
-   sits on .bar so the caret and menu travel with the button; the colouring below
-   targets the buttons inside it rather than the wrapper. */
+   sits on .bar so the caret travels with the button; the colouring below
+   targets the buttons inside it rather than the wrapper. Safe to be fixed
+   here: #toFloating() parks the host on <body>, outside X's transforms. */
 .floating {
   position: fixed;
   right: 16px;

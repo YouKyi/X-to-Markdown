@@ -1,15 +1,27 @@
-// In-page UI: the export button and the progress toast.
+// In-page UI: the export button, its options menu, and the progress toast.
 //
-// Everything lives in a CLOSED shadow root, for two reasons. X's stylesheet
+// Everything lives in CLOSED shadow roots, for two reasons. X's stylesheet
 // cannot reach in and ours cannot leak out, and the page cannot walk into it
 // looking for our nodes. Nothing here uses innerHTML: every node is built with
 // createElement and textContent, because much of what ends up on screen derives
 // from bridged, untrusted input.
+//
+// There are TWO hosts, not one, and the split is load-bearing. The button host
+// is re-parented into the tweet action bar, and somewhere above that bar X has
+// an element with a transform/filter — which, per CSS, becomes the containing
+// block for every position: fixed descendant. Fixed coordinates computed
+// against the viewport were being re-interpreted relative to X's main column:
+// the menu rendered displaced by exactly the column's origin, (743, 52) on the
+// capture that exposed it. The toast has quietly had the same containing block
+// all along. So everything position: fixed — menu and toast — lives on a
+// second host appended to document.body, which sits under no transformed
+// ancestor and resolves fixed coordinates against the actual viewport.
 
 import styles from './ui.css';
 import { debug } from '../shared/log.ts';
 
 const HOST_ID = 'x-thread-md-root';
+const OVERLAY_ID = 'x-thread-md-overlay';
 
 /**
  * The action bar under a tweet — the row holding reply/repost/like.
@@ -58,6 +70,9 @@ export interface UiHandlers {
 export class Ui {
   readonly #root: ShadowRoot;
   readonly #host: HTMLElement;
+  /** Body-level host for fixed-position UI; see the module comment. */
+  readonly #overlayHost: HTMLElement;
+  readonly #overlayRoot: ShadowRoot;
   readonly #bar: HTMLElement;
   readonly #button: HTMLButtonElement;
   readonly #more: HTMLButtonElement;
@@ -83,9 +98,16 @@ export class Ui {
     sheet.textContent = styles;
     this.#root.appendChild(sheet);
 
-    // The bar wraps button + caret + menu so the menu can be positioned against
-    // it. Being inside the same shadow root, it follows the host wherever
-    // #place() moves it, with no repositioning code of its own.
+    this.#overlayHost = document.createElement('div');
+    this.#overlayHost.id = OVERLAY_ID;
+    this.#overlayRoot = this.#overlayHost.attachShadow({ mode: 'closed' });
+    const overlaySheet = document.createElement('style');
+    overlaySheet.textContent = styles;
+    this.#overlayRoot.appendChild(overlaySheet);
+
+    // The bar wraps button + caret. The menu is NOT in here: it is fixed, and
+    // this subtree gets re-parented under X's transformed column, which would
+    // hijack its containing block — the module comment has the full story.
     this.#bar = document.createElement('div');
     this.#bar.className = 'bar';
 
@@ -138,8 +160,9 @@ export class Ui {
     hint.className = 'hint';
     this.#menu.append(row, hint);
 
-    this.#bar.append(this.#button, this.#more, this.#menu);
+    this.#bar.append(this.#button, this.#more);
     this.#root.appendChild(this.#bar);
+    this.#overlayRoot.appendChild(this.#menu);
     this.#syncHint();
 
     this.#toast = document.createElement('div');
@@ -155,7 +178,7 @@ export class Ui {
     this.#cancel.hidden = true;
     this.#cancel.addEventListener('click', () => handlers.onCancel());
     this.#toast.append(this.#message, this.#cancel);
-    this.#root.appendChild(this.#toast);
+    this.#overlayRoot.appendChild(this.#toast);
   }
 
   /**
@@ -222,8 +245,14 @@ export class Ui {
     // Dismiss on any click elsewhere. Registered on the document rather than on
     // the host so a click anywhere on x.com closes it; the listener is removed
     // again on close so nothing of ours stays attached to the page while idle.
+    // The shadow roots are closed, so a document-level listener's
+    // composedPath() is truncated at their boundary: it shows the HOSTS, never
+    // #bar or #menu. Testing an inner node here silently matches nothing — the
+    // first version did exactly that, and every click closed the menu,
+    // including clicks inside it.
     this.#onDocumentClick = (event: Event) => {
-      if (event.composedPath().includes(this.#bar)) return;
+      const path = event.composedPath();
+      if (path.includes(this.#host) || path.includes(this.#overlayHost)) return;
       this.#closeMenu();
     };
     document.addEventListener('click', this.#onDocumentClick, true);
@@ -269,10 +298,14 @@ export class Ui {
     // still on the page, so without this the user accumulates buttons that do
     // nothing. The shadow root is closed, so a stale host cannot be told apart
     // from ours — removing every one and re-appending is the reliable move.
-    for (const stale of document.querySelectorAll(`#${HOST_ID}`)) {
-      if (stale !== this.#host) stale.remove();
+    for (const stale of document.querySelectorAll(`#${HOST_ID}, #${OVERLAY_ID}`)) {
+      if (stale !== this.#host && stale !== this.#overlayHost) stale.remove();
     }
 
+    // The overlay host stays a direct child of <body> for its whole life —
+    // never re-parented, never under a transformed ancestor. That property is
+    // what keeps its fixed-position children honest; see the module comment.
+    if (!this.#overlayHost.isConnected) document.body.appendChild(this.#overlayHost);
     if (!this.#host.isConnected) document.body.appendChild(this.#host);
     this.#place();
 
@@ -310,12 +343,14 @@ export class Ui {
     if (this.#timer) clearTimeout(this.#timer);
     this.#timer = null;
     this.#host.remove();
+    this.#overlayHost.remove();
   }
 
   /**
-   * Put the host next to the focal tweet's action bar, or fall back to a
-   * floating button. The host carries the shadow root, so moving it moves the
-   * whole UI including the toast, which is position: fixed regardless.
+   * Put the button host next to the focal tweet's action bar, or fall back to
+   * a floating button. Only the button travels: the menu and toast live on the
+   * body-level overlay host precisely so this re-parenting cannot drag them
+   * under a transformed ancestor.
    */
   #place(): void {
     // X re-renders the tweet header constantly and takes our host with it when
