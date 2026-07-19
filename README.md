@@ -9,6 +9,9 @@ the shipped bundle is unminified so you can read what you installed.
 [SECURITY.md](SECURITY.md) documents the data flow and what each permission can
 actually reach.
 
+**Reviewing this for AMO?** Build instructions, environment requirements and
+verification steps are under [Build](#build) below.
+
 ## Install
 
 From [addons.mozilla.org](https://addons.mozilla.org). Requires Firefox 140 or
@@ -129,19 +132,99 @@ renderer keeps one input contract, and everything it emits is flagged
 
 ## Build
 
+Reviewers: everything needed to reproduce the shipped package is in this
+section. [BUILD.md](BUILD.md) repeats it with more commentary.
+
+### Build environment
+
+| | |
+|---|---|
+| Operating system | Any that runs Node 24. Built and tested on **macOS 15** (arm64) and the **`node:24-alpine`** Docker image (x86-64). No platform-specific steps. |
+| Node.js | **24.0.0 or later** — required, not preferred |
+| pnpm | **11.11.0** |
+| Network | Needed once, for `pnpm install` |
+| Disk | ~250 MB, almost all of it `node_modules` |
+
+Node 24 is a hard requirement: `build.mjs` and the test suite execute `.ts`
+files directly through Node's native type stripping, which earlier versions do
+not have. The build fails immediately rather than producing something subtly
+different.
+
+### Installing the tools
+
+```sh
+# Node 24 — any one of these
+nvm install 24 && nvm use 24          # https://github.com/nvm-sh/nvm
+brew install node@24                  # macOS
+docker run --rm -it -v "$PWD":/src -w /src node:24-alpine sh
+
+# pnpm ships with Node through corepack; nothing to download
+corepack enable
+corepack prepare pnpm@11.11.0 --activate
+```
+
+Verify: `node -v` prints `v24.` or higher, `pnpm --version` prints `11.11.0`.
+
+### Building
+
 ```sh
 ./build.sh
 ```
 
-Requires **Node 24 or later** (the build and tests run `.ts` directly through
-native type stripping) and pnpm 11, which corepack provides. Output lands in
-`dist/`, which is the extension itself — the published archive is that directory
-zipped, nothing added or removed. The build is deterministic: two runs produce
-byte-identical output.
+One step. It checks the requirements, installs dependencies from the lockfile,
+and writes `dist/`. Or run the same thing by hand:
 
-[BUILD.md](BUILD.md) has the full detail — environment requirements, how to
-install Node and pnpm, what each step does, and how to verify a published
-package against this source.
+```sh
+pnpm install --frozen-lockfile
+pnpm build
+```
+
+`dist/` **is** the extension. The published archive is that directory zipped by
+`web-ext build`, with nothing added or removed. Reproduce it with
+`pnpm package`.
+
+### Verifying against the published package
+
+```sh
+unzip -o x_thread_markdown-0.1.0.zip -d /tmp/published
+./build.sh
+diff -r dist /tmp/published        # reports no differences
+```
+
+The build is deterministic: two runs from a clean tree produce byte-identical
+output. The only value injected at build time is the version string, read from
+`package.json`.
+
+### What the build does
+
+`build.mjs` runs esbuild over four entry points and copies three static files.
+No code generation, no template engine, and **no minification**:
+
+| Entry point | Output |
+|---|---|
+| `src/main-world/interceptor.ts` | `dist/main-world.js` |
+| `src/content/index.ts` | `dist/content.js` |
+| `src/background/index.ts` | `dist/background.js` |
+| `src/options/options.ts` | `dist/options/options.js` |
+
+esbuild strips TypeScript types and bundles the module graph into one file per
+entry point — `iife`, targeted at `firefox140`, `minify: false`,
+`legalComments: 'inline'` — so the shipped JavaScript reads as ordinary source
+and maps onto the files under `src/`. `src/manifest.json` is copied with
+`version` substituted from `package.json`; `src/icons/` and
+`src/options/options.html` are copied unchanged. `src/content/ui.css` is
+imported as a string and injected into a shadow root, which is why no CSS file
+ships.
+
+Everything under `src/` is hand-written. Nothing is transpiled, concatenated or
+minified before it reaches the build. The one machine-generated exception is
+`src/icons/*.png`, drawn by `tools/make-icons.mjs`; running
+`node tools/make-icons.mjs` rewrites them identically.
+
+**There are no runtime dependencies.** `package.json` declares an empty
+`dependencies` field and nothing third-party enters `dist/`. `esbuild` bundles,
+`typescript` only runs `tsc --noEmit`, `web-ext` packages and lints, and `yaml`
+and `linkedom` are used by tests alone.
 
 ## Development
 
