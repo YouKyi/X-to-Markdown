@@ -18,9 +18,11 @@ import { Ui } from './ui.ts';
 import { runExport } from './export.ts';
 import { scrapeDom } from '../parse/dom.ts';
 import { drivePagination, describeStop, completenessOf } from '../thread/paginate.ts';
+import type { PaginationResult } from '../thread/paginate.ts';
+import type { Completeness } from '../types/model.ts';
 import { loadSettings, onSettingsChanged, DEFAULTS } from '../shared/config.ts';
 import type { Settings } from '../shared/config.ts';
-import { setDebug, debug, warn } from '../shared/log.ts';
+import { setDebug, debug, warn, seenShapeKeys } from '../shared/log.ts';
 import type { RuntimeRequest, RuntimeResponse } from '../shared/messages.ts';
 
 // --- capture: registered before anything that can fail ----------------------
@@ -83,6 +85,23 @@ function whenBodyReady(): Promise<void> {
 let aborter: AbortController | null = null;
 
 /**
+ * What the last export actually did, for the debug dump.
+ *
+ * Kept because the interesting failures are not visible in the payloads alone.
+ * The TimelineAddToModule bug looked like `expansionsClicked: 3` against
+ * `tweetsCollected: 0` — payloads plus outcome, side by side. Recovering that
+ * from a console paste took three round trips through the user; the dump now
+ * carries it.
+ */
+interface RunDiagnostics {
+  pagination: PaginationResult | null;
+  collection: Completeness;
+  outcome: { ok: boolean; message: string; tweets: number; warnings: string[] } | null;
+}
+
+let lastRun: RunDiagnostics = { pagination: null, collection: 'unknown', outcome: null };
+
+/**
  * Marks "we reloaded on purpose, re-run the export once the page is back".
  *
  * sessionStorage rather than a variable: the whole point is to survive the
@@ -116,6 +135,7 @@ async function doExport(withScroll: boolean): Promise<void> {
 
     let stopNote: string | null = null;
     let collection: 'complete' | 'partial' | 'unknown' = 'unknown';
+    lastRun = { pagination: null, collection: 'unknown', outcome: null };
 
     if (withScroll && settings.autoScroll) {
       const seconds = (ms: number) => `${Math.round(ms / 1000)}s`;
@@ -139,7 +159,9 @@ async function doExport(withScroll: boolean): Promise<void> {
 
       stopNote = describeStop(result);
       collection = completenessOf(result);
+      lastRun.pagination = result;
     }
+    lastRun.collection = collection;
 
     ui.progress(`Exporting ${store.tweetCount} tweets…`, false);
 
@@ -150,7 +172,15 @@ async function doExport(withScroll: boolean): Promise<void> {
       version: __VERSION__,
       scrapeDom: () => scrapeDom(document, { metrics: settings.domMetrics }),
       collection,
+      collapsedBranches: store.collapsedBranches,
     });
+
+    lastRun.outcome = {
+      ok: outcome.ok,
+      message: outcome.message,
+      tweets: outcome.rendered ?? 0,
+      warnings: outcome.warnings ?? [],
+    };
 
     if (!outcome.ok) {
       // A reload is the only thing that helps when the payload was missed, so
@@ -313,6 +343,21 @@ stopWatching = watchRoute((route) => {
 // Background asks for the retained payloads when the toolbar action is clicked
 // in debug mode. This is how fixtures get captured: browse to a thread, click,
 // get a JSON file. Re-capturing after an X schema change is then two clicks.
+//
+// The dump carries the surrounding state as well as the payloads, because the
+// payloads alone have repeatedly not been enough to diagnose anything: what was
+// wrong with TimelineAddToModule was the *pair* `expansionsClicked: 3` and
+// `tweetsCollected: 0`, and reconstructing that from console pastes cost three
+// exchanges. Everything below is already in memory at this point; collecting it
+// costs nothing and saves a round trip.
+//
+// Deliberately not included: the rendered Markdown, and anything derived from
+// it. A diagnostic file should not be a second copy of the user's content.
+//
+// None of the fields added around `payloads` can reach a committed fixture:
+// tools/prune-fixture.mjs reads `payloads[].url` and `payloads[].json` and
+// discards the rest of the wrapper. Keep it that way — this envelope holds the
+// user agent and their settings, and the repository is public.
 browser.runtime.onMessage.addListener((message) => {
   const request = message as { kind?: string };
   if (request.kind !== 'dump-payloads') return;
@@ -327,7 +372,35 @@ browser.runtime.onMessage.addListener((message) => {
     exporter: `x-thread-md/${__VERSION__}`,
     capturedAt: new Date().toISOString(),
     pageUrl: window.location.href,
+    focalId,
     count: payloads.length,
+
+    store: {
+      payloadsReceived: store.receivedCount,
+      tweets: store.tweetCount,
+      cursorBottom: store.cursorBottom,
+      rateLimited: store.rateLimited,
+      sawLowYield: store.sawLowYield,
+      collapsedBranches: store.collapsedBranches,
+    },
+
+    lastExport: lastRun,
+
+    // Which payload shapes the parser did not recognise, deduplicated. A schema
+    // change shows up here first.
+    unrecognisedShapes: seenShapeKeys(),
+
+    settings,
+
+    environment: {
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+      // The like-counter regex broke on a typographic apostrophe in a French
+      // UI, so the locale is worth having when a DOM parse looks wrong.
+      languages: navigator.languages,
+      viewport: { width: window.innerWidth, height: window.innerHeight },
+    },
+
     payloads,
   };
 

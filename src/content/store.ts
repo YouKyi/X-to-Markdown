@@ -76,6 +76,7 @@ export class PayloadStore {
   #cursorBottom: string | null = null;
   #keepRaw = false;
   #lowYield = false;
+  #collapsedBranches = 0;
 
   /** Bumped every time a payload is accepted. */
   get version(): number {
@@ -110,6 +111,19 @@ export class PayloadStore {
     return this.#lowYield;
   }
 
+  /**
+   * Reply branches X collapsed behind a "show more" control, across every
+   * payload seen.
+   *
+   * An upper bound, not a count of what is missing: expanding a branch makes X
+   * resend the same conversation entry, so a branch that was collapsed and then
+   * clicked is counted on both passes. Phrased as "at least one branch was
+   * collapsed" in the export rather than as a number, for that reason.
+   */
+  get collapsedBranches(): number {
+    return this.#collapsedBranches;
+  }
+
   /** Retain raw payloads for the debug fixture dump. */
   setRetainRaw(value: boolean): void {
     this.#retainRaw = value;
@@ -127,6 +141,7 @@ export class PayloadStore {
     this.#cursorBottom = null;
     this.#rateLimited = false;
     this.#lowYield = false;
+    this.#collapsedBranches = 0;
     this.#received = 0;
   }
 
@@ -163,6 +178,7 @@ export class PayloadStore {
     this.#evictOldest();
     if (parsed.cursorBottom) this.#cursorBottom = parsed.cursorBottom;
     if (parsed.yieldRatio < 0.8) this.#lowYield = true;
+    this.#collapsedBranches += parsed.collapsedBranches;
 
     const meta: PayloadMeta = {
       status: message.status,

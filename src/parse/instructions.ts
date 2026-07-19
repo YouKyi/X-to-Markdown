@@ -7,7 +7,7 @@
 // not a missing reply.
 
 import { arr, get, str } from './accessors.ts';
-import { shape } from '../shared/log.ts';
+import { debug, shape } from '../shared/log.ts';
 
 export interface WalkResult {
   /** Raw `tweet_results.result` objects, in entry order. */
@@ -18,6 +18,8 @@ export interface WalkResult {
   eligible: number;
   /** Entries that yielded at least one tweet. */
   parsed: number;
+  /** Reply branches X collapsed behind a "show more" control. See below. */
+  collapsedBranches: number;
 }
 
 /**
@@ -92,15 +94,55 @@ function scan(node: unknown, out: unknown[], depth = 0): void {
   }
 }
 
+/**
+ * A branch of the conversation that X collapsed behind a "show more" control.
+ *
+ * These arrive as cursor *items* inside an ordinary `conversationthread-*`
+ * entry, not as `cursor-*` entries — the entry-level check further down never
+ * sees them:
+ *
+ *   entry  conversationthread-1234
+ *     items[0..1]  item.itemContent.tweet_results   (the replies we do capture)
+ *     items[2]     item.itemContent = {
+ *                    __typename: 'TimelineTimelineCursor',
+ *                    cursorType: 'ShowMore',
+ *                    value: '…',
+ *                  }
+ *
+ * Carrying no tweet, they were skipped in silence, and the branch simply ended
+ * early in the export with nothing saying so. `real-tweetdetail.json` holds
+ * three of them.
+ *
+ * `assemble.ts` does derive an uncaptured-reply estimate from
+ * `metrics.replies - held`, which usually covers this. But that is an estimate:
+ * it is unavailable whenever metrics are null (the whole DOM path), and it
+ * cannot separate a collapsed branch from replies that were deleted, hidden or
+ * posted by muted accounts. This is the direct signal, and it was in the payload
+ * all along.
+ */
+function isShowMoreCursor(item: unknown): boolean {
+  const content = get(item, 'item.itemContent');
+  if (!content) return false;
+  if (str(content, '__typename') !== 'TimelineTimelineCursor') return false;
+  // 'Bottom' and 'Top' cursors are pagination, handled at entry level. Anything
+  // else at item level is a collapsed branch: 'ShowMore', and the
+  // 'ShowMoreThreads' variant X uses on some conversations.
+  const cursorType = str(content, 'cursorType') ?? '';
+  return cursorType.startsWith('ShowMore');
+}
+
 interface EntryHarvest {
   added: number;
   /** Ads deliberately left behind, so the caller does not "rescue" them. */
   skippedPromoted: number;
+  /** "Show more" cursors seen among the items. */
+  collapsed: number;
 }
 
 function fromEntry(entry: unknown, out: unknown[]): EntryHarvest {
   const before = out.length;
   let skippedPromoted = 0;
+  let collapsed = 0;
 
   // Single tweet: entryId "tweet-<id>"
   const single = get(entry, 'content.itemContent.tweet_results.result');
@@ -109,6 +151,14 @@ function fromEntry(entry: unknown, out: unknown[]): EntryHarvest {
   // Conversation module: entryId "conversationthread-<id>". Ads live here too,
   // one level below the entry, which is why each item is checked individually.
   for (const item of arr(entry, 'content.items')) {
+    if (isShowMoreCursor(item)) {
+      // debug(), not shape(): this is a shape we understand and count, not one
+      // we failed to recognise. Reporting it as unrecognised would raise a
+      // schema-drift alarm on every ordinary conversation.
+      debug('collapsed branch cursor in', str(entry, 'entryId') ?? 'unknown entry');
+      collapsed += 1;
+      continue;
+    }
     if (isPromoted(str(item, 'entryId') ?? '', item)) {
       shape('promoted-conversation-item');
       skippedPromoted += 1;
@@ -118,7 +168,7 @@ function fromEntry(entry: unknown, out: unknown[]): EntryHarvest {
     if (result) out.push(result);
   }
 
-  return { added: out.length - before, skippedPromoted };
+  return { added: out.length - before, skippedPromoted, collapsed };
 }
 
 /**
@@ -151,6 +201,7 @@ export function walkInstructions(payload: unknown): WalkResult {
   let cursorBottom: string | null = null;
   let eligible = 0;
   let parsed = 0;
+  let collapsedBranches = 0;
 
   // TweetDetail puts the conversation here. Other operations use different
   // roots, so the caller (dispatch.ts) hands us whichever it found.
@@ -196,12 +247,18 @@ export function walkInstructions(payload: unknown): WalkResult {
       }
 
       const harvest = fromEntry(entry, results);
+      collapsedBranches += harvest.collapsed;
 
       // An entry that held nothing but ads is not a miss and must not fall
       // through to the deep scan below — that scan looks for tweet_results
       // anywhere under the entry and would put straight back the very tweet
       // that was just deliberately dropped.
-      if (harvest.added === 0 && harvest.skippedPromoted > 0) continue;
+      //
+      // Same for one holding nothing but a "show more" cursor: it is a branch we
+      // did not expand, already counted, and not a parse failure. Letting either
+      // reach the yield ratio would drag it down and fire the schema-drift alarm
+      // on a perfectly well-understood payload.
+      if (harvest.added === 0 && (harvest.skippedPromoted > 0 || harvest.collapsed > 0)) continue;
 
       eligible += 1;
 
@@ -226,5 +283,5 @@ export function walkInstructions(payload: unknown): WalkResult {
     }
   }
 
-  return { results, cursorBottom, eligible, parsed };
+  return { results, cursorBottom, eligible, parsed, collapsedBranches };
 }

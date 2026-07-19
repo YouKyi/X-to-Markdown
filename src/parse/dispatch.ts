@@ -22,6 +22,8 @@ export interface DispatchResult {
   parsed: number;
   /** parsed / eligible, or 1 when there was nothing to parse. */
   yieldRatio: number;
+  /** Reply branches left collapsed behind a "show more" control. */
+  collapsedBranches: number;
 }
 
 /** Roots that are known to hold a timeline of instructions. */
@@ -41,7 +43,57 @@ const EMPTY: DispatchResult = {
   eligible: 0,
   parsed: 0,
   yieldRatio: 1,
+  collapsedBranches: 0,
 };
+
+/** Depth limit for the root search. Known roots sit at depth 2-4. */
+const ROOT_SEARCH_DEPTH = 6;
+
+/**
+ * An `instructions` array belonging to a timeline, wherever it lives.
+ *
+ * `TIMELINE_ROOTS` above is a list of paths observed in captures, which means it
+ * is only ever as current as the last capture. X serves conversation data from
+ * roots not on that list — `ModeratedTimeline`, which carries the replies an
+ * author has hidden, puts them under
+ * `data.tweet.result.timeline_response.timeline.instructions` — and a payload
+ * whose root is unlisted is not partially parsed, it is dropped whole.
+ *
+ * So when no known path matches, the array is looked for by shape instead. The
+ * test is deliberately narrow: an array of objects whose `type` starts with
+ * `Timeline`. That is X's own naming convention for instruction types and it is
+ * not a shape that occurs incidentally elsewhere in these payloads.
+ *
+ * Picking up a timeline that is not the current conversation is survivable: the
+ * export filters by conversation id before assembling, so a stray timeline's
+ * tweets are dropped there. Missing a conversation entirely is not.
+ */
+function looksLikeInstructions(value: unknown): boolean {
+  if (!Array.isArray(value) || value.length === 0) return false;
+  return value.some((item) => {
+    const type = get(item, 'type');
+    return typeof type === 'string' && type.startsWith('Timeline');
+  });
+}
+
+function findInstructions(node: unknown, depth = 0): unknown[] | null {
+  if (depth > ROOT_SEARCH_DEPTH || node === null || typeof node !== 'object') return null;
+
+  if (Array.isArray(node)) {
+    for (const item of node) {
+      const found = findInstructions(item, depth + 1);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  for (const [key, value] of Object.entries(node as Record<string, unknown>)) {
+    if (key === 'instructions' && looksLikeInstructions(value)) return value as unknown[];
+    const found = findInstructions(value, depth + 1);
+    if (found) return found;
+  }
+  return null;
+}
 
 export function dispatch(payload: unknown, options: ParseTweetOptions = {}): DispatchResult {
   if (!payload || typeof payload !== 'object') return EMPTY;
@@ -50,6 +102,7 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
   let cursorBottom: string | null = null;
   let eligible = 0;
   let parsed = 0;
+  let collapsedBranches = 0;
 
   let root: unknown;
   for (const path of TIMELINE_ROOTS) {
@@ -60,12 +113,21 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
     }
   }
 
-  if (root) {
-    const walked = walkInstructions(root);
+  // No listed root matched. Before giving up, look for the instructions array by
+  // shape — see findInstructions.
+  let instructions: unknown[] | null = null;
+  if (!root) {
+    instructions = findInstructions(payload);
+    if (instructions) shape('timeline-root-found-by-shape');
+  }
+
+  if (root || instructions) {
+    const walked = walkInstructions(root ?? instructions);
     raw = walked.results;
     cursorBottom = walked.cursorBottom;
     eligible = walked.eligible;
     parsed = walked.parsed;
+    collapsedBranches = walked.collapsedBranches;
   } else {
     // Single-tweet responses (TweetResultByRestId and friends) have no timeline.
     const single =
@@ -95,5 +157,5 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
   const yieldRatio = eligible === 0 ? 1 : parsed / eligible;
   if (yieldRatio < 0.8) shape('low-yield-ratio', { eligible, parsed, yieldRatio });
 
-  return { tweets, cursorBottom, eligible, parsed, yieldRatio };
+  return { tweets, cursorBottom, eligible, parsed, yieldRatio, collapsedBranches };
 }

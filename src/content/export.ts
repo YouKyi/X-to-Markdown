@@ -20,6 +20,10 @@ export interface ExportOutcome {
   /** Only a page reload can help: the payload was missed and cannot be replayed. */
   needsReload?: boolean;
   markdown?: string;
+  /** As written to the frontmatter. Surfaced for the debug dump. */
+  warnings?: string[];
+  /** Tweets in the rendered document. */
+  rendered?: number;
 }
 
 /**
@@ -78,6 +82,8 @@ export interface ExportInput {
   scrapeDom?: () => Tweet[];
   /** Reported by the collection pass; recorded in the frontmatter. */
   collection?: Completeness;
+  /** "Show more" branches the parser saw and the collection pass did not open. */
+  collapsedBranches?: number;
 }
 
 /**
@@ -169,6 +175,16 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
     collection: degraded ? 'partial' : (input.collection ?? 'unknown'),
   });
 
+  // Stated separately from the metrics-derived uncaptured count, because this
+  // one is observed rather than inferred: X marked those branches as having more
+  // behind them. Not a number — see PayloadStore#collapsedBranches for why the
+  // count over-reports once a branch has been expanded.
+  if ((input.collapsedBranches ?? 0) > 0) {
+    doc.warnings.push(
+      'Some reply branches were collapsed behind a "show more" control and were not expanded.',
+    );
+  }
+
   if (!hasFocal) {
     doc.warnings.unshift('The focal tweet was not captured; exported the rest of the conversation.');
   }
@@ -185,7 +201,15 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   const downloaded = wantsDownload ? await download(filename, markdown) : false;
 
   if (wantsClipboard && !copied && !downloaded) {
-    return { ok: false, copied, downloaded, markdown, message: 'Clipboard write was refused.' };
+    return {
+      ok: false,
+      copied,
+      downloaded,
+      markdown,
+      warnings: doc.warnings,
+      rendered: doc.stats.rendered,
+      message: 'Clipboard write was refused.',
+    };
   }
 
   let message = summarise({ copied, downloaded }, doc.stats.rendered);
@@ -195,7 +219,15 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   // much of it there is.
   if (degraded) message = `Degraded export. ${message}`;
 
-  return { ok: true, copied, downloaded, markdown, message };
+  return {
+    ok: true,
+    copied,
+    downloaded,
+    markdown,
+    warnings: doc.warnings,
+    rendered: doc.stats.rendered,
+    message,
+  };
 }
 
 /** Lowest id in the largest conversation — the best guess at a root. */

@@ -358,3 +358,162 @@ describe('dispatch — promoted content', () => {
     assert.equal(result.yieldRatio, 1, 'an ad is not a schema drift signal');
   });
 });
+
+describe('dispatch — collapsed reply branches', () => {
+  // X marks a branch it did not send in full with a cursor *item* inside an
+  // ordinary conversationthread entry, not with a cursor-* entry. Carrying no
+  // tweet, those items were skipped in silence and the branch simply ended
+  // early in the export with nothing saying so.
+  it('counts the show-more cursors in a real capture', async () => {
+    const result = dispatch(await loadFixture('real-tweetdetail.json'));
+    assert.equal(result.collapsedBranches, 3);
+  });
+
+  it('does not count a collapsed branch as a parsing miss', () => {
+    // An entry holding nothing but a cursor is a branch we did not open, not a
+    // parse failure. Letting it reach the yield ratio would fire the
+    // schema-drift alarm on a perfectly ordinary conversation.
+    const payload = {
+      data: {
+        threaded_conversation_with_injections_v2: {
+          instructions: [
+            {
+              type: 'TimelineAddEntries',
+              entries: [
+                {
+                  entryId: 'conversationthread-100',
+                  content: {
+                    items: [
+                      {
+                        entryId: 'conversationthread-100-cursor-showmore-1',
+                        item: {
+                          itemContent: {
+                            __typename: 'TimelineTimelineCursor',
+                            cursorType: 'ShowMore',
+                            value: 'abc',
+                          },
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    };
+
+    const result = dispatch(payload);
+    assert.equal(result.collapsedBranches, 1);
+    assert.equal(result.tweets.length, 0);
+    assert.equal(result.yieldRatio, 1, 'a collapsed branch is not schema drift');
+  });
+
+  it('leaves Bottom and Top cursors to the entry-level handling', () => {
+    // Only ShowMore* is a collapsed branch. Bottom is pagination, and counting
+    // it would report a warning on every thread ever exported.
+    const payload = {
+      data: {
+        threaded_conversation_with_injections_v2: {
+          instructions: [
+            {
+              type: 'TimelineAddEntries',
+              entries: [
+                {
+                  entryId: 'conversationthread-100',
+                  content: {
+                    items: [
+                      {
+                        entryId: 'conversationthread-100-cursor-bottom',
+                        item: {
+                          itemContent: {
+                            __typename: 'TimelineTimelineCursor',
+                            cursorType: 'Bottom',
+                            value: 'xyz',
+                          },
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    };
+
+    assert.equal(dispatch(payload).collapsedBranches, 0);
+  });
+});
+
+describe('dispatch — timeline roots not on the list', () => {
+  // TIMELINE_ROOTS is only ever as current as the last capture, and a payload
+  // whose root is unlisted was not partially parsed — it was dropped whole.
+  // ModeratedTimeline (the replies an author has hidden) is one such root.
+  const tweet = (id: string) => ({
+    __typename: 'Tweet',
+    rest_id: id,
+    core: {
+      user_results: {
+        result: {
+          __typename: 'User',
+          rest_id: '5',
+          core: { screen_name: 'someone', name: 'Someone' },
+        },
+      },
+    },
+    legacy: {
+      created_at: 'Wed Mar 21 20:50:14 +0000 2006',
+      full_text: 'hidden reply',
+      conversation_id_str: '100',
+    },
+  });
+
+  const nested = (root: Record<string, unknown>) => ({
+    data: {
+      tweet: {
+        result: {
+          timeline_response: {
+            timeline: root,
+          },
+        },
+      },
+    },
+  });
+
+  it('finds the instructions array by shape when no known path matches', () => {
+    const result = dispatch(
+      nested({
+        instructions: [
+          {
+            type: 'TimelineAddEntries',
+            entries: [
+              {
+                entryId: 'tweet-101',
+                content: { itemContent: { tweet_results: { result: tweet('101') } } },
+              },
+            ],
+          },
+        ],
+      }),
+    );
+
+    assert.deepEqual(
+      result.tweets.map((t) => t.id),
+      ['101'],
+    );
+  });
+
+  it('requires the array to hold Timeline* instruction types', () => {
+    // The shape test has to be narrow enough that an unrelated `instructions`
+    // key somewhere in a payload does not get walked as a timeline.
+    const result = dispatch(nested({ instructions: [{ type: 'SomethingElse', entries: [] }] }));
+    assert.equal(result.tweets.length, 0);
+  });
+
+  it('still returns nothing for a payload that carries no timeline at all', () => {
+    assert.equal(dispatch({ data: { user: { result: { legacy: {} } } } }).tweets.length, 0);
+  });
+});

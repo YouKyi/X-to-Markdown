@@ -310,3 +310,53 @@ describe('store growth is bounded', () => {
     assert.ok(store.tweetCount >= 4500, 'evicted far more than necessary');
   });
 });
+
+describe('runExport — collapsed branches', () => {
+  const root = tweet('1900000000000000000', {
+    createdAt: '2026-03-01T10:00:00Z',
+    text: 'root',
+    metrics: metrics({ likes: 1 }),
+  });
+  const reply = tweet('1900000000000000001', {
+    author: 'alice',
+    conversationId: root.id,
+    inReplyToId: root.id,
+    createdAt: '2026-03-01T10:01:00Z',
+    text: 'reply',
+    metrics: metrics({ likes: 2 }),
+  });
+
+  it('warns when the parser saw a branch the collection pass never opened', async () => {
+    const outcome = await runExport({
+      tweets: [root, reply],
+      focalId: root.id,
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+      collapsedBranches: 2,
+    });
+
+    assert.equal(outcome.ok, true);
+    // Observed, not inferred: X marked those branches as having more behind
+    // them. Kept distinct from the metrics-derived uncaptured estimate, which
+    // is unavailable whenever metrics are null and cannot separate a collapsed
+    // branch from replies that were deleted or hidden.
+    assert.ok(
+      outcome.warnings?.some((w) => w.includes('collapsed')),
+      `no collapsed-branch warning in ${JSON.stringify(outcome.warnings)}`,
+    );
+    assert.ok(sent[0]?.text?.includes('collapsed'), 'the warning reaches the frontmatter');
+  });
+
+  it('says nothing when no branch was collapsed', async () => {
+    const outcome = await runExport({
+      tweets: [root, reply],
+      focalId: root.id,
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+    });
+
+    assert.ok(!outcome.warnings?.some((w) => w.includes('collapsed')));
+  });
+});
