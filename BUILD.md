@@ -3,47 +3,96 @@
 For AMO reviewers, and for anyone verifying that a published package matches
 this source.
 
-## Requirements
-
-- **Node 24 or later** — not optional. `build.mjs` and the test suite run `.ts`
-  files directly through Node's native type stripping, which earlier versions do
-  not have.
-- **pnpm 11** — `corepack enable && corepack prepare pnpm@11.11.0 --activate`
-
-Tested on macOS 15 and on `node:24-alpine`.
-
-## Build
+## Quick version
 
 ```sh
-pnpm install --frozen-lockfile
-pnpm build
+./build.sh
 ```
 
-Output appears in `dist/`. That directory *is* the extension: the submitted
+That is the whole build. It checks the requirements, installs dependencies from
+the lockfile, and produces `dist/` — which **is** the extension. The submitted
 archive is `dist/` zipped by `web-ext build`, with nothing added or removed.
 
-To rebuild the archive itself:
+## Build environment
+
+| | |
+|---|---|
+| Operating system | Any that runs Node 24. Built and tested on **macOS 15** (arm64) and on the **`node:24-alpine`** Docker image (x86-64). No platform-specific steps. |
+| Node.js | **24.0.0 or later** — required, not preferred |
+| pnpm | **11.11.0** |
+| Network | Needed once, for `pnpm install` |
+| Disk | ~250 MB, almost all of it `node_modules` |
+
+Node 24 is a hard requirement because `build.mjs` and the test suite execute
+`.ts` files directly through Node's native type stripping. Earlier versions
+cannot run them at all — the build fails immediately rather than producing
+something subtly different.
+
+### Installing Node 24
+
+Any of these:
 
 ```sh
+# nvm — https://github.com/nvm-sh/nvm
+nvm install 24 && nvm use 24
+
+# Homebrew, macOS
+brew install node@24
+
+# Docker, no host install
+docker run --rm -it -v "$PWD":/src -w /src node:24-alpine sh
+```
+
+Or download from <https://nodejs.org/>. Verify with `node -v`; it must print
+`v24.` or higher.
+
+### Installing pnpm
+
+pnpm ships with Node through corepack, so nothing needs downloading:
+
+```sh
+corepack enable
+corepack prepare pnpm@11.11.0 --activate
+```
+
+Verify with `pnpm --version` → `11.11.0`. `build.sh` does this automatically if
+pnpm is missing.
+
+## Step by step
+
+If you prefer not to run the script:
+
+```sh
+# 1. dependencies, exactly as locked
+pnpm install --frozen-lockfile
+
+# 2. build
+pnpm build
+
+# 3. optional: the full gate — typecheck, 227 tests, build, web-ext lint
+pnpm check
+
+# 4. optional: reproduce the submitted archive
 pnpm package        # → artifacts/x_thread_markdown-<version>.zip
 ```
 
-## Verifying against a published package
+## Verifying against the published package
 
 ```sh
 unzip -o x_thread_markdown-0.1.0.zip -d /tmp/published
-pnpm install --frozen-lockfile && pnpm build
+./build.sh
 diff -r dist /tmp/published
 ```
 
-This should report no differences. The build is deterministic — running it twice
-produces byte-identical output — and the version string is the only value
-injected, taken from `package.json`.
+This reports no differences. The build is **deterministic**: two runs from a
+clean tree produce byte-identical output, verified by hashing every file in
+`dist/`. The only value injected at build time is the version string, taken from
+`package.json`.
 
 ## What the build does
 
 `build.mjs` runs esbuild over four entry points and copies three static files.
-There is no code generation, no template engine, and **no minification**:
+No code generation, no template engine, and **no minification**:
 
 | Entry point | Output |
 |---|---|
@@ -52,23 +101,39 @@ There is no code generation, no template engine, and **no minification**:
 | `src/background/index.ts` | `dist/background.js` |
 | `src/options/options.ts` | `dist/options/options.js` |
 
-esbuild is used only to strip TypeScript types and bundle the module graph into
-one file per entry point. Output is `iife`, targeted at `firefox140`, with
-`minify: false` and `legalComments: 'inline'`, so the shipped JavaScript reads
-as ordinary source and maps onto the files under `src/`.
+esbuild strips TypeScript types and bundles the module graph into one file per
+entry point. Output is `iife`, targeted at `firefox140`, with `minify: false`
+and `legalComments: 'inline'`, so the shipped JavaScript reads as ordinary
+source and maps onto the files under `src/`.
 
-`src/manifest.json` is copied with `version` substituted from `package.json` so
+`src/manifest.json` is copied with `version` substituted from `package.json`, so
 there is a single source of truth for the version number. `src/icons/` and
 `src/options/options.html` are copied unchanged.
 
-`src/content/ui.css` is imported as a text string (esbuild's `text` loader) and
-injected into a shadow root, which is why no CSS file ships and the extension
+`src/content/ui.css` is imported as a string through esbuild's `text` loader and
+injected into a shadow root. That is why no CSS file ships and the extension
 declares no `web_accessible_resources`.
+
+### Source files are hand-written
+
+Everything under `src/` is written by hand. Nothing there is transpiled,
+concatenated, minified or machine-generated.
+
+One exception worth naming: `src/icons/icon-48.png` and `icon-96.png` are
+generated by `tools/make-icons.mjs`, a 40-line script that draws them from
+coordinates. The script is included, so the assets are reproducible:
+
+```sh
+node tools/make-icons.mjs      # rewrites src/icons/*.png identically
+```
+
+They are committed rather than built on demand because an extension needs real
+PNGs and a small readable generator is easier to audit than two opaque binaries.
 
 ## Dependencies
 
-**There are no runtime dependencies.** `package.json` has an empty
-`dependencies` field, and nothing third-party is bundled into `dist/`. Every
+**There are no runtime dependencies.** `package.json` declares an empty
+`dependencies` field and nothing third-party is bundled into `dist/`. Every
 declared package is build- or test-time only:
 
 | Package | Used for |
@@ -77,14 +142,14 @@ declared package is build- or test-time only:
 | `typescript` | `tsc --noEmit` only; it emits nothing |
 | `@types/node` | types for the test and tooling configs |
 | `web-ext` | packaging, linting and signing |
-| `yaml` | tests only — round-trips the hand-written frontmatter emitter through a real parser |
-| `linkedom` | tests only — a DOM for the fallback scraper and the auto-click filter |
+| `yaml` | tests only — round-trips the hand-written frontmatter emitter through a real parser, because a mis-quoted scalar fails silently |
+| `linkedom` | tests only — provides a DOM for the fallback scraper and for the auto-click safety filter |
 
 ## Tests
 
 ```sh
-pnpm check     # typecheck + tests + build + web-ext lint
+pnpm check
 ```
 
-227 tests, no browser required. `pnpm check` is the gate that must pass before
-any release, and it is what CI runs.
+227 tests, no browser required. This is the gate that must pass before any
+release, and it is what CI runs on every push.

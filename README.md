@@ -127,10 +127,25 @@ A DOM scraper exists as a last resort. It produces the same `Tweet` shape so the
 renderer keeps one input contract, and everything it emits is flagged
 `source: dom` and `partial: true`, because it is worse in ways no effort can fix.
 
+## Build
+
+```sh
+./build.sh
+```
+
+Requires **Node 24 or later** (the build and tests run `.ts` directly through
+native type stripping) and pnpm 11, which corepack provides. Output lands in
+`dist/`, which is the extension itself — the published archive is that directory
+zipped, nothing added or removed. The build is deterministic: two runs produce
+byte-identical output.
+
+[BUILD.md](BUILD.md) has the full detail — environment requirements, how to
+install Node and pnpm, what each step does, and how to verify a published
+package against this source.
+
 ## Development
 
 ```sh
-pnpm install
 pnpm check        # typecheck + tests + build + web-ext lint — the gate
 pnpm dev          # throwaway Firefox with the extension loaded
 pnpm test         # node:test, no test framework dependency
@@ -138,8 +153,7 @@ pnpm package      # build the archive for submission
 ```
 
 [AGENTS.md](AGENTS.md) covers the invariants and the traps. Read it before
-changing anything under `src/`. [BUILD.md](BUILD.md) documents the build for
-anyone verifying a published package against this source.
+changing anything under `src/`.
 
 **After a rebuild, reload the x.com page.** Firefox does not re-inject content
 scripts into already-open tabs; the old instance retires itself, leaving no
