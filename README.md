@@ -138,7 +138,8 @@ pnpm package      # build the archive for submission
 ```
 
 [AGENTS.md](AGENTS.md) covers the invariants and the traps. Read it before
-changing anything under `src/`.
+changing anything under `src/`. [BUILD.md](BUILD.md) documents the build for
+anyone verifying a published package against this source.
 
 **After a rebuild, reload the x.com page.** Firefox does not re-inject content
 scripts into already-open tabs; the old instance retires itself, leaving no
