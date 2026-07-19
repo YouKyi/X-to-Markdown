@@ -17,6 +17,14 @@ export interface AssembleOptions extends AssembleCaps {
   capturedAt?: string;
   /** Reported by the collection pass; defaults to unknown. */
   collection?: Completeness;
+  /**
+   * "Show more" branches the parser saw and the collection pass did not open.
+   *
+   * Demotes `collection` to partial, for the same reason a cap that bit does:
+   * X said outright that there was more behind those controls, so the document
+   * is demonstrably missing replies however tidily the scroll loop ended.
+   */
+  collapsedBranches?: number;
 }
 
 export const DEFAULT_CAPS: AssembleCaps = {
@@ -311,7 +319,24 @@ export function assemble(
     capturedAt: options.capturedAt ?? new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'),
     // Caps that bit override whatever the collection pass reported: the
     // document is demonstrably missing tweets regardless of how collection went.
-    collection: truncated > 0 ? 'partial' : (options.collection ?? 'unknown'),
+    //
+    // A collapsed branch overrides it for the same reason, and the case is if
+    // anything stronger: the pagination driver reports `quiescence` when it
+    // stops finding new material, which says the scroll loop ended tidily and
+    // nothing at all about whether the conversation is whole. An export of this
+    // thread carried `collection: complete` two lines above
+    // `replies_not_captured: 105`. Whoever greps their vault for complete
+    // captures a year from now would get a document missing three quarters of
+    // its replies, and nothing in it would admit that.
+    //
+    // Deliberately not demoting on `uncaptured` alone: that number also counts
+    // replies that were deleted, hidden, or written by muted accounts, which no
+    // amount of scrolling would ever reach. Missing those is not an incomplete
+    // capture. Missing a branch X offered to expand is.
+    collection:
+      truncated > 0 || (options.collapsedBranches ?? 0) > 0
+        ? 'partial'
+        : (options.collection ?? 'unknown'),
     stats: { captured: tweets.length, rendered, truncated, orphans, uncaptured, source },
     warnings,
   };

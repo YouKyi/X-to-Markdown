@@ -360,3 +360,50 @@ describe('runExport — collapsed branches', () => {
     assert.ok(!outcome.warnings?.some((w) => w.includes('collapsed')));
   });
 });
+
+describe('runExport — a collapsed branch means the capture is not complete', () => {
+  const root = tweet('1900000000000000000', {
+    createdAt: '2026-03-01T10:00:00Z',
+    text: 'root',
+    metrics: metrics({ likes: 1 }),
+  });
+  const reply = tweet('1900000000000000001', {
+    author: 'alice',
+    conversationId: root.id,
+    inReplyToId: root.id,
+    createdAt: '2026-03-01T10:01:00Z',
+    text: 'reply',
+    metrics: metrics({ likes: 2 }),
+  });
+
+  it('demotes a "complete" collection pass to partial', async () => {
+    // The pagination driver reports quiescence when it stops finding new
+    // material, which says the scroll loop ended tidily and nothing about
+    // whether the conversation is whole. A real export carried
+    // `collection: complete` two lines above `replies_not_captured: 105`.
+    await runExport({
+      tweets: [root, reply],
+      focalId: root.id,
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+      collection: 'complete',
+      collapsedBranches: 4,
+    });
+
+    assert.match(sent[0]?.text ?? '', /^collection: partial$/m);
+  });
+
+  it('leaves a genuinely complete pass alone', async () => {
+    await runExport({
+      tweets: [root, reply],
+      focalId: root.id,
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+      collection: 'complete',
+    });
+
+    assert.match(sent[0]?.text ?? '', /^collection: complete$/m);
+  });
+});

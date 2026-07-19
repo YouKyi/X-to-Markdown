@@ -173,6 +173,7 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
     // The DOM fallback only ever sees what is on screen, so it can never claim
     // to have the whole conversation whatever the collection pass reported.
     collection: degraded ? 'partial' : (input.collection ?? 'unknown'),
+    ...(input.collapsedBranches ? { collapsedBranches: input.collapsedBranches } : {}),
   });
 
   // Stated separately from the metrics-derived uncaptured count, because this
