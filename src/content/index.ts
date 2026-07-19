@@ -293,13 +293,17 @@ stopWatching = watchRoute((route) => {
   const previous = focalId;
   focalId = route.focalId;
 
-  // Navigating between two /status/ pages without a reload: drop the previous
-  // conversation so its tweets cannot leak into the next export. The payload
-  // for the new one is already in flight, captured by the MAIN-world hook.
-  if (previous && previous !== focalId) {
-    debug('route changed', previous, '->', focalId);
-    store.reset();
-  }
+  // Deliberately NOT resetting the store here.
+  //
+  // This poll runs every 400ms, while X answers a click with its TweetDetail in
+  // roughly 200ms. Clearing on route change therefore destroyed the capture it
+  // was meant to make room for: the payload had already arrived, the store was
+  // emptied, and the export fell through to the DOM — where it then scraped the
+  // *previous* thread's articles, which had not been recycled yet.
+  //
+  // Isolation between conversations is enforced at export time instead, by
+  // conversation id, which is precise and cannot race.
+  if (previous && previous !== focalId) debug('route changed', previous, '->', focalId);
 
   syncUi();
 });

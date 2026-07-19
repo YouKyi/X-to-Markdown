@@ -18,6 +18,20 @@ import { debug } from '../shared/log.ts';
 /** How many raw payloads to retain for the debug fixture dump. */
 const RAW_RING_SIZE = 5;
 
+/**
+ * Upper bound on retained tweets.
+ *
+ * The store is deliberately never cleared on SPA navigation — doing so raced
+ * with the payload it was meant to make room for — so a long browsing session
+ * accumulates every conversation visited. Isolation is handled at export time
+ * by conversation id; this is only about memory.
+ *
+ * Eviction is oldest-first, which is also least-recently-relevant: the tweets
+ * that matter are the ones for the thread currently on screen, and they are the
+ * most recently added.
+ */
+const MAX_TWEETS = 5000;
+
 export interface RawPayload {
   url: string;
   status: number;
@@ -146,6 +160,7 @@ export class PayloadStore {
     for (const tweet of parsed.tweets) {
       if (!this.#tweets.has(tweet.id)) this.#tweets.set(tweet.id, tweet);
     }
+    this.#evictOldest();
     if (parsed.cursorBottom) this.#cursorBottom = parsed.cursorBottom;
     if (parsed.yieldRatio < 0.8) this.#lowYield = true;
 
@@ -175,6 +190,15 @@ export class PayloadStore {
     }
 
     this.#bump();
+  }
+
+  /** Map preserves insertion order, so the first key is the oldest tweet. */
+  #evictOldest(): void {
+    while (this.#tweets.size > MAX_TWEETS) {
+      const oldest = this.#tweets.keys().next().value;
+      if (oldest === undefined) break;
+      this.#tweets.delete(oldest);
+    }
   }
 
   #bump(): void {

@@ -80,9 +80,31 @@ export interface ExportInput {
   collection?: Completeness;
 }
 
+/**
+ * Keep only the conversation the user is looking at.
+ *
+ * The store is append-only across SPA navigation, so after browsing two threads
+ * it holds both. Filtering here rather than clearing on navigation is what makes
+ * that safe: it cannot race with an arriving payload, and it is exact.
+ *
+ * Tweets with no conversation id — everything the DOM fallback produces — are
+ * kept only when nothing else identifies them, since dropping them would leave
+ * that path with nothing at all.
+ */
+function sameConversation(tweets: Tweet[], focalId: string): Tweet[] {
+  const focal = tweets.find((t) => t.id === focalId);
+  const conversation = focal ? (focal.conversationId ?? focal.id) : null;
+  if (!conversation) return tweets;
+
+  const kept = tweets.filter(
+    (t) => t.id === focalId || t.conversationId === conversation || t.conversationId === null,
+  );
+  return kept.length > 0 ? kept : tweets;
+}
+
 export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   const { focalId, settings, version } = input;
-  let tweets = input.tweets;
+  let tweets = sameConversation(input.tweets, focalId);
   let degraded: string | null = null;
 
   // Step 3 of the ladder: interception produced nothing, so read what is on
@@ -108,9 +130,25 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
     };
   }
 
+  const hasFocal = tweets.some((t) => t.id === focalId);
+
+  // A DOM scrape that does not contain the tweet whose URL we are on is not a
+  // partial capture of this conversation — it is the previous page's articles,
+  // still rendered because X had not recycled them yet. Exporting "the rest"
+  // there produced a document attributing one thread's replies to another
+  // thread's author, which is worse than no document.
+  if (degraded && !hasFocal) {
+    return {
+      ok: false,
+      copied: false,
+      downloaded: false,
+      needsReload: true,
+      message: 'The page has not settled on this post yet. Reload it and try again.',
+    };
+  }
+
   // Step 2 of the ladder: the conversation was captured but the focal tweet was
   // not. Export what exists rather than failing, and say so.
-  const hasFocal = tweets.some((t) => t.id === focalId);
   const anchor = hasFocal ? focalId : pickAnchor(tweets);
   if (!anchor) {
     return {

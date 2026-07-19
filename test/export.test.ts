@@ -150,3 +150,163 @@ describe('runExport', () => {
     assert.match(outcome.message, /Clipboard/);
   });
 });
+
+describe('conversation isolation', () => {
+  // The bug this pins produced a real, badly wrong document: replies from one
+  // thread rendered under another thread's author. The store is append-only
+  // across SPA navigation, so after browsing two threads it holds both.
+  const threadA = [
+    tweet('1900000000000000000', { text: 'thread A root', metrics: metrics({ likes: 1 }) }),
+    tweet('1900000000000000001', {
+      author: 'alice',
+      conversationId: '1900000000000000000',
+      inReplyToId: '1900000000000000000',
+      text: 'reply in A',
+      metrics: metrics({ likes: 1 }),
+    }),
+  ];
+  const threadB = [
+    tweet('1900000000000000100', {
+      author: 'bob',
+      conversationId: '1900000000000000100',
+      text: 'thread B root',
+      metrics: metrics({ likes: 1 }),
+    }),
+    tweet('1900000000000000101', {
+      author: 'carol',
+      conversationId: '1900000000000000100',
+      inReplyToId: '1900000000000000100',
+      text: 'reply in B',
+      metrics: metrics({ likes: 1 }),
+    }),
+  ];
+
+  it('exports only the conversation the user is looking at', async () => {
+    const outcome = await runExport({
+      tweets: [...threadA, ...threadB],
+      focalId: '1900000000000000100',
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+    });
+
+    assert.equal(outcome.ok, true);
+    assert.match(outcome.markdown!, /thread B root/);
+    assert.match(outcome.markdown!, /reply in B/);
+    assert.ok(!outcome.markdown!.includes('thread A root'), 'thread A leaked in');
+    assert.ok(!outcome.markdown!.includes('reply in A'), "thread A's reply leaked in");
+    assert.match(outcome.message, /^2 tweets/);
+  });
+
+  it('does not report the other conversation as orphaned replies', async () => {
+    // Before the fix these arrived in the orphan bucket and rendered as
+    // top-level replies carrying "parent tweet was not captured".
+    const outcome = await runExport({
+      tweets: [...threadA, ...threadB],
+      focalId: '1900000000000000100',
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+    });
+    assert.ok(!outcome.markdown!.includes('parent tweet was not captured'));
+  });
+});
+
+describe('a stale DOM scrape is refused', () => {
+  it('will not export someone else\'s replies under this post', async () => {
+    // X had not recycled the previous thread's articles yet, so the scrape
+    // returned them without the tweet actually being viewed. Exporting "the
+    // rest of the conversation" there is worse than exporting nothing.
+    const strangers = [
+      tweet('1900000000000000200', { author: 'alice', source: 'dom', partial: true }),
+      tweet('1900000000000000201', { author: 'bob', source: 'dom', partial: true }),
+    ];
+
+    const outcome = await runExport({
+      tweets: [],
+      focalId: '1900000000000000999',
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+      scrapeDom: () => strangers,
+    });
+
+    assert.equal(outcome.ok, false);
+    assert.equal(outcome.needsReload, true);
+    assert.match(outcome.message, /has not settled/);
+  });
+
+  it('still accepts a DOM scrape that does contain the focal tweet', async () => {
+    const scraped = [
+      tweet('20', { source: 'dom', partial: true, metrics: { ...metrics(), reliable: false } }),
+    ];
+    const outcome = await runExport({
+      tweets: [],
+      focalId: '20',
+      settings: settings(),
+      version: '0.1.0',
+      capturedAt: AT,
+      scrapeDom: () => scraped,
+    });
+    assert.equal(outcome.ok, true);
+    assert.match(outcome.message, /^Degraded export\./);
+  });
+});
+
+describe('store growth is bounded', () => {
+  it('evicts the oldest tweets past the cap', async () => {
+    // Not clearing on navigation means a long session accumulates every
+    // conversation visited. Isolation is by conversation id at export; this is
+    // only about memory.
+    const { PayloadStore } = await import('../src/content/store.ts');
+    const store = new PayloadStore();
+
+    // BigInt, not Number: these ids are past MAX_SAFE_INTEGER, and plain
+    // arithmetic collapses them into collisions — the very hazard assemble.ts
+    // sorts around, and one this test fell into on the first attempt.
+    const payload = (start: bigint, count: number) => ({
+      __xtmd: 1 as const,
+      kind: 'graphql' as const,
+      url: 'https://x.com/i/api/graphql/abc/TweetDetail',
+      status: 200,
+      transport: 'fetch' as const,
+      body: JSON.stringify({
+        data: {
+          threaded_conversation_with_injections_v2: {
+            instructions: [
+              {
+                type: 'TimelineAddEntries',
+                entries: Array.from({ length: count }, (_, i) => ({
+                  entryId: `tweet-${start + BigInt(i)}`,
+                  content: {
+                    itemContent: {
+                      tweet_results: {
+                        result: {
+                          __typename: 'Tweet',
+                          rest_id: (start + BigInt(i)).toString(),
+                          core: { user_results: { result: { rest_id: '1', legacy: { screen_name: 'a', name: 'A' } } } },
+                          legacy: {
+                            created_at: 'Mon Jun 02 09:00:00 +0000 2025',
+                            full_text: 'x',
+                            favorite_count: 0, retweet_count: 0, reply_count: 0, quote_count: 0,
+                          },
+                        },
+                      },
+                    },
+                  },
+                })),
+              },
+            ],
+          },
+        },
+      }),
+    });
+
+    for (let batch = 0n; batch < 12n; batch++) {
+      store.accept(payload(1900000000000000000n + batch * 500n, 500));
+    }
+
+    assert.ok(store.tweetCount <= 5000, `store held ${store.tweetCount}`);
+    assert.ok(store.tweetCount >= 4500, 'evicted far more than necessary');
+  });
+});
