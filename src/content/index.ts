@@ -20,7 +20,7 @@ import { scrapeDom } from '../parse/dom.ts';
 import { drivePagination, describeStop, completenessOf } from '../thread/paginate.ts';
 import type { PaginationResult } from '../thread/paginate.ts';
 import type { Completeness } from '../types/model.ts';
-import { loadSettings, onSettingsChanged, DEFAULTS } from '../shared/config.ts';
+import { loadSettings, saveSettings, onSettingsChanged, DEFAULTS } from '../shared/config.ts';
 import type { Settings } from '../shared/config.ts';
 import { setDebug, debug, warn, seenShapeKeys } from '../shared/log.ts';
 import type { RuntimeRequest, RuntimeResponse } from '../shared/messages.ts';
@@ -39,11 +39,18 @@ store.onPayload((_json, meta) => {
 
 let settings: Settings = DEFAULTS;
 
+// Declared up here, ahead of the settings load, because that load pushes the
+// reply scope onto the UI as soon as it resolves. Which of the two lands first
+// is a race — the UI waits for document.body, the settings for storage — so
+// both write, and this one has to be able to see `ui` at all.
+let ui: Ui | null = null;
+
 void (async () => {
   try {
     settings = await loadSettings();
     setDebug(settings.debug);
     store.setRetainRaw(settings.debug);
+    syncScopeOntoUi();
     debug('content script ready', __VERSION__);
   } catch (err) {
     warn('settings load failed; using defaults', err);
@@ -54,11 +61,29 @@ onSettingsChanged((next) => {
   settings = next;
   setDebug(next.debug);
   store.setRetainRaw(next.debug);
+  syncScopeOntoUi();
 });
+
+
+/**
+ * Push the stored reply scope onto the menu.
+ *
+ * Called from both the settings load and the UI mount because which of the two
+ * finishes first is a race: the UI waits for document.body, the settings for
+ * storage. Whichever lands second does the useful write, and the other is a
+ * no-op. Wrapped, like every other UI call here — a menu that fails to update
+ * must not take down the capture path.
+ */
+function syncScopeOntoUi(): void {
+  try {
+    ui?.setIncludeReplies(settings.includeReplies);
+  } catch (err) {
+    debug('could not sync the reply scope onto the UI', err);
+  }
+}
 
 // --- UI ---------------------------------------------------------------------
 
-let ui: Ui | null = null;
 let focalId: string | null = null;
 let bodyReady = false;
 let running = false;
@@ -137,7 +162,10 @@ async function doExport(withScroll: boolean): Promise<void> {
     let collection: 'complete' | 'partial' | 'unknown' = 'unknown';
     lastRun = { pagination: null, collection: 'unknown', outcome: null };
 
-    if (withScroll && settings.autoScroll) {
+    // No point scrolling for replies nobody asked for: the author's spine
+    // arrives in the first TweetDetail payload, so this turns an author-thread
+    // export into an instant one instead of a minute of auto-scrolling.
+    if (withScroll && settings.autoScroll && settings.includeReplies) {
       const seconds = (ms: number) => `${Math.round(ms / 1000)}s`;
       ui.progress(`Collecting replies… ${store.tweetCount} tweets`, true);
 
@@ -223,6 +251,15 @@ function syncUi(): void {
     if (ui) return;
     ui = new Ui({
       onExport: (plain) => void doExport(plain),
+      onIncludeRepliesChange: (value) => {
+        // Applied immediately so the next click acts on it, then persisted.
+        // A failed write leaves the toggle working for this page rather than
+        // silently reverting under the user.
+        settings = { ...settings, includeReplies: value };
+        void saveSettings(settings).catch((err) =>
+          warn('could not persist the reply scope', err),
+        );
+      },
       onCancel: () => {
         // The toast's action button is "Reload" after a missed capture and
         // "Cancel" the rest of the time.
@@ -241,6 +278,7 @@ function syncUi(): void {
       },
     });
     ui.mount();
+    syncScopeOntoUi();
     // Unconditional in dev builds: diagnosing "the button is missing" should not
     // itself require turning on a setting.
     if (__DEV__) console.debug('[x-thread-md] UI mounted for', focalId);

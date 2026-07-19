@@ -133,6 +133,16 @@ export interface ThreadStats {
  */
 export type Completeness = 'complete' | 'partial' | 'unknown';
 
+/**
+ * What the reader asked for, as opposed to what was available.
+ *
+ * `author-thread` keeps the author's own spine — one tweet when the post is not
+ * threaded — and no replies. It must stay distinct from an export that wanted
+ * replies and did not get them: one is a choice, the other is a gap, and a
+ * document conflating them tells the reader something false.
+ */
+export type Scope = 'conversation' | 'author-thread';
+
 export interface ThreadDoc {
   /** The tweet whose /status/ URL we are on. */
   focal: Tweet;
@@ -143,6 +153,7 @@ export interface ThreadDoc {
   capturedAt: string;
   stats: ThreadStats;
   collection: Completeness;
+  scope: Scope;
   /** Surfaced both in the frontmatter and in the progress toast. */
   warnings: string[];
 }

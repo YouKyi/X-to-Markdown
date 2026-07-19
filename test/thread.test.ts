@@ -385,3 +385,83 @@ describe('assemble — truncation drops whole subtrees', () => {
     assert.equal(assemble([root, stray], root.id, opts()).stats.orphans, 1);
   });
 });
+
+describe('assemble — author-thread scope', () => {
+  const root = tweet('1900000000000000000', {
+    author: 'robin',
+    conversationId: '1900000000000000000',
+    text: 'first',
+    metrics: metrics({ replies: 40 }),
+  });
+  const own = tweet('1900000000000000001', {
+    author: 'robin',
+    conversationId: root.id,
+    inReplyToId: root.id,
+    text: 'second',
+    metrics: metrics({ replies: 12 }),
+  });
+  const stranger = tweet('1900000000000000002', {
+    author: 'alice',
+    conversationId: root.id,
+    inReplyToId: root.id,
+    text: 'a reply',
+    metrics: metrics({ replies: 0 }),
+  });
+  const deeper = tweet('1900000000000000003', {
+    author: 'bob',
+    conversationId: root.id,
+    inReplyToId: stranger.id,
+    text: 'a reply to a reply',
+    metrics: metrics({ replies: 0 }),
+  });
+  const all = [root, own, stranger, deeper];
+  const caps = { ...DEFAULT_CAPS, includeReplies: false };
+
+  it('keeps the author spine and nothing else', () => {
+    const doc = assemble(all, root.id, caps);
+    assert.deepEqual(
+      doc.selfThread.map((t) => t.id),
+      [root.id, own.id],
+    );
+    assert.equal(doc.stats.rendered, 2);
+    assert.equal(doc.scope, 'author-thread');
+  });
+
+  it('does not sweep other people back in as orphans', () => {
+    // Everyone else is unvisited by construction here, so the orphan pass would
+    // otherwise re-add the whole conversation at depth 1 — the exact content
+    // the scope exists to exclude.
+    const doc = assemble(all, root.id, caps);
+    assert.equal(doc.stats.orphans, 0);
+    assert.deepEqual(doc.root.children.map((c) => c.tweet.id), [own.id]);
+  });
+
+  it('reports no uncaptured replies', () => {
+    // X says this root has 40 replies. Saying "38 not captured" on a document
+    // that was never meant to carry any reads as failure rather than choice.
+    const doc = assemble(all, root.id, caps);
+    assert.equal(doc.stats.uncaptured, 0);
+    assert.ok(!doc.warnings.some((w) => w.includes('not captured')), doc.warnings.join(' | '));
+  });
+
+  it('is not demoted to partial by a collapsed branch', () => {
+    const doc = assemble(all, root.id, {
+      ...caps,
+      collection: 'complete',
+      collapsedBranches: 3,
+    });
+    assert.equal(doc.collection, 'complete');
+  });
+
+  it('handles a lone unthreaded tweet', () => {
+    const doc = assemble([root, stranger], root.id, caps);
+    assert.deepEqual(doc.selfThread.map((t) => t.id), [root.id]);
+    assert.equal(doc.stats.rendered, 1);
+  });
+
+  it('still exports the whole conversation by default', () => {
+    const doc = assemble(all, root.id, DEFAULT_CAPS);
+    assert.equal(doc.scope, 'conversation');
+    assert.equal(doc.stats.rendered, 4);
+  });
+});

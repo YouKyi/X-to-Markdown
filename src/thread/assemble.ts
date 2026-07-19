@@ -25,6 +25,15 @@ export interface AssembleOptions extends AssembleCaps {
    * is demonstrably missing replies however tidily the scroll loop ended.
    */
   collapsedBranches?: number;
+  /**
+   * Include other people's replies. Off means the author's thread alone.
+   *
+   * Implemented by restricting the child index to the root author before the
+   * tree walk, rather than by pruning afterwards: the spine is then simply what
+   * the walk produces, and the stats describe the document that was actually
+   * asked for instead of one that was built and then cut down.
+   */
+  includeReplies?: boolean;
 }
 
 export const DEFAULT_CAPS: AssembleCaps = {
@@ -163,6 +172,19 @@ export function assemble(
     warnings.push('The conversation root was not captured; the thread starts mid-chain.');
   }
 
+  // Author-thread scope: drop everyone else from the child index before the walk
+  // below ever sees them. What remains is the author answering themselves, which
+  // is exactly the spine — including the degenerate one-tweet case, where the
+  // author replied to nobody and there is nothing to follow.
+  const includeReplies = options.includeReplies !== false;
+  if (!includeReplies) {
+    for (const [parentId, bucket] of childrenOf) {
+      const own = bucket.filter((child) => sameAuthor(child, rootTweet));
+      if (own.length > 0) childrenOf.set(parentId, own);
+      else childrenOf.delete(parentId);
+    }
+  }
+
   // --- Tree construction, breadth-first ---------------------------------------
   //
   // BFS rather than DFS so that hitting the global tweet budget truncates the
@@ -237,8 +259,11 @@ export function assemble(
   // captured — common with "show more replies" fragments). Dropping them
   // silently would be the worst outcome: replies lost with no indication.
 
+  // Skipped entirely in author-thread scope: there, every other participant's
+  // reply is unvisited by construction, so this pass would sweep the whole
+  // conversation back in as orphans — the exact content the scope excludes.
   let orphans = 0;
-  for (const tweet of tweets) {
+  for (const tweet of includeReplies ? tweets : []) {
     if (visited.has(tweet.id)) continue;
     if (rendered >= caps.maxTweets) {
       root.truncatedChildren += 1;
@@ -286,8 +311,13 @@ export function assemble(
   // Not treated as a failure: the count also includes replies that are deleted,
   // hidden, or from muted accounts, which no amount of scrolling would reach.
 
+  // Not computed in author-thread scope. There the reader asked for no replies,
+  // so the gap between what X reports and what the document holds is not a gap
+  // at all — reporting it would put "105 replies not captured" on a document
+  // that was never meant to carry any, which reads as failure rather than
+  // choice.
   let uncaptured = 0;
-  for (const node of nodes.values()) {
+  for (const node of includeReplies ? nodes.values() : []) {
     const declared = node.tweet.metrics.replies;
     if (declared === null) continue;
     const held = node.children.length + node.truncatedChildren;
@@ -333,10 +363,16 @@ export function assemble(
     // replies that were deleted, hidden, or written by muted accounts, which no
     // amount of scrolling would ever reach. Missing those is not an incomplete
     // capture. Missing a branch X offered to expand is.
+    //
+    // Neither demotion applies in author-thread scope: a branch left folded and
+    // a cap on replies both concern material the reader excluded on purpose.
+    // Completeness there is about the author's own spine, which is short and
+    // arrives whole.
     collection:
-      truncated > 0 || (options.collapsedBranches ?? 0) > 0
+      includeReplies && (truncated > 0 || (options.collapsedBranches ?? 0) > 0)
         ? 'partial'
         : (options.collection ?? 'unknown'),
+    scope: includeReplies ? 'conversation' : 'author-thread',
     stats: { captured: tweets.length, rendered, truncated, orphans, uncaptured, source },
     warnings,
   };

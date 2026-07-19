@@ -60,11 +60,19 @@ export function renderFrontmatter(doc: ThreadDoc, settings: Settings, version: s
   out.push(line('metrics_reliable', String(focal.metrics.reliable)));
 
   out.push(line('thread_length', String(doc.selfThread.length)));
-  out.push(line('replies_captured', String(Math.max(0, stats.rendered - doc.selfThread.length))));
-  if (stats.truncated > 0) out.push(line('truncated', String(stats.truncated)));
-  // Replies X says exist that were never loaded — the signal that a branch is
-  // still folded behind a "show replies" control somewhere in the thread.
-  if (stats.uncaptured > 0) out.push(line('replies_not_captured', String(stats.uncaptured)));
+
+  // Scope first, because it decides how to read everything under it. On an
+  // author-thread export the reply counts are omitted rather than written as
+  // zero: `replies_captured: 0` on a post with 138 replies states something
+  // false about the capture, when the truth is that none were asked for.
+  out.push(line('scope', doc.scope));
+  if (doc.scope === 'conversation') {
+    out.push(line('replies_captured', String(Math.max(0, stats.rendered - doc.selfThread.length))));
+    if (stats.truncated > 0) out.push(line('truncated', String(stats.truncated)));
+    // Replies X says exist that were never loaded — the signal that a branch is
+    // still folded behind a "show replies" control somewhere in the thread.
+    if (stats.uncaptured > 0) out.push(line('replies_not_captured', String(stats.uncaptured)));
+  }
   out.push(line('source', stats.source));
   // Whether the whole conversation was reached. The one field that tells you
   // if this archive can be trusted as the complete thread.

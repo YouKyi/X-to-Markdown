@@ -34,6 +34,15 @@ export interface Settings {
   /** Also click "show more replies" controls while scrolling. Structurally
    *  guarded so it can never land on a Follow button — see thread/paginate.ts. */
   expandCollapsed: boolean;
+  /**
+   * Include other people's replies.
+   *
+   * Off exports the author's thread alone — a single tweet when the post is not
+   * threaded. Toggled from the button rather than only from this page, because
+   * it is a per-post decision: some posts are worth keeping whole, most are
+   * worth keeping for what their author said.
+   */
+  includeReplies: boolean;
 
   maxTweets: number;
   maxDepth: number;
@@ -54,6 +63,7 @@ export const DEFAULTS: Settings = {
   debug: false,
   autoScroll: true,
   expandCollapsed: true,
+  includeReplies: true,
 
   maxTweets: 500,
   maxDepth: 10,
@@ -103,6 +113,7 @@ export function normalize(stored: unknown): Settings {
     debug: s.debug === true,
     autoScroll: s.autoScroll !== false,
     expandCollapsed: s.expandCollapsed !== false,
+    includeReplies: s.includeReplies !== false,
 
     maxTweets: clampNumber(s.maxTweets, DEFAULTS.maxTweets, LIMITS.maxTweets),
     maxDepth: clampNumber(s.maxDepth, DEFAULTS.maxDepth, LIMITS.maxDepth),

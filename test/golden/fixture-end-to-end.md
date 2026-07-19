@@ -16,6 +16,7 @@ bookmarks: 5
 views: 3400000
 metrics_reliable: true
 thread_length: 2
+scope: conversation
 replies_captured: 1
 replies_not_captured: 89
 source: graphql

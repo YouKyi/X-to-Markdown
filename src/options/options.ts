@@ -22,6 +22,7 @@ const fields = {
   expandCollapsed: () => el<HTMLInputElement>('expandCollapsed'),
   domMetrics: () => el<HTMLInputElement>('domMetrics'),
   debug: () => el<HTMLInputElement>('debug'),
+  includeReplies: () => el<HTMLInputElement>('includeReplies'),
   maxTweets: () => el<HTMLInputElement>('maxTweets'),
   maxDepth: () => el<HTMLInputElement>('maxDepth'),
   maxChildrenPerNode: () => el<HTMLInputElement>('maxChildrenPerNode'),
@@ -41,6 +42,7 @@ function fill(settings: Settings): void {
   fields.expandCollapsed().checked = settings.expandCollapsed;
   fields.domMetrics().checked = settings.domMetrics;
   fields.debug().checked = settings.debug;
+  fields.includeReplies().checked = settings.includeReplies;
   fields.maxTweets().value = String(settings.maxTweets);
   fields.maxDepth().value = String(settings.maxDepth);
   fields.maxChildrenPerNode().value = String(settings.maxChildrenPerNode);
@@ -66,6 +68,7 @@ function collect(): Settings {
     expandCollapsed: fields.expandCollapsed().checked,
     domMetrics: fields.domMetrics().checked,
     debug: fields.debug().checked,
+    includeReplies: fields.includeReplies().checked,
     maxTweets: Number(fields.maxTweets().value),
     maxDepth: Number(fields.maxDepth().value),
     maxChildrenPerNode: Number(fields.maxChildrenPerNode().value),

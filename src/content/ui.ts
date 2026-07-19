@@ -36,19 +36,37 @@ function icon(): SVGElement {
   return svg;
 }
 
+function caret(): SVGElement {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  const path = document.createElementNS(ns, 'path');
+  path.setAttribute('d', 'M7 10l5 5 5-5z');
+  svg.appendChild(path);
+  return svg;
+}
+
 export interface UiHandlers {
   /** `plain` false means a modifier was held: export without auto-scrolling. */
   onExport: (plain: boolean) => void;
   onCancel: () => void;
+  /** The scope toggle was changed; persist it. */
+  onIncludeRepliesChange: (value: boolean) => void;
 }
 
 export class Ui {
   readonly #root: ShadowRoot;
   readonly #host: HTMLElement;
+  readonly #bar: HTMLElement;
   readonly #button: HTMLButtonElement;
+  readonly #more: HTMLButtonElement;
+  readonly #menu: HTMLElement;
+  readonly #repliesBox: HTMLInputElement;
   readonly #toast: HTMLElement;
   readonly #message: HTMLElement;
   readonly #cancel: HTMLButtonElement;
+  #onDocumentClick: ((event: Event) => void) | null = null;
   #observer: MutationObserver | null = null;
   #placeTimer: ReturnType<typeof setInterval> | null = null;
   #timer: ReturnType<typeof setTimeout> | null = null;
@@ -64,6 +82,12 @@ export class Ui {
     sheet.textContent = styles;
     this.#root.appendChild(sheet);
 
+    // The bar wraps button + caret + menu so the menu can be positioned against
+    // it. Being inside the same shadow root, it follows the host wherever
+    // #place() moves it, with no repositioning code of its own.
+    this.#bar = document.createElement('div');
+    this.#bar.className = 'bar';
+
     this.#button = document.createElement('button');
     this.#button.className = 'btn';
     this.#button.type = 'button';
@@ -75,9 +99,47 @@ export class Ui {
     this.#button.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
+      this.#closeMenu();
       handlers.onExport(!event.altKey);
     });
-    this.#root.appendChild(this.#button);
+
+    this.#more = document.createElement('button');
+    this.#more.className = 'btn more';
+    this.#more.type = 'button';
+    this.#more.title = 'Export options';
+    this.#more.setAttribute('aria-haspopup', 'true');
+    this.#more.setAttribute('aria-expanded', 'false');
+    this.#more.appendChild(caret());
+    this.#more.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.#toggleMenu();
+    });
+
+    this.#menu = document.createElement('div');
+    this.#menu.className = 'menu';
+    this.#menu.hidden = true;
+
+    const row = document.createElement('label');
+    row.className = 'row';
+    this.#repliesBox = document.createElement('input');
+    this.#repliesBox.type = 'checkbox';
+    this.#repliesBox.checked = true;
+    this.#repliesBox.addEventListener('change', () => {
+      handlers.onIncludeRepliesChange(this.#repliesBox.checked);
+      this.#syncHint();
+    });
+    const rowLabel = document.createElement('span');
+    rowLabel.textContent = 'Include replies';
+    row.append(this.#repliesBox, rowLabel);
+
+    const hint = document.createElement('div');
+    hint.className = 'hint';
+    this.#menu.append(row, hint);
+
+    this.#bar.append(this.#button, this.#more, this.#menu);
+    this.#root.appendChild(this.#bar);
+    this.#syncHint();
 
     this.#toast = document.createElement('div');
     this.#toast.className = 'toast';
@@ -93,6 +155,58 @@ export class Ui {
     this.#cancel.addEventListener('click', () => handlers.onCancel());
     this.#toast.append(this.#message, this.#cancel);
     this.#root.appendChild(this.#toast);
+  }
+
+  /**
+   * Reflect the stored setting on the checkbox.
+   *
+   * Called after settings load and on every change from the options page, so
+   * the menu never shows a state the exporter will not act on.
+   */
+  setIncludeReplies(value: boolean): void {
+    this.#repliesBox.checked = value;
+    this.#syncHint();
+  }
+
+  /** Say what the button will produce, so the choice is legible before clicking. */
+  #syncHint(): void {
+    const hint = this.#menu.querySelector('.hint');
+    if (hint) {
+      hint.textContent = this.#repliesBox.checked
+        ? 'The full conversation, replies included.'
+        : "Only the author's thread — no scrolling needed.";
+    }
+    this.#button.title = this.#repliesBox.checked
+      ? 'Export this thread as Markdown (hold Alt to skip loading more replies)'
+      : "Export the author's thread as Markdown";
+  }
+
+  #toggleMenu(): void {
+    if (this.#menu.hidden) this.#openMenu();
+    else this.#closeMenu();
+  }
+
+  #openMenu(): void {
+    this.#menu.hidden = false;
+    this.#more.setAttribute('aria-expanded', 'true');
+    // Dismiss on any click elsewhere. Registered on the document rather than on
+    // the host so a click anywhere on x.com closes it; the listener is removed
+    // again on close so nothing of ours stays attached to the page while idle.
+    this.#onDocumentClick = (event: Event) => {
+      if (event.composedPath().includes(this.#bar)) return;
+      this.#closeMenu();
+    };
+    document.addEventListener('click', this.#onDocumentClick, true);
+  }
+
+  #closeMenu(): void {
+    if (this.#menu.hidden) return;
+    this.#menu.hidden = true;
+    this.#more.setAttribute('aria-expanded', 'false');
+    if (this.#onDocumentClick) {
+      document.removeEventListener('click', this.#onDocumentClick, true);
+      this.#onDocumentClick = null;
+    }
   }
 
   /**
@@ -183,7 +297,7 @@ export class Ui {
     }
     if (!this.#anchored) debug('export button anchored to the tweet action bar');
     this.#anchored = true;
-    this.#button.classList.remove('floating');
+    this.#bar.classList.remove('floating');
   }
 
   #resetAction(): void {
@@ -196,7 +310,7 @@ export class Ui {
   #toFloating(): void {
     if (this.#host.parentElement !== document.body) document.body.appendChild(this.#host);
     this.#host.removeAttribute('style');
-    this.#button.classList.add('floating');
+    this.#bar.classList.add('floating');
     this.#anchored = false;
   }
 

@@ -5,6 +5,16 @@
   all: initial;
 }
 
+/* Wraps the button, its caret and the options menu. Positioned so the menu can
+   anchor to it; being in the same shadow root it follows the host wherever the
+   placement code moves it, with no repositioning logic of its own. */
+.bar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -97,12 +107,70 @@
   display: none;
 }
 
-/* Floating fallback, used when the tweet action bar cannot be found. */
+.btn.more {
+  padding: 0 4px;
+  min-width: 26px;
+  justify-content: center;
+}
+
+.btn.more svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Anchored to .bar, so it travels with the button when X re-renders the header
+   and the placement code re-parents the host. */
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 2147483647;
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid rgb(207 217 222);
+  border-radius: 10px;
+  background: rgb(255 255 255);
+  color: rgb(15 20 25);
+  font: 400 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menu .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.menu .hint {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu {
+    border-color: rgb(83 100 113);
+    background: rgb(21 32 43);
+    color: rgb(231 233 234);
+  }
+}
+
+/* Floating fallback, used when the tweet action bar cannot be found. The class
+   sits on .bar so the caret and menu travel with the button; the colouring below
+   targets the buttons inside it rather than the wrapper. */
 .floating {
   position: fixed;
   right: 16px;
   bottom: 68px;
   z-index: 2147483646;
+}
+
+.floating .btn {
   background: rgb(29 155 240);
   border-color: transparent;
   color: #fff;
@@ -110,8 +178,15 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.floating:hover {
+.floating .btn:hover {
   background: rgb(26 140 216);
+}
+
+/* Opens upward when floating: the bar sits near the bottom of the viewport, so
+   a menu below it would render off screen. */
+.floating .menu {
+  top: auto;
+  bottom: calc(100% + 6px);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -174,13 +174,14 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
     // to have the whole conversation whatever the collection pass reported.
     collection: degraded ? 'partial' : (input.collection ?? 'unknown'),
     ...(input.collapsedBranches ? { collapsedBranches: input.collapsedBranches } : {}),
+    includeReplies: settings.includeReplies,
   });
 
   // Stated separately from the metrics-derived uncaptured count, because this
   // one is observed rather than inferred: X marked those branches as having more
   // behind them. Not a number — see PayloadStore#collapsedBranches for why the
   // count over-reports once a branch has been expanded.
-  if ((input.collapsedBranches ?? 0) > 0) {
+  if (settings.includeReplies && (input.collapsedBranches ?? 0) > 0) {
     doc.warnings.push(
       'Some reply branches were collapsed behind a "show more" control and were not expanded.',
     );

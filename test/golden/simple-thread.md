@@ -15,6 +15,7 @@ quotes: 12
 views: 3400000
 metrics_reliable: true
 thread_length: 2
+scope: conversation
 replies_captured: 1
 source: graphql
 collection: unknown
