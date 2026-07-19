@@ -16,12 +16,12 @@ const LIST_ITEM = /^\s*(?:[-*+]|\d{1,9}[.)])\s+\S/;
  * `---`, `***`, `___` on their own line.
  *
  * This one MUST stay escaped: an unescaped `---` in tweet text would render as
- * a horizontal rule, and — far worse — a `---` immediately after the frontmatter
+ * a horizontal rule, and - far worse - a `---` immediately after the frontmatter
  * would be read as a second document delimiter and corrupt the whole file.
  */
 const THEMATIC_BREAK = /^(\s*)([-*_])((?:\s*\2){2,}\s*)$/;
 
-/** `# heading` — only with the trailing space. `#hashtag` is not a heading. */
+/** `# heading` - only with the trailing space. `#hashtag` is not a heading. */
 const ATX_HEADING = /^(\s*)(#{1,6})(\s)/;
 
 /** `>` starts a blockquote and `|` can start a GFM table row. */
@@ -54,7 +54,7 @@ export function escapeLine(line: string, mode: EscapeMode = 'minimal'): string {
  * Escape a block of tweet text, optionally forcing hard line breaks.
  *
  * Tweets separate lines with a single newline. Under strict CommonMark those
- * collapse into one paragraph, which loses the author's line structure — a real
+ * collapse into one paragraph, which loses the author's line structure - a real
  * fidelity loss on posts that are written as short lines. Two trailing spaces
  * force a `<br>` in every renderer.
  *

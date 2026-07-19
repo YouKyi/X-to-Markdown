@@ -42,7 +42,7 @@ export function renderFrontmatter(doc: ThreadDoc, settings: Settings, version: s
   out.push(line('captured', yamlScalar(doc.capturedAt)));
 
   // Flat, not a nested map. Obsidian's property system handles text, list,
-  // number, checkbox and date — a nested mapping is displayed as a raw JSON
+  // number, checkbox and date - a nested mapping is displayed as a raw JSON
   // blob and cannot be sorted or queried, which defeats the point of putting
   // metrics in the frontmatter at all.
   const metrics: [string, number | null][] = [
@@ -69,7 +69,7 @@ export function renderFrontmatter(doc: ThreadDoc, settings: Settings, version: s
   if (doc.scope === 'conversation') {
     out.push(line('replies_captured', String(Math.max(0, stats.rendered - doc.selfThread.length))));
     if (stats.truncated > 0) out.push(line('truncated', String(stats.truncated)));
-    // Replies X says exist that were never loaded — the signal that a branch is
+    // Replies X says exist that were never loaded - the signal that a branch is
     // still folded behind a "show replies" control somewhere in the thread.
     if (stats.uncaptured > 0) out.push(line('replies_not_captured', String(stats.uncaptured)));
   }

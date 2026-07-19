@@ -1,7 +1,7 @@
 // SPA route watcher.
 //
 // x.com never reloads: navigating between tweets swaps the DOM under a
-// pushState. Polling location is deliberate — a MutationObserver over X's
+// pushState. Polling location is deliberate - a MutationObserver over X's
 // document fires constantly on a virtualised timeline, and the Navigation API
 // is not something to depend on here.
 

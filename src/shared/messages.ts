@@ -21,7 +21,7 @@ export interface BridgeGraphqlMessage {
   url: string;
   /** HTTP status. 429 stops pagination immediately. */
   status: number;
-  /** Which transport captured it — useful when diagnosing a miss. */
+  /** Which transport captured it - useful when diagnosing a miss. */
   transport: 'fetch' | 'xhr';
   body: string;
 }

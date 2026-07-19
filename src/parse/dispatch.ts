@@ -54,9 +54,9 @@ const ROOT_SEARCH_DEPTH = 6;
  *
  * `TIMELINE_ROOTS` above is a list of paths observed in captures, which means it
  * is only ever as current as the last capture. X serves conversation data from
- * roots not on that list — `ModeratedTimeline`, which carries the replies an
+ * roots not on that list - `ModeratedTimeline`, which carries the replies an
  * author has hidden, puts them under
- * `data.tweet.result.timeline_response.timeline.instructions` — and a payload
+ * `data.tweet.result.timeline_response.timeline.instructions` - and a payload
  * whose root is unlisted is not partially parsed, it is dropped whole.
  *
  * So when no known path matches, the array is looked for by shape instead. The
@@ -114,10 +114,10 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
   }
 
   // No listed root matched. Before giving up, look for the instructions array by
-  // shape — see findInstructions.
+  // shape - see findInstructions.
   //
   // The result is kept only if it actually yielded tweets. x.com serves plenty
-  // of timelines that are not conversations — the trends sidebar (ExploreSidebar)
+  // of timelines that are not conversations - the trends sidebar (ExploreSidebar)
   // is one, and it does carry Timeline* instructions, so the shape test alone
   // matches it. Walking those is harmless but not free: every one of them would
   // report its `frame-*` and `trend-*` entries as unfamiliar shapes and bury the
@@ -137,7 +137,7 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
         debug('timeline root found by shape:', attempt.results.length, 'results');
         // Walk it again, this time reporting. The quiet pass only answered "is
         // this a conversation"; now that the answer is yes, its unfamiliar
-        // entries are exactly the drift signal we want — and an unlisted root is
+        // entries are exactly the drift signal we want - and an unlisted root is
         // the likeliest place to find one.
         walked = walkInstructions(instructions);
       }
@@ -162,7 +162,7 @@ export function dispatch(payload: unknown, options: ParseTweetOptions = {}): Dis
       parsed = 1;
     } else {
       // Not a tweet-bearing payload at all: profile lookups, settings, typeahead.
-      // Silent by design — most GraphQL traffic on x.com is not a conversation.
+      // Silent by design - most GraphQL traffic on x.com is not a conversation.
       return EMPTY;
     }
   }

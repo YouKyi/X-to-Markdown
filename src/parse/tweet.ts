@@ -51,7 +51,7 @@ function parseAuthor(tweetResult: unknown, missing: string[]): Author {
 
 /**
  * Parse one `tweet_results.result` object.
- * Returns null only when there is no usable id — anything else degrades to a
+ * Returns null only when there is no usable id - anything else degrades to a
  * `partial` tweet rather than being dropped.
  */
 export function parseTweet(

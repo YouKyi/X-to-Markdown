@@ -2,7 +2,7 @@
 //
 // Trust model (see SECURITY.md): the checks below are anti-confusion, not
 // anti-attack. A hostile script already running on x.com could forge this
-// envelope — but it is already on x.com and already has this data. What matters
+// envelope - but it is already on x.com and already has this data. What matters
 // is that everything arriving here is treated as untrusted input: no eval, no
 // innerHTML, JSON.parse only inside try/catch, all field access via safe
 // accessors. This side never posts back into the page.

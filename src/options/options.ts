@@ -1,4 +1,4 @@
-// Options page. Plain DOM binding against storage.sync — no framework, no
+// Options page. Plain DOM binding against storage.sync - no framework, no
 // inline script (the extension_pages CSP forbids it).
 
 import { DEFAULTS, loadSettings, saveSettings, normalize } from '../shared/config.ts';

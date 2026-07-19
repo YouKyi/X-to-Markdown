@@ -67,7 +67,7 @@ export function renderMarkdown(doc: ThreadDoc, settings: Settings, version: stri
   lines.push('');
 
   const day = isoDay(doc.focal.createdAt) || isoDay(doc.capturedAt);
-  lines.push(`# @${doc.root.tweet.author.handle}${day ? ` — ${day}` : ''}`);
+  lines.push(`# @${doc.root.tweet.author.handle}${day ? ` - ${day}` : ''}`);
   lines.push('');
 
   // The self-thread renders as top-level sections separated by `---`, never as
@@ -82,7 +82,7 @@ export function renderMarkdown(doc: ThreadDoc, settings: Settings, version: stri
   // spine node that is not itself on the spine.
   //
   // Spine nodes are rendered above as top-level sections, so they never pass
-  // through renderReply — their own truncation counts have to be gathered here
+  // through renderReply - their own truncation counts have to be gathered here
   // or a capped export would look complete.
   const replies: ThreadNode[] = [];
   let spineTruncated = 0;

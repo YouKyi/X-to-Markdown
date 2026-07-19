@@ -5,7 +5,7 @@
   all: initial;
 }
 
-/* Wraps the button and its caret — nothing else. The menu deliberately lives
+/* Wraps the button and its caret - nothing else. The menu deliberately lives
    on the body-level overlay host: this subtree is re-parented into X's action
    bar, under a transformed ancestor that would hijack the containing block of
    any fixed descendant (see ui.ts). */
@@ -126,7 +126,7 @@
    is not stacking). fixed inside the action bar was displaced by exactly the
    main column's origin, because an ancestor with a transform/filter becomes
    the containing block for fixed descendants. Only fixed AND body-level
-   escapes both. Coordinates cannot come from CSS — there is no CSS anchor —
+   escapes both. Coordinates cannot come from CSS - there is no CSS anchor -
    so #positionMenu() writes them from the bar's rect on open. */
 .menu {
   position: fixed;

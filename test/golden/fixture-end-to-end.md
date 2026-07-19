@@ -27,7 +27,7 @@ tags:
   - x-export
 ---
 
-# @robin — 2006-03-21
+# @robin - 2006-03-21
 
 just setting up my twttr, see https://example.com/twttr-origins
 

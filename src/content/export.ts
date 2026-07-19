@@ -93,7 +93,7 @@ export interface ExportInput {
  * it holds both. Filtering here rather than clearing on navigation is what makes
  * that safe: it cannot race with an arriving payload, and it is exact.
  *
- * Tweets with no conversation id — everything the DOM fallback produces — are
+ * Tweets with no conversation id - everything the DOM fallback produces - are
  * kept only when nothing else identifies them, since dropping them would leave
  * that path with nothing at all.
  */
@@ -114,8 +114,8 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   let degraded: string | null = null;
 
   // Step 3 of the ladder: interception produced nothing, so read what is on
-  // screen. Strictly worse — no long-form text, no expanded links, no reliable
-  // metrics — but a flagged partial document beats an error.
+  // screen. Strictly worse - no long-form text, no expanded links, no reliable
+  // metrics - but a flagged partial document beats an error.
   if (tweets.length === 0) {
     tweets = input.scrapeDom?.() ?? [];
     if (tweets.length > 0) {
@@ -125,7 +125,7 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   }
 
   // Step 4: nothing anywhere. The caller offers a reload, which is the only
-  // thing that actually helps — the payload was missed and cannot be replayed.
+  // thing that actually helps - the payload was missed and cannot be replayed.
   if (tweets.length === 0) {
     return {
       ok: false,
@@ -139,7 +139,7 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   const hasFocal = tweets.some((t) => t.id === focalId);
 
   // A DOM scrape that does not contain the tweet whose URL we are on is not a
-  // partial capture of this conversation — it is the previous page's articles,
+  // partial capture of this conversation - it is the previous page's articles,
   // still rendered because X had not recycled them yet. Exporting "the rest"
   // there produced a document attributing one thread's replies to another
   // thread's author, which is worse than no document.
@@ -179,7 +179,7 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
 
   // Stated separately from the metrics-derived uncaptured count, because this
   // one is observed rather than inferred: X marked those branches as having more
-  // behind them. Not a number — see PayloadStore#collapsedBranches for why the
+  // behind them. Not a number - see PayloadStore#collapsedBranches for why the
   // count over-reports once a branch has been expanded.
   if (settings.includeReplies && (input.collapsedBranches ?? 0) > 0) {
     doc.warnings.push(
@@ -232,7 +232,7 @@ export async function runExport(input: ExportInput): Promise<ExportOutcome> {
   };
 }
 
-/** Lowest id in the largest conversation — the best guess at a root. */
+/** Lowest id in the largest conversation - the best guess at a root. */
 function pickAnchor(tweets: Tweet[]): string | null {
   const counts = new Map<string, Tweet[]>();
   for (const tweet of tweets) {

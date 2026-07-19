@@ -25,7 +25,7 @@ tags:
   - x-export
 ---
 
-# @robin — 2006-03-21
+# @robin - 2006-03-21
 
 first note in the new system
 

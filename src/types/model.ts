@@ -136,8 +136,8 @@ export type Completeness = 'complete' | 'partial' | 'unknown';
 /**
  * What the reader asked for, as opposed to what was available.
  *
- * `author-thread` keeps the author's own spine — one tweet when the post is not
- * threaded — and no replies. It must stay distinct from an export that wanted
+ * `author-thread` keeps the author's own spine - one tweet when the post is not
+ * threaded - and no replies. It must stay distinct from an export that wanted
  * replies and did not get them: one is a choice, the other is a gap, and a
  * document conflating them tells the reader something false.
  */

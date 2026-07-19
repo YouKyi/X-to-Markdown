@@ -3,7 +3,7 @@
 // Two properties make the rest of the design simple:
 //
 //   1. It is append-only. X's timeline is virtualised, so scrolling destroys DOM
-//      nodes — but we collect from the network, so scrolling away never loses
+//      nodes - but we collect from the network, so scrolling away never loses
 //      data and the pagination driver can scroll freely without scraping.
 //
 //   2. It carries a version counter. The pagination driver waits on the counter
@@ -21,8 +21,8 @@ const RAW_RING_SIZE = 5;
 /**
  * Upper bound on retained tweets.
  *
- * The store is deliberately never cleared on SPA navigation — doing so raced
- * with the payload it was meant to make room for — so a long browsing session
+ * The store is deliberately never cleared on SPA navigation - doing so raced
+ * with the payload it was meant to make room for - so a long browsing session
  * accumulates every conversation visited. Isolation is handled at export time
  * by conversation id; this is only about memory.
  *
@@ -44,7 +44,7 @@ export interface RawPayload {
 
 export interface PayloadMeta {
   status: number;
-  /** Operation name lifted from the GraphQL path. Debug label only — X renames
+  /** Operation name lifted from the GraphQL path. Debug label only - X renames
    *  operations, so nothing dispatches on this. */
   operation: string;
   /** Last `cursor-bottom` value seen, used to detect cursor exhaustion. */
@@ -106,7 +106,7 @@ export class PayloadStore {
     return this.#cursorBottom;
   }
 
-  /** True once a payload parsed suspiciously poorly — likely a schema change. */
+  /** True once a payload parsed suspiciously poorly - likely a schema change. */
   get sawLowYield(): boolean {
     return this.#lowYield;
   }

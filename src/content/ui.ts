@@ -8,12 +8,12 @@
 //
 // There are TWO hosts, not one, and the split is load-bearing. The button host
 // is re-parented into the tweet action bar, and somewhere above that bar X has
-// an element with a transform/filter — which, per CSS, becomes the containing
+// an element with a transform/filter - which, per CSS, becomes the containing
 // block for every position: fixed descendant. Fixed coordinates computed
 // against the viewport were being re-interpreted relative to X's main column:
 // the menu rendered displaced by exactly the column's origin, (743, 52) on the
 // capture that exposed it. The toast has quietly had the same containing block
-// all along. So everything position: fixed — menu and toast — lives on a
+// all along. So everything position: fixed - menu and toast - lives on a
 // second host appended to document.body, which sits under no transformed
 // ancestor and resolves fixed coordinates against the actual viewport.
 
@@ -24,7 +24,7 @@ const HOST_ID = 'x-thread-md-root';
 const OVERLAY_ID = 'x-thread-md-overlay';
 
 /**
- * The action bar under a tweet — the row holding reply/repost/like.
+ * The action bar under a tweet - the row holding reply/repost/like.
  *
  * `[role="group"]` is the anchor rather than a data-testid because it is
  * semantic markup X is unlikely to drop, whereas testids get renamed. If it
@@ -107,7 +107,7 @@ export class Ui {
 
     // The bar wraps button + caret. The menu is NOT in here: it is fixed, and
     // this subtree gets re-parented under X's transformed column, which would
-    // hijack its containing block — the module comment has the full story.
+    // hijack its containing block - the module comment has the full story.
     this.#bar = document.createElement('div');
     this.#bar.className = 'bar';
 
@@ -198,7 +198,7 @@ export class Ui {
     if (hint) {
       hint.textContent = this.#repliesBox.checked
         ? 'The full conversation, replies included.'
-        : "Only the author's thread — no scrolling needed.";
+        : "Only the author's thread, no scrolling needed.";
     }
     this.#button.title = this.#repliesBox.checked
       ? 'Export this thread as Markdown (hold Alt to skip loading more replies)'
@@ -218,7 +218,7 @@ export class Ui {
    *
    * Computed here rather than in CSS because a fixed element has no anchor.
    * Right-aligned to the bar, flipped above it when there is not enough room
-   * below — which is the normal case for the floating button, since it sits
+   * below - which is the normal case for the floating button, since it sits
    * near the bottom of the viewport.
    */
   #positionMenu(): void {
@@ -247,7 +247,7 @@ export class Ui {
     // again on close so nothing of ours stays attached to the page while idle.
     // The shadow roots are closed, so a document-level listener's
     // composedPath() is truncated at their boundary: it shows the HOSTS, never
-    // #bar or #menu. Testing an inner node here silently matches nothing — the
+    // #bar or #menu. Testing an inner node here silently matches nothing - the
     // first version did exactly that, and every click closed the menu,
     // including clicks inside it.
     this.#onDocumentClick = (event: Event) => {
@@ -297,12 +297,12 @@ export class Ui {
     // script and orphans the old one: its listeners are dead but its DOM is
     // still on the page, so without this the user accumulates buttons that do
     // nothing. The shadow root is closed, so a stale host cannot be told apart
-    // from ours — removing every one and re-appending is the reliable move.
+    // from ours - removing every one and re-appending is the reliable move.
     for (const stale of document.querySelectorAll(`#${HOST_ID}, #${OVERLAY_ID}`)) {
       if (stale !== this.#host && stale !== this.#overlayHost) stale.remove();
     }
 
-    // The overlay host stays a direct child of <body> for its whole life —
+    // The overlay host stays a direct child of <body> for its whole life -
     // never re-parented, never under a transformed ancestor. That property is
     // what keeps its fixed-position children honest; see the module comment.
     if (!this.#overlayHost.isConnected) document.body.appendChild(this.#overlayHost);
@@ -398,7 +398,7 @@ export class Ui {
     this.#anchored = false;
   }
 
-  /** The action bar of the first article on the page — the focal tweet. */
+  /** The action bar of the first article on the page - the focal tweet. */
   #focalActionBar(): Element | null {
     const article = document.querySelector(ARTICLE);
     if (!article) return null;

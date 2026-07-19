@@ -8,7 +8,7 @@
 //   - Everything touching the DOM waits for document.body, which does not exist
 //     yet at document_start.
 //   - Every UI call is wrapped. A broken button must degrade to "no button",
-//     never to a dead content script — an uncaught throw at module scope aborts
+//     never to a dead content script - an uncaught throw at module scope aborts
 //     the rest of the file, taking the capture path down with it.
 
 import { listen } from './bridge.ts';
@@ -41,7 +41,7 @@ let settings: Settings = DEFAULTS;
 
 // Declared up here, ahead of the settings load, because that load pushes the
 // reply scope onto the UI as soon as it resolves. Which of the two lands first
-// is a race — the UI waits for document.body, the settings for storage — so
+// is a race - the UI waits for document.body, the settings for storage - so
 // both write, and this one has to be able to see `ui` at all.
 let ui: Ui | null = null;
 
@@ -71,7 +71,7 @@ onSettingsChanged((next) => {
  * Called from both the settings load and the UI mount because which of the two
  * finishes first is a race: the UI waits for document.body, the settings for
  * storage. Whichever lands second does the useful write, and the other is a
- * no-op. Wrapped, like every other UI call here — a menu that fails to update
+ * no-op. Wrapped, like every other UI call here - a menu that fails to update
  * must not take down the capture path.
  */
 function syncScopeOntoUi(): void {
@@ -114,7 +114,7 @@ let aborter: AbortController | null = null;
  *
  * Kept because the interesting failures are not visible in the payloads alone.
  * The TimelineAddToModule bug looked like `expansionsClicked: 3` against
- * `tweetsCollected: 0` — payloads plus outcome, side by side. Recovering that
+ * `tweetsCollected: 0` - payloads plus outcome, side by side. Recovering that
  * from a console paste took three round trips through the user; the dump now
  * carries it.
  */
@@ -225,7 +225,7 @@ async function doExport(withScroll: boolean): Promise<void> {
     if (stopNote) message = `${stopNote} ${message}`;
     // A schema drift warning matters more than the success count, so it goes
     // last where it is read.
-    if (store.sawLowYield) message += ' Some entries did not parse — X may have changed its schema.';
+    if (store.sawLowYield) message += ' Some entries did not parse. X may have changed its schema.';
     ui.done(message);
   } catch (err) {
     warn('export threw', err);
@@ -326,7 +326,7 @@ function retire(): void {
 }
 
 // The route watcher only fires on navigation, so orphaning would go unnoticed
-// on a tab left sitting on one thread — which is exactly the case where a dead
+// on a tab left sitting on one thread - which is exactly the case where a dead
 // button accumulates.
 livenessTimer = setInterval(() => {
   if (!contextAlive()) retire();
@@ -366,7 +366,7 @@ stopWatching = watchRoute((route) => {
   // This poll runs every 400ms, while X answers a click with its TweetDetail in
   // roughly 200ms. Clearing on route change therefore destroyed the capture it
   // was meant to make room for: the payload had already arrived, the store was
-  // emptied, and the export fell through to the DOM — where it then scraped the
+  // emptied, and the export fell through to the DOM - where it then scraped the
   // *previous* thread's articles, which had not been recycled yet.
   //
   // Isolation between conversations is enforced at export time instead, by
@@ -394,7 +394,7 @@ stopWatching = watchRoute((route) => {
 //
 // None of the fields added around `payloads` can reach a committed fixture:
 // tools/prune-fixture.mjs reads `payloads[].url` and `payloads[].json` and
-// discards the rest of the wrapper. Keep it that way — this envelope holds the
+// discards the rest of the wrapper. Keep it that way - this envelope holds the
 // user agent and their settings, and the repository is public.
 browser.runtime.onMessage.addListener((message) => {
   const request = message as { kind?: string };

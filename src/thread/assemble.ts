@@ -1,7 +1,7 @@
 // Tweet[] + focal id -> ThreadDoc.
 //
 // Pure function: no DOM, no browser APIs, no clock except the injected one.
-// That is deliberate — this is where the interesting logic lives, and it should
+// That is deliberate - this is where the interesting logic lives, and it should
 // be verifiable with `node --test` alone.
 
 import type { Completeness, Source, Tweet, ThreadDoc, ThreadNode } from '../types/model.ts';
@@ -48,7 +48,7 @@ const MAX_ANCESTOR_HOPS = 100;
 /**
  * Sibling order.
  *
- * Tweet IDs are Snowflakes, so numeric ID order *is* chronological — and it is
+ * Tweet IDs are Snowflakes, so numeric ID order *is* chronological - and it is
  * more reliable than createdAt, which has second granularity and therefore
  * produces ties. Determinism matters here because golden tests compare bytes.
  */
@@ -94,7 +94,7 @@ function makeNode(tweet: Tweet, depth: number): ThreadNode {
  * Walk up from the focal tweet to the highest captured ancestor.
  *
  * X often does not return ancestors above the focal conversation, so stopping
- * at an uncaptured parent is the normal case, not an error — the resulting root
+ * at an uncaptured parent is the normal case, not an error - the resulting root
  * is flagged `orphan` and a warning is emitted.
  */
 function findRoot(
@@ -174,7 +174,7 @@ export function assemble(
 
   // Author-thread scope: drop everyone else from the child index before the walk
   // below ever sees them. What remains is the author answering themselves, which
-  // is exactly the spine — including the degenerate one-tweet case, where the
+  // is exactly the spine - including the degenerate one-tweet case, where the
   // author replied to nobody and there is nothing to follow.
   const includeReplies = options.includeReplies !== false;
   if (!includeReplies) {
@@ -203,7 +203,7 @@ export function assemble(
    *
    * Marking only the tweet itself would leave its descendants unvisited, and
    * the orphan pass below would then resurface each of them at depth 1 as a
-   * top-level reply — one capped reply manufacturing a whole cascade of
+   * top-level reply - one capped reply manufacturing a whole cascade of
    * orphans. On a busy thread that turned a readable tree into a flat list.
    */
   const dropSubtree = (tweet: Tweet): number => {
@@ -256,12 +256,12 @@ export function assemble(
   // --- Orphan bucket -----------------------------------------------------------
   //
   // Tweets captured but never reached by the walk (their parent was never
-  // captured — common with "show more replies" fragments). Dropping them
+  // captured - common with "show more replies" fragments). Dropping them
   // silently would be the worst outcome: replies lost with no indication.
 
   // Skipped entirely in author-thread scope: there, every other participant's
   // reply is unvisited by construction, so this pass would sweep the whole
-  // conversation back in as orphans — the exact content the scope excludes.
+  // conversation back in as orphans - the exact content the scope excludes.
   let orphans = 0;
   for (const tweet of includeReplies ? tweets : []) {
     if (visited.has(tweet.id)) continue;
@@ -305,7 +305,7 @@ export function assemble(
   //
   // X tells us how many replies each tweet has. Comparing that against what we
   // actually hold is the only way to notice a branch still folded behind a
-  // "show replies" control — otherwise the export just quietly stops there and
+  // "show replies" control - otherwise the export just quietly stops there and
   // reads as if the conversation ended.
   //
   // Not treated as a failure: the count also includes replies that are deleted,
@@ -313,7 +313,7 @@ export function assemble(
 
   // Not computed in author-thread scope. There the reader asked for no replies,
   // so the gap between what X reports and what the document holds is not a gap
-  // at all — reporting it would put "105 replies not captured" on a document
+  // at all - reporting it would put "105 replies not captured" on a document
   // that was never meant to carry any, which reads as failure rather than
   // choice.
   let uncaptured = 0;

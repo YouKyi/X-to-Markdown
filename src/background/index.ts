@@ -5,8 +5,8 @@
 // Markdown file can be handed to downloads.download as a blob URL rather than a
 // size-limited data: URL.
 //
-// This page holds the only two privileged capabilities in the extension —
-// downloads and permissions — and nothing else.
+// This page holds the only two privileged capabilities in the extension -
+// downloads and permissions - and nothing else.
 
 import type { RuntimeRequest, RuntimeResponse } from '../shared/messages.ts';
 import { warn } from '../shared/log.ts';
@@ -73,7 +73,7 @@ browser.runtime.onMessage.addListener((message) => {
 // Toolbar action. Two jobs, in priority order.
 //
 // Host permissions are granted at install from Firefox 127 on, so the missing
-// case is rare — but the user can revoke them in about:addons, and when they do
+// case is rare - but the user can revoke them in about:addons, and when they do
 // the content script silently stops injecting. Without this the extension would
 // simply appear broken, so the toolbar button becomes the way back.
 //

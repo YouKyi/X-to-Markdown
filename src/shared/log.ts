@@ -28,7 +28,7 @@ export function warn(...args: unknown[]): void {
 /**
  * Log an unrecognised payload shape at most once per distinct key.
  *
- * `key` should identify the *shape*, not the instance — e.g.
+ * `key` should identify the *shape*, not the instance - e.g.
  * `unknown-entry:promoted`, not `unknown-entry:promoted-tweet-1234567890`.
  */
 export function shape(key: string, ...args: unknown[]): void {

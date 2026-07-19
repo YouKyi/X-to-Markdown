@@ -32,12 +32,12 @@ export interface Settings {
   /** Scroll to load the rest of the conversation before exporting. */
   autoScroll: boolean;
   /** Also click "show more replies" controls while scrolling. Structurally
-   *  guarded so it can never land on a Follow button — see thread/paginate.ts. */
+   *  guarded so it can never land on a Follow button - see thread/paginate.ts. */
   expandCollapsed: boolean;
   /**
    * Include other people's replies.
    *
-   * Off exports the author's thread alone — a single tweet when the post is not
+   * Off exports the author's thread alone - a single tweet when the post is not
    * threaded. Toggled from the button rather than only from this page, because
    * it is a per-post decision: some posts are worth keeping whole, most are
    * worth keeping for what their author said.

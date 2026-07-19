@@ -1,7 +1,7 @@
 // Drives x.com into fetching the rest of a conversation.
 //
 // The architectural property that makes this simple: X's timeline is
-// virtualised, so scrolling destroys DOM nodes — but we collect from the
+// virtualised, so scrolling destroys DOM nodes - but we collect from the
 // network into an append-only store. Scrolling away never loses data, so the
 // driver can scroll freely and never needs to scrape as it goes.
 //
@@ -66,7 +66,7 @@ const MAX_LABEL_LENGTH = 60;
  *
  * This is the important safety property of this module. X renders "show more
  * replies" cells and "who to follow" modules with the same container shape, and
- * the latter contain Follow buttons — an auto-click that lands on one takes a
+ * the latter contain Follow buttons - an auto-click that lands on one takes a
  * real action on the user's account. Matching English label text would also
  * simply not work on a non-English UI, so the guards below are structural
  * first, with this list as a backstop rather than the mechanism.
@@ -91,7 +91,7 @@ const FORBIDDEN = new RegExp(
  *
  * A control qualifies only if its containing cell looks like a bare expansion
  * row: no article (so it is not a tweet), no image (so it is not a user module
- * — this is what excludes "who to follow"), and a short label that trips none
+ * - this is what excludes "who to follow"), and a short label that trips none
  * of the words above.
  */
 export function expansionControls(
@@ -130,7 +130,7 @@ export function expansionControls(
 /**
  * Everything the driver touches outside the store.
  *
- * Injected so the loop — which is where the interesting decisions live — can be
+ * Injected so the loop - which is where the interesting decisions live - can be
  * tested without a browser.
  */
 export interface PaginationEnv {
@@ -258,7 +258,7 @@ export async function drivePagination(
 
     // The correction that matters: quiet rounds only count once there is no
     // page left to traverse. X sends the whole conversation up front on a
-    // modest thread, so mid-page rounds legitimately produce nothing new — and
+    // modest thread, so mid-page rounds legitimately produce nothing new - and
     // counting those as quiescence stopped the run two viewports in, before
     // ever reaching the folded "show replies" controls further down.
     quiet = grew || !atBottom ? 0 : quiet + 1;
@@ -296,7 +296,7 @@ export function completenessOf(result: PaginationResult): 'complete' | 'partial'
 }
 
 /**
- * How the run ended, in the user's terms. Never a bare "Done." — a run that
+ * How the run ended, in the user's terms. Never a bare "Done." - a run that
  * stopped at a cap produced an incomplete document and should say so.
  */
 export function describeStop(result: PaginationResult): string | null {
@@ -305,10 +305,10 @@ export function describeStop(result: PaginationResult): string | null {
     case 'cursor':
       return null;
     case 'cap':
-      return 'Stopped at a collection limit — the thread may be incomplete.';
+      return 'Stopped at a collection limit. The thread may be incomplete.';
     case 'cancelled':
-      return 'Cancelled — exporting what was collected so far.';
+      return 'Cancelled. Exporting what was collected so far.';
     case 'rate-limited':
-      return 'X rate-limited the page — exporting what was collected so far.';
+      return 'X rate-limited the page. Exporting what was collected so far.';
   }
 }

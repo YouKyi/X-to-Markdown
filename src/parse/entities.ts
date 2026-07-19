@@ -49,7 +49,7 @@ export function stripMediaUrls(text: string, mediaTco: Set<string>): string {
 
 /**
  * Decode the HTML entities X escapes in tweet text.
- * Only the five it actually emits — this is not a general HTML decoder, and it
+ * Only the five it actually emits - this is not a general HTML decoder, and it
  * must not become one: text goes into Markdown, never into innerHTML.
  */
 export function decodeEntities(text: string): string {

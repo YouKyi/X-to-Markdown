@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>X Thread → Markdown — Options</title>
+    <title>X Thread → Markdown - Options</title>
     <style>
       :root {
         color-scheme: light dark;
@@ -85,8 +85,8 @@
         <label for="escapeMode">Escaping</label>
         <div>
           <select id="escapeMode">
-            <option value="minimal">Minimal — line-leading characters only</option>
-            <option value="strict">Strict — also inline emphasis characters</option>
+            <option value="minimal">Minimal: line-leading characters only</option>
+            <option value="strict">Strict: also inline emphasis characters</option>
           </select>
         </div>
       </div>
@@ -105,7 +105,7 @@
         <label>What to export</label>
         <div>
           <div class="check"><input type="checkbox" id="includeReplies" /><label for="includeReplies">Include other people&rsquo;s replies</label></div>
-          <p class="hint">Off exports the author&rsquo;s thread alone &mdash; a single post when it is not threaded &mdash; and skips scrolling entirely, so the export is immediate. Also switchable from the caret next to the Markdown button, since it is usually a per-post decision.</p>
+          <p class="hint">Off exports the author&rsquo;s thread alone (a single post when it is not threaded) and skips scrolling entirely, so the export is immediate. Also switchable from the caret next to the Markdown button, since it is usually a per-post decision.</p>
         </div>
       </div>
 
@@ -114,7 +114,7 @@
         <div>
           <div class="check"><input type="checkbox" id="autoScroll" /><label for="autoScroll">Scroll the page to load the rest of the conversation</label></div>
           <div class="check"><input type="checkbox" id="expandCollapsed" /><label for="expandCollapsed">Also click &ldquo;show more replies&rdquo; controls</label></div>
-          <p class="hint">Expansion controls are identified structurally, never by their English label, and a control is only clicked when its row contains no tweet, no image and exactly one button &mdash; so it cannot land on a Follow button in a &ldquo;who to follow&rdquo; module. Hold Alt when clicking Markdown to export immediately without scrolling.</p>
+          <p class="hint">Expansion controls are identified structurally, never by their English label, and a control is only clicked when its row contains no tweet, no image and exactly one button, so it cannot land on a Follow button in a &ldquo;who to follow&rdquo; module. Hold Alt when clicking Markdown to export immediately without scrolling.</p>
         </div>
       </div>
 
@@ -132,7 +132,7 @@
         <div>
           <div class="check"><input type="checkbox" id="debug" /><label for="debug">Verbose logging and raw payload retention</label></div>
           <div class="check"><input type="checkbox" id="domMetrics" /><label for="domMetrics">Best-effort engagement counts in DOM fallback mode</label></div>
-          <p class="hint">With debug on, clicking the toolbar button on an x.com tab downloads the last few raw GraphQL payloads as a JSON file — that is how test fixtures are captured.</p>
+          <p class="hint">With debug on, clicking the toolbar button on an x.com tab downloads the last few raw GraphQL payloads as a JSON file; that is how test fixtures are captured.</p>
         </div>
       </div>
 

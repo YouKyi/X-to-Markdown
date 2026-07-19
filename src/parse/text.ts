@@ -30,7 +30,7 @@ export function parseText(tweetResult: unknown): ParsedText {
   const legacy = get(tweetResult, 'legacy');
 
   // Long-form ("note") posts carry the full text; legacy.full_text is truncated
-  // with a trailing t.co. Always prefer the note when present — this is the
+  // with a trailing t.co. Always prefer the note when present - this is the
   // whole reason to intercept GraphQL rather than scrape the DOM.
   const noteResult = get(tweetResult, 'note_tweet.note_tweet_results.result');
   const noteText = str(noteResult, 'text');

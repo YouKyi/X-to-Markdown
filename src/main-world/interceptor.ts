@@ -88,7 +88,7 @@ export function installFetchHook(target: InterceptTarget): void {
 
   const patched = function (this: unknown, ...args: Parameters<typeof fetch>): Promise<Response> {
     // Call through first and hold the original promise. Whatever happens below,
-    // this is what we hand back — unmodified, and without awaiting.
+    // this is what we hand back - unmodified, and without awaiting.
     const promise = original.apply(this, args) as Promise<Response>;
 
     try {
@@ -153,7 +153,7 @@ export function installXhrHook(target: InterceptTarget): void {
     } catch {
       /* ignore */
     }
-    // @ts-expect-error — forwarding the page's own arguments verbatim
+    // @ts-expect-error - forwarding the page's own arguments verbatim
     return originalOpen.apply(this, args);
   } as typeof proto.open;
 
@@ -176,7 +176,7 @@ export function installXhrHook(target: InterceptTarget): void {
     } catch {
       /* ignore */
     }
-    // @ts-expect-error — forwarding the page's own arguments verbatim
+    // @ts-expect-error - forwarding the page's own arguments verbatim
     return originalSend.apply(this, args);
   } as typeof proto.send;
 }

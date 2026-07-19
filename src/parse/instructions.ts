@@ -3,7 +3,7 @@
 // The timeline envelope is the least stable part of X's schema: entry id
 // prefixes come and go, and modules get re-shaped. So known shapes are handled
 // explicitly and anything unrecognised falls through to a bounded deep scan
-// rather than being dropped — an unfamiliar entry should cost you a debug line,
+// rather than being dropped - an unfamiliar entry should cost you a debug line,
 // not a missing reply.
 
 import { arr, get, str } from './accessors.ts';
@@ -43,7 +43,7 @@ const CONTENTLESS_INSTRUCTIONS = new Set([
  * X serves ads inline among the replies (the web app requests them explicitly
  * with includePromotedContent=true). They are not replies to anything, so they
  * arrive with no usable parent and end up in the orphan bucket, rendered as
- * though someone had answered the thread — and their own reply counts, often in
+ * though someone had answered the thread - and their own reply counts, often in
  * the hundreds, land in the "not captured" total and swamp it.
  *
  * The shape is not what you would guess, so it is worth stating exactly. An ad
@@ -98,7 +98,7 @@ function scan(node: unknown, out: unknown[], depth = 0): void {
  * A branch of the conversation that X collapsed behind a "show more" control.
  *
  * These arrive as cursor *items* inside an ordinary `conversationthread-*`
- * entry, not as `cursor-*` entries — the entry-level check further down never
+ * entry, not as `cursor-*` entries - the entry-level check further down never
  * sees them:
  *
  *   entry  conversationthread-1234
@@ -181,7 +181,7 @@ function fromEntry(entry: unknown, out: unknown[], report: Report): EntryHarvest
  * entries: the instruction is TimelineAddToModule and the tweets sit under
  * `moduleItems`. Reading only `entries` meant those payloads parsed to nothing,
  * so clicking the control worked, X answered, and the replies were dropped on
- * the floor — the export looked as though the branch simply did not exist.
+ * the floor - the export looked as though the branch simply did not exist.
  */
 function fromModuleItems(instruction: unknown, out: unknown[], report: Report): number {
   let added = 0;
@@ -266,7 +266,7 @@ export function walkInstructions(payload: unknown, options: WalkOptions = {}): W
       collapsedBranches += harvest.collapsed;
 
       // An entry that held nothing but ads is not a miss and must not fall
-      // through to the deep scan below — that scan looks for tweet_results
+      // through to the deep scan below - that scan looks for tweet_results
       // anywhere under the entry and would put straight back the very tweet
       // that was just deliberately dropped.
       //
