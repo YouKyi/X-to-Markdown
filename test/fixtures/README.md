@@ -49,7 +49,7 @@ Verify before committing:
 grep -c relationship_perspectives test/fixtures/real-*.json   # must be 0
 ```
 
-and read the diff. Fixtures are 5–40 KB precisely so that reading them is
+and read the diff. Fixtures are 5 to 40 KB precisely so that reading them is
 realistic.
 
 If the parser starts reading a field the pruner drops, add it to that allowlist

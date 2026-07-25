@@ -21,7 +21,7 @@ import type { BridgeGraphqlMessage } from '../shared/messages.ts';
 
 const GRAPHQL_MARKER = '/i/api/graphql/';
 
-// Cap on the size we forward. X's TweetDetail responses run 1–5 MB; anything an
+// Cap on the size we forward. X's TweetDetail responses run 1 to 5 MB; anything an
 // order of magnitude past that is not a conversation payload and is not worth
 // the structured-clone cost.
 const MAX_BODY_BYTES = 32 * 1024 * 1024;

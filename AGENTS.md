@@ -7,7 +7,7 @@ what it does; this file covers what you would otherwise get wrong.
 ## Commands
 
 ```sh
-pnpm check        # typecheck + tests + build + web-ext lint - the gate
+pnpm check        # typecheck + hygiene + tests + build + web-ext lint - the gate
 pnpm test         # node:test, runs .ts directly (Node 24 type stripping)
 pnpm dev          # web-ext run, throwaway Firefox
 pnpm package      # build the .zip for AMO
@@ -78,11 +78,13 @@ real captures happen not to contain.
 **Never commit an unpruned capture.** A raw payload carries
 `relationship_perspectives` for every participant: whether the capturing user
 follows, is followed by, blocks, mutes or can DM each of them. This repository is
-public. Always run `tools/prune-fixture.mjs`, and verify:
+public. Always run `tools/prune-fixture.mjs`, then `tools/anonymise-fixture.mjs`,
+never the original.
 
-```sh
-grep -c relationship_perspectives test/fixtures/real-*.json   # must be 0
-```
+`pnpm check` enforces this: `tools/check-hygiene.mjs` fails if any fixture still
+carries `relationship_perspectives`. It also fails on any em or en dash outside
+the allowlisted lines of author text - that allowlist is counted, so a new one
+still breaks the build.
 
 If the parser starts reading a field the pruner drops, add it to that allowlist
 and **re-capture** - unpruned originals are deliberately not kept.

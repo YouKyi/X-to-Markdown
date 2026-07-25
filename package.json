@@ -16,7 +16,8 @@
     "test": "node --test 'test/**/*.test.ts'",
     "test:watch": "node --test --watch 'test/**/*.test.ts'",
     "lint:ext": "web-ext lint --source-dir=dist",
-    "check": "pnpm typecheck && pnpm test && pnpm build && pnpm lint:ext",
+    "lint:hygiene": "node tools/check-hygiene.mjs",
+    "check": "pnpm typecheck && pnpm lint:hygiene && pnpm test && pnpm build && pnpm lint:ext",
     "dev": "pnpm build:dev && web-ext run --source-dir=dist --target=firefox-desktop --url=https://x.com/i/status/20 --browser-console",
     "package": "pnpm build && web-ext build --source-dir=dist --artifacts-dir=artifacts --overwrite-dest",
     "sign": "pnpm check && node tools/sign.mjs"

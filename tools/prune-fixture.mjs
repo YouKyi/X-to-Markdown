@@ -9,7 +9,7 @@
 //   can DM each of them - plus other session-adjacent state. None of it is
 //   parser input, and none of it belongs in a public repository.
 //
-//   Reviewability. Raw responses are 1–5 MB. Pruned ones are 5–40 KB and can be
+//   Reviewability. Raw responses are 1 to 5 MB. Pruned ones are 5 to 40 KB and can be
 //   read in a diff, which is the only way a fixture change is ever meaningfully
 //   reviewed.
 //
