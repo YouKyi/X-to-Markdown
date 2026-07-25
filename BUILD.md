@@ -79,7 +79,7 @@ pnpm package        # → artifacts/x_thread_markdown-<version>.zip
 ## Verifying against the published package
 
 ```sh
-unzip -o x_thread_markdown-0.2.1.zip -d /tmp/published
+unzip -o x_thread_markdown-0.3.0.zip -d /tmp/published
 ./build.sh
 diff -r dist /tmp/published
 ```
