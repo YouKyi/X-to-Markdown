@@ -82,6 +82,20 @@ describe('parse - article', () => {
     assert.equal(anchor, anchor.trim(), 'anchor still carries surrounding space');
   });
 
+  it('links @mentions, which arrive in block.data rather than as entities', async () => {
+    // Measured on a real capture: fromIndex points AT the '@', toIndex is
+    // exclusive, and `text` is the handle without the sigil. Reading these as
+    // an entity range - which is what the rest of the inline work uses - finds
+    // nothing, and the mention silently renders as plain text.
+    const parsed = await article();
+    const block = parsed.blocks.find((b) => b.text.startsWith('Thanks to'));
+    assert.ok(block, 'mention block missing from the fixture');
+    const mention = block.links[0];
+    assert.ok(mention, 'mention was not turned into a link');
+    assert.equal(mention.url, 'https://x.com/robin');
+    assert.equal(block.text.slice(mention.offset, mention.offset + mention.length), '@robin');
+  });
+
   it('keeps a MARKDOWN entity verbatim, fences included', async () => {
     const parsed = await article();
     const code = parsed.blocks.find((b) => b.kind === 'code');
@@ -159,6 +173,7 @@ describe('render - article', () => {
     const focal = await parseFixture();
     const out = render([focal], FOCAL);
     assert.ok(out.includes('[the operator handbook](https://example.com/operator-handbook)'));
+    assert.ok(out.includes('[@robin](https://x.com/robin)'), 'mention not rendered as a link');
     assert.ok(!out.includes('[ the operator handbook]'), 'link text starts with a space');
     assert.ok(out.includes('**year**'), 'bold run missing');
     assert.ok(out.includes('*in, the*'), 'italic run missing');

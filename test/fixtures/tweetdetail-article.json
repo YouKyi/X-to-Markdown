@@ -97,6 +97,18 @@
                                   "data": {}
                                 },
                                 {
+                                  "key": "b003b",
+                                  "type": "unstyled",
+                                  "text": "Thanks to (@robin) for the review.",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [],
+                                  "data": {
+                                    "mentions": [
+                                      { "fromIndex": 11, "text": "robin", "toIndex": 17 }
+                                    ]
+                                  }
+                                },
+                                {
                                   "key": "b004",
                                   "type": "unordered-list-item",
                                   "text": "SPF, DKIM and DMARC, in that order",

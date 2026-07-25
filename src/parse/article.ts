@@ -215,6 +215,22 @@ function parseBlock(
     if (tightened.length > 0) links.push({ ...tightened, url });
   }
 
+  // Mentions are the third kind of inline run and arrive from neither of the
+  // places the other two do: not an entity, not a style, but `block.data`. They
+  // render exactly like a link, so they join `links` rather than growing the
+  // model a field that would be handled identically everywhere.
+  //
+  // `fromIndex` points AT the '@' and `toIndex` is exclusive, so the range is
+  // the handle including its sigil. `text` is the handle without it.
+  for (const mention of arr(rawBlock, 'data.mentions')) {
+    const handle = str(mention, 'text');
+    const from = num(mention, 'fromIndex');
+    const to = num(mention, 'toIndex');
+    if (handle === null || from === null || to === null) continue;
+    if (!validRange(from, to - from, text.length)) continue;
+    links.push({ offset: from, length: to - from, url: `https://x.com/${handle}` });
+  }
+
   // Overlapping runs would produce interleaved markup like `**a *b** c*`, which
   // no renderer reads back the way it was written. Later runs lose.
   return {

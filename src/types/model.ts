@@ -82,6 +82,13 @@ export interface ArticleStyle extends ArticleRun {
   style: 'bold' | 'italic';
 }
 
+/**
+ * An inline link.
+ *
+ * Also carries @mentions, which X stores in `block.data.mentions` rather than
+ * in the entity table but which render identically. Keeping them in one list
+ * means one overlap guard instead of two that have to agree.
+ */
 export interface ArticleLink extends ArticleRun {
   url: string;
 }
