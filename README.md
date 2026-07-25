@@ -24,6 +24,12 @@ On any `x.com/*/status/*` page, click **Markdown** in the post's action bar.
 - **Click** - scroll the conversation to load the rest, then export.
 - **Alt+click** - export what is already loaded, immediately.
 - **Cancel** in the toast stops collecting and exports what was gathered.
+- **The caret** next to the button toggles *include other people's replies*.
+  Turn it off and the export is the author's thread alone - a single post when
+  it is not threaded - with no scrolling at all, so it is instant. Reply
+  counters are then omitted rather than reported as zero, and the frontmatter
+  says `scope: author-thread`. The same switch lives in the options page; it is
+  in the menu because it is usually a per-post decision.
 
 Defaults to clipboard *and* a `.md` download. Change that in the extension's
 options, along with the filename template, tags and collection limits.

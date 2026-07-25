@@ -61,6 +61,24 @@ your `viewer_results` and other session-adjacent state. If you dump one, prune
 it with `tools/prune-fixture.mjs` before sharing it - that tool exists precisely
 to strip everything the parser does not read.
 
+The dump is a file you save yourself, with the system save dialog, and it goes
+nowhere else. It carries more than the payloads, because the payloads alone
+have repeatedly not been enough to diagnose anything:
+
+| Field | What is in it |
+|---|---|
+| `pageUrl`, `focalId` | The x.com URL you dumped from |
+| `store`, `lastExport` | Counters from the capture and the previous export |
+| `unrecognisedShapes` | Payload shapes the parser did not recognise |
+| `settings` | Your full extension settings, including the filename template and tags |
+| `environment` | `navigator.userAgent`, `navigator.language`, `navigator.languages`, viewport size |
+| `payloads` | The retained raw responses |
+
+Read it before you attach it to a bug report: `settings` and `environment` are
+about you rather than about the thread. Nothing here can leak into a committed
+fixture by accident - `tools/prune-fixture.mjs` reads only `payloads[].url` and
+`payloads[].json` and rebuilds the file from those.
+
 ## The MAIN-world script
 
 `src/main-world/interceptor.ts` runs in x.com's own JavaScript realm, which is
