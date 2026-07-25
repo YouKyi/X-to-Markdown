@@ -193,7 +193,7 @@ pnpm build
 ### Verifying against the published package
 
 ```sh
-unzip -o x_thread_markdown-0.1.0.zip -d /tmp/published
+unzip -o x_thread_markdown-0.2.0.zip -d /tmp/published
 ./build.sh
 diff -r dist /tmp/published        # reports no differences
 ```
