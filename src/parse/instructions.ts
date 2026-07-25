@@ -163,7 +163,12 @@ function fromEntry(entry: unknown, out: unknown[], report: Report): EntryHarvest
       continue;
     }
     if (isPromoted(str(item, 'entryId') ?? '', item)) {
-      report('promoted-conversation-item');
+      // debug(), not shape(): an ad is a shape we recognise and deliberately
+      // drop, and it is counted below. Reported as unrecognised it raises a
+      // schema-drift alarm on every conversation X injects an ad into, which
+      // is most of them - measured on a real capture whose unrecognisedShapes
+      // held nothing but this.
+      debug('promoted item skipped in', str(item, 'entryId') ?? 'unknown item');
       skippedPromoted += 1;
       continue;
     }
@@ -187,7 +192,8 @@ function fromModuleItems(instruction: unknown, out: unknown[], report: Report): 
   let added = 0;
   for (const item of arr(instruction, 'moduleItems')) {
     if (isPromoted(str(item, 'entryId') ?? '', item)) {
-      report('promoted-module-item');
+      // Recognised and dropped, not unrecognised. See fromEntry.
+      debug('promoted module item skipped in', str(item, 'entryId') ?? 'unknown item');
       continue;
     }
     const result = get(item, 'item.itemContent.tweet_results.result');
@@ -257,8 +263,9 @@ export function walkInstructions(payload: unknown, options: WalkOptions = {}): W
       }
 
       if (isPromoted(entryId, entry)) {
-        // Not a miss: an ad is not part of the conversation.
-        report('promoted-entry');
+        // Not a miss: an ad is not part of the conversation. debug(), not
+        // shape(), for the reason given in fromEntry.
+        debug('promoted entry skipped:', entryId);
         continue;
       }
 

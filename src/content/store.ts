@@ -19,6 +19,24 @@ import { debug } from '../shared/log.ts';
 const RAW_RING_SIZE = 5;
 
 /**
+ * Evict the payload least likely to be the one you took the dump for.
+ *
+ * Oldest-first is wrong here, and so is pinning the first entry. Both were
+ * tried; a capture of a real SPA navigation settled it. Landing on a post from
+ * the timeline produced, in order: DataSaverMode, ExploreSidebar,
+ * SidebarUserRecommendations, HomeTimeline, TweetDetail. The payload worth
+ * having arrives LAST, and the slot a positional rule pins holds a preference
+ * lookup.
+ *
+ * So the rule is about content: a payload that yielded tweets is never evicted
+ * while one that yielded none is available. Ties fall back to oldest-first.
+ */
+function evictionIndex(raw: readonly { tweets: number }[]): number {
+  const barren = raw.findIndex((entry) => entry.tweets === 0);
+  return barren === -1 ? 0 : barren;
+}
+
+/**
  * Upper bound on retained tweets.
  *
  * The store is deliberately never cleared on SPA navigation - doing so raced
@@ -38,6 +56,8 @@ export interface RawPayload {
   transport: 'fetch' | 'xhr';
   /** Milliseconds since epoch, for fixture provenance. */
   receivedAt: number;
+  /** How many tweets this payload yielded. Drives which entry is evicted. */
+  tweets: number;
   /** The parsed JSON body. Retained only while debug mode is on. */
   json: unknown;
 }
@@ -124,6 +144,12 @@ export class PayloadStore {
     return this.#collapsedBranches;
   }
 
+  #evictRaw(): void {
+    while (this.#raw.length > RAW_RING_SIZE) {
+      this.#raw.splice(evictionIndex(this.#raw), 1);
+    }
+  }
+
   /** Retain raw payloads for the debug fixture dump. */
   setRetainRaw(value: boolean): void {
     this.#retainRaw = value;
@@ -192,9 +218,10 @@ export class PayloadStore {
         status: message.status,
         transport: message.transport,
         receivedAt: Date.now(),
+        tweets: parsed.tweets.length,
         json,
       });
-      if (this.#raw.length > RAW_RING_SIZE) this.#raw.shift();
+      this.#evictRaw();
     }
 
     for (const listener of this.#listeners) {
