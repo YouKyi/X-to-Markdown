@@ -1,0 +1,270 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1900000000000000501",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1900000000000000501",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "44196397",
+                            "core": {
+                              "screen_name": "robin",
+                              "name": "Robin Novak"
+                            },
+                            "avatar": {
+                              "image_url": "https://pbs.twimg.com/profile_images/1/robin_normal.jpg"
+                            },
+                            "is_blue_verified": true
+                          }
+                        }
+                      },
+                      "article": {
+                        "article_results": {
+                          "result": {
+                            "rest_id": "1899000000000000042",
+                            "title": "Notes on running a small mail server",
+                            "preview_text": "The parts that only show up once you run one for a year.",
+                            "summary_text": "- DNS is most of the job\n- Backups matter more than uptime",
+                            "cover_media": {
+                              "media_id": "1899000000000000900",
+                              "media_info": {
+                                "__typename": "ApiImage",
+                                "original_img_url": "https://pbs.twimg.com/media/COVER900.jpg",
+                                "original_img_width": 1600,
+                                "original_img_height": 900
+                              }
+                            },
+                            "media_entities": [
+                              {
+                                "media_id": "1899000000000000901",
+                                "media_info": {
+                                  "__typename": "ApiImage",
+                                  "original_img_url": "https://pbs.twimg.com/media/INLINE901.jpg",
+                                  "original_img_width": 1200,
+                                  "original_img_height": 800
+                                }
+                              },
+                              {
+                                "media_id": "1899000000000000902",
+                                "media_info": {
+                                  "__typename": "ApiImage",
+                                  "original_img_url": "https://pbs.twimg.com/media/INLINE902.jpg",
+                                  "original_img_width": 1024,
+                                  "original_img_height": 768
+                                }
+                              }
+                            ],
+                            "content_state": {
+                              "blocks": [
+                                {
+                                  "key": "b001",
+                                  "type": "unstyled",
+                                  "text": "A year in, the surprises were all operational rather than technical.",
+                                  "inlineStyleRanges": [
+                                    { "offset": 2, "length": 4, "style": "Bold" },
+                                    { "offset": 7, "length": 7, "style": "Italic" }
+                                  ],
+                                  "entityRanges": [],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b002",
+                                  "type": "header-two",
+                                  "text": "DNS is most of the job",
+                                  "inlineStyleRanges": [{ "offset": 0, "length": 22, "style": "Bold" }],
+                                  "entityRanges": [],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b003",
+                                  "type": "unstyled",
+                                  "text": "The records are documented in the operator handbook.",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [{ "key": 0, "length": 22, "offset": 29 }],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b004",
+                                  "type": "unordered-list-item",
+                                  "text": "SPF, DKIM and DMARC, in that order",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b005",
+                                  "type": "unordered-list-item",
+                                  "text": "A reverse record that matches the banner",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b006",
+                                  "type": "atomic",
+                                  "text": " ",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [{ "key": 1, "length": 1, "offset": 0 }],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b007",
+                                  "type": "atomic",
+                                  "text": " ",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [{ "key": 2, "length": 1, "offset": 0 }],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b008",
+                                  "type": "atomic",
+                                  "text": " ",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [{ "key": 3, "length": 1, "offset": 0 }],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b009",
+                                  "type": "atomic",
+                                  "text": " ",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [{ "key": 4, "length": 1, "offset": 0 }],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b010",
+                                  "type": "unstyled",
+                                  "text": "# not a heading, and > not a quote",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [],
+                                  "data": {}
+                                },
+                                {
+                                  "key": "b011",
+                                  "type": "code-block",
+                                  "text": "an unknown block type",
+                                  "inlineStyleRanges": [],
+                                  "entityRanges": [],
+                                  "data": {}
+                                }
+                              ],
+                              "entityMap": {
+                                "0": {
+                                  "key": 3,
+                                  "value": {
+                                    "type": "MEDIA",
+                                    "mutability": "Immutable",
+                                    "data": {
+                                      "entityKey": "e-media-902",
+                                      "mediaItems": [
+                                        {
+                                          "localMediaId": "3",
+                                          "mediaCategory": "DraftTweetImage",
+                                          "mediaId": "1899000000000000902"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "1": {
+                                  "key": 0,
+                                  "value": {
+                                    "type": "LINK",
+                                    "mutability": "Mutable",
+                                    "data": {
+                                      "entityKey": "e-link-0",
+                                      "url": "https://example.com/operator-handbook"
+                                    }
+                                  }
+                                },
+                                "2": {
+                                  "key": 4,
+                                  "value": {
+                                    "type": "DIVIDER",
+                                    "mutability": "Immutable",
+                                    "data": { "entityKey": "e-divider-4" }
+                                  }
+                                },
+                                "3": {
+                                  "key": 1,
+                                  "value": {
+                                    "type": "MEDIA",
+                                    "mutability": "Immutable",
+                                    "data": {
+                                      "entityKey": "e-media-901",
+                                      "caption": "The rack, before the second PSU.",
+                                      "mediaItems": [
+                                        {
+                                          "localMediaId": "1",
+                                          "mediaCategory": "DraftTweetImage",
+                                          "mediaId": "1899000000000000901"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "4": {
+                                  "key": 2,
+                                  "value": {
+                                    "type": "MARKDOWN",
+                                    "mutability": "Mutable",
+                                    "data": {
+                                      "entityKey": "e-markdown-2",
+                                      "markdown": "```sh\npostconf -n | grep smtpd_tls\n```"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1900000000000000501",
+                        "conversation_id_str": "1900000000000000501",
+                        "created_at": "Tue Jul 21 19:47:07 +0000 2026",
+                        "full_text": "https://t.co/ArTiCle01",
+                        "display_text_range": [0, 22],
+                        "lang": "en",
+                        "favorite_count": 3783,
+                        "retweet_count": 337,
+                        "reply_count": 85,
+                        "quote_count": 52,
+                        "bookmark_count": 4796,
+                        "entities": {
+                          "urls": [
+                            {
+                              "url": "https://t.co/ArTiCle01",
+                              "expanded_url": "https://x.com/i/article/1899000000000000042",
+                              "display_url": "x.com/i/article/1899…"
+                            }
+                          ],
+                          "hashtags": [],
+                          "user_mentions": []
+                        }
+                      },
+                      "views": { "count": "503642" }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

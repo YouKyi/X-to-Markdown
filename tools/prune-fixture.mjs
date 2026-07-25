@@ -43,6 +43,14 @@ const KEEP = new Set([
   'entities', 'extended_entities', 'entity_set', 'urls', 'url', 'expanded_url', 'display_url',
   'hashtags', 'user_mentions', 'text',
 
+  // X Articles: the body is a Draft.js content state hanging off the tweet, and
+  // none of it is reachable through the tweet's own text.
+  'article', 'article_results', 'title', 'summary_text', 'preview_text',
+  'content_state', 'blocks', 'key', 'type', 'inlineStyleRanges', 'entityRanges',
+  'offset', 'length', 'style', 'entityMap', 'mutability', 'markdown',
+  'mediaItems', 'mediaId', 'caption', 'cover_media', 'media_entities', 'media_id',
+  'media_info', 'original_img_url', 'original_img_width', 'original_img_height',
+
   // media
   'media', 'media_url_https', 'ext_alt_text', 'original_info', 'width', 'height',
   'video_info', 'duration_millis', 'variants', 'bitrate', 'content_type',

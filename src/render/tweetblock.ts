@@ -7,6 +7,7 @@
 import type { Media, Tweet } from '../types/model.ts';
 import type { Settings } from '../shared/config.ts';
 import { escapeText, escapeLinkText, escapeUrl } from './escape.ts';
+import { renderArticle, renderArticleReference } from './article.ts';
 
 /** Quoted tweets are already nested by the parser; this bounds the rendering. */
 const QUOTE_RENDER_DEPTH_MAX = 3;
@@ -81,17 +82,46 @@ export function attribution(tweet: Tweet, prefix = ''): string {
  * `renderQuote` is passed in rather than imported to keep the recursion in one
  * place (markdown.ts owns the quoting primitive).
  */
+/**
+ * Whether an article is reproduced here or merely pointed at.
+ *
+ * `full` belongs to the document's own spine. Anything quoted or replied to
+ * gets `reference`: an article is hundreds of lines, and nesting that inside a
+ * blockquote buries the reply the reader came for.
+ */
+export type ArticleStyle = 'full' | 'reference';
+
+/** True when the tweet text says nothing the article link does not. */
+function textIsJustTheArticleLink(tweet: Tweet): boolean {
+  if (!tweet.article) return false;
+  const bare = (url: string): string => url.replace(/^https?:\/\//, '').replace(/\/+$/, '');
+  return bare(tweet.text.trim()) === bare(tweet.article.url);
+}
+
 export function renderTweetBody(
   tweet: Tweet,
   settings: Settings,
   quote: (lines: string[], depth: number) => string[],
   style: MetaStyle = 'full',
   quoteDepth = 0,
+  articleStyle: ArticleStyle = 'reference',
 ): string[] {
   const out: string[] = [];
 
+  // A tweet carrying an article has a full_text of exactly one t.co pointing at
+  // that article. Printing it above the article it introduces is noise.
+  const skipText = textIsJustTheArticleLink(tweet);
   const text = escapeText(tweet.text, settings.escapeMode, settings.hardLineBreaks);
-  if (tweet.text.trim() !== '') out.push(...text);
+  if (tweet.text.trim() !== '' && !skipText) out.push(...text);
+
+  if (tweet.article) {
+    if (out.length > 0) out.push('');
+    out.push(
+      ...(articleStyle === 'full'
+        ? renderArticle(tweet.article, settings)
+        : renderArticleReference(tweet.article)),
+    );
+  }
 
   const media = renderMedia(tweet.media, settings);
   if (media.length > 0) {

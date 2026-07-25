@@ -64,6 +64,73 @@ export interface Metrics {
   reliable: boolean;
 }
 
+/**
+ * An inline run inside an article block.
+ *
+ * Offsets are UTF-16 code units into `ArticleBlock.text`, because that is what
+ * X's editor emits and what its own ranges are measured in. They are NOT code
+ * points, unlike `legacy.display_text_range` on an ordinary tweet - the two
+ * conventions sit three files apart and mixing them silently shifts every link
+ * in a post containing an emoji.
+ */
+export interface ArticleRun {
+  offset: number;
+  length: number;
+}
+
+export interface ArticleStyle extends ArticleRun {
+  style: 'bold' | 'italic';
+}
+
+export interface ArticleLink extends ArticleRun {
+  url: string;
+}
+
+export type ArticleBlockKind =
+  | 'paragraph'
+  | 'heading'
+  | 'list-item'
+  | 'divider'
+  | 'code'
+  | 'image';
+
+/**
+ * One block of an X Article.
+ *
+ * X stores article bodies as a Draft.js content state: a flat list of blocks
+ * plus a separate entity table. Everything structural lives in the block type,
+ * so the body text of a heading does not begin with '#' and a list item does
+ * not begin with '-'; rendering has to put those back.
+ */
+export interface ArticleBlock {
+  kind: ArticleBlockKind;
+  /** Author text, never Markdown-escaped. Empty for divider, code and image. */
+  text: string;
+  /** Heading depth as X states it (2 for its only heading level). */
+  level: number | null;
+  styles: ArticleStyle[];
+  links: ArticleLink[];
+  /** `code` only: the fenced block exactly as X stores it. Never escaped. */
+  code: string | null;
+  /** `image` only. */
+  media: Media | null;
+  caption: string | null;
+}
+
+export interface Article {
+  /** article_results.result.rest_id, which is not the carrying tweet's id. */
+  id: string;
+  title: string;
+  /** https://x.com/i/article/<id> */
+  url: string;
+  coverUrl: string | null;
+  /** X's own generated summary, when it sends one. */
+  summary: string | null;
+  blocks: ArticleBlock[];
+  /** A block or entity could not be read; propagates to the tweet's `partial`. */
+  partial: boolean;
+}
+
 export interface Tweet {
   /** rest_id. The primary key everywhere; a Snowflake, so ID order is time order. */
   id: string;
@@ -82,6 +149,14 @@ export interface Tweet {
   links: LinkEntity[];
   /** Recursive; capped at QUOTE_DEPTH_MAX and cycle-guarded by the parser. */
   quoted: Tweet | null;
+  /**
+   * An X Article carried by this tweet, when there is one.
+   *
+   * The article body is NOT in `text`: a tweet carrying an article has a
+   * `full_text` of exactly one t.co pointing at the article, so an export that
+   * only reads `text` produces a document containing a link and nothing else.
+   */
+  article: Article | null;
   metrics: Metrics;
   permalink: string;
   source: Source;

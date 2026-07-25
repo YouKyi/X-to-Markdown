@@ -94,6 +94,13 @@ Frontmatter is flat and typed, so Obsidian reads it as sortable properties rathe
 than plain text. Long-form posts come out in full, images at original resolution
 with their alt text, and `t.co` links expanded to their real destination.
 
+**X Articles** come out as the article, not as the link to it. A tweet carrying
+one has a body of exactly one `t.co`, so the body has to be read from the
+article entity instead: headings, lists, images with their captions, code
+blocks and inline links all survive. An article that is quoted or replied to
+rather than being the post you exported is reduced to its title and a link,
+since a few hundred lines nested in a blockquote buries the reply you came for.
+
 ## Honesty about gaps
 
 The principle throughout: **a partial result you know about beats a truncated one

@@ -51,6 +51,25 @@ export function escapeLine(line: string, mode: EscapeMode = 'minimal'): string {
 }
 
 /**
+ * Escape only what a line's FIRST characters would turn into block structure.
+ *
+ * For article blocks the inline markup is generated here rather than written by
+ * the author: the styles and links are ranges, so the line is assembled from
+ * escaped segments and already contains `**` and `[...](...)` by the time it
+ * needs its leading characters checked. Running the full `escapeLine` over it
+ * would escape that generated markup back into literal text.
+ *
+ * Safe to apply afterwards because no markup this renderer generates begins
+ * with `#`, `>` or `|`, and a line beginning with `**` cannot match a thematic
+ * break, which requires the line to hold nothing but its own marker.
+ */
+export function escapeLeading(line: string): string {
+  if (THEMATIC_BREAK.test(line)) return line.replace(THEMATIC_BREAK, '$1\\$2$3');
+  if (LIST_ITEM.test(line)) return line;
+  return line.replace(ATX_HEADING, '$1\\$2$3').replace(LEADING_BLOCK, '$1\\$2');
+}
+
+/**
  * Escape a block of tweet text, optionally forcing hard line breaks.
  *
  * Tweets separate lines with a single newline. Under strict CommonMark those

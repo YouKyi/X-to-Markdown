@@ -8,6 +8,7 @@
 import type { Author, Tweet } from '../types/model.ts';
 import { permalinkFor } from '../types/model.ts';
 import { bool, get, num, str, strOf, toIso, unwrapTweet } from './accessors.ts';
+import { parseArticle } from './article.ts';
 import { parseMedia } from './media.ts';
 import { parseText } from './text.ts';
 import { debug, shape } from '../shared/log.ts';
@@ -101,6 +102,12 @@ export function parseTweet(
       }
     }
 
+    // An article's body is a separate entity from the tweet carrying it, and a
+    // failure to read it must not cost the tweet: a null article degrades to
+    // the link `text` already holds.
+    const article = parseArticle(result);
+    if (article?.partial) missing.push('article');
+
     const tweet: Tweet = {
       id,
       conversationId: str(legacy, 'conversation_id_str'),
@@ -114,6 +121,7 @@ export function parseTweet(
       media: parseMedia(legacy),
       links,
       quoted,
+      article,
       metrics: {
         likes: num(legacy, 'favorite_count'),
         retweets: num(legacy, 'retweet_count'),

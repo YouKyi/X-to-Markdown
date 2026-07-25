@@ -90,6 +90,7 @@ export function tweet(id: string, overrides: TweetOverrides = {}): Tweet {
     media: [],
     links: [],
     quoted: null,
+    article: null,
     metrics: metrics(),
     permalink: permalinkFor(resolved.handle, id),
     source: 'graphql',

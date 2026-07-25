@@ -191,6 +191,9 @@ export function scrapeDom(root: ParentNode = document, options: DomScrapeOptions
         // t.co destinations are not in the markup, so nothing can be expanded.
         links: [],
         quoted: null,
+        // The DOM renders an article as a card; its body is not in the markup
+        // at all, so the fallback cannot produce one.
+        article: null,
         metrics: options.metrics ? scrapeMetrics(article) : { ...EMPTY_METRICS },
         permalink: permalinkFor(identity.handle, identity.id),
         source: 'dom',

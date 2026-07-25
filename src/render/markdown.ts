@@ -74,7 +74,9 @@ export function renderMarkdown(doc: ThreadDoc, settings: Settings, version: stri
   // blockquotes: it is the document's main content, not a reply to it.
   doc.selfThread.forEach((tweet, index) => {
     if (index > 0) lines.push('---', '');
-    lines.push(...renderTweetBody(tweet, settings, quote));
+    // The spine is the document's subject, so an article it carries is
+    // reproduced here and only here.
+    lines.push(...renderTweetBody(tweet, settings, quote, 'full', 0, 'full'));
     lines.push('');
   });
 
