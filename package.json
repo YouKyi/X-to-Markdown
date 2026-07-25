@@ -1,6 +1,6 @@
 {
   "name": "x-thread-md",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Export an X.com thread, its replies, and quoted tweets to Markdown. Firefox extension. Runs entirely locally.",
   "private": true,
   "type": "module",
