@@ -20,7 +20,7 @@
 import type { Author, Media, Tweet } from '../types/model.ts';
 import { EMPTY_METRICS, permalinkFor } from '../types/model.ts';
 import { originalResolution } from './media.ts';
-import { shape } from '../shared/log.ts';
+import { debug, shape } from '../shared/log.ts';
 
 const ARTICLE = 'article[data-testid="tweet"], article';
 const TWEET_TEXT = '[data-testid="tweetText"]';
@@ -140,7 +140,9 @@ function scrapeMedia(article: Element): Media[] {
   if (article.querySelector('[data-testid="videoPlayer"], [data-testid="videoComponent"]')) {
     // The mp4 variants are not in the markup, only a blob: URL bound to the
     // player. Recording that the media exists beats pretending it does not.
-    shape('dom-video-unreachable');
+    // debug(), not shape(): the blob: URL is a known DOM limitation, not a
+    // shape we failed to recognise.
+    debug('dom video unreachable, only the blob: URL is in the markup');
   }
   return out;
 }

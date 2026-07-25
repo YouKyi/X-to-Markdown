@@ -10,7 +10,7 @@ import { permalinkFor } from '../types/model.ts';
 import { bool, get, num, str, strOf, toIso, unwrapTweet } from './accessors.ts';
 import { parseMedia } from './media.ts';
 import { parseText } from './text.ts';
-import { shape } from '../shared/log.ts';
+import { debug, shape } from '../shared/log.ts';
 
 /** Quote-of-a-quote-of-a-quote is already unusual; deeper is not worth carrying. */
 const QUOTE_DEPTH_MAX = 3;
@@ -66,7 +66,10 @@ export function parseTweet(
 
     const typename = str(result, '__typename');
     if (typename === 'TweetTombstone' || typename === 'TweetUnavailable') {
-      shape(`tombstone:${typename}`, result);
+      // debug(), not shape(): a deleted, suspended or protected tweet is a
+      // shape we recognise and deliberately drop. Reporting it as unrecognised
+      // would raise a schema-drift alarm on every thread that has one.
+      debug('tombstone:', typename, result);
       return null;
     }
 
