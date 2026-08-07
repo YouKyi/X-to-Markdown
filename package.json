@@ -27,7 +27,7 @@
     "esbuild": "0.28.1",
     "linkedom": "0.18.13",
     "typescript": "7.0.2",
-    "web-ext": "10.5.0",
+    "web-ext": "10.6.0",
     "yaml": "2.9.0"
   }
 }
