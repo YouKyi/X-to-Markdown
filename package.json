@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "26.2.0",
-    "esbuild": "0.28.1",
+    "esbuild": "0.28.2",
     "linkedom": "0.18.13",
     "typescript": "7.0.2",
     "web-ext": "10.6.0",
