@@ -19,16 +19,16 @@ stages:
   - sign
 
 include:
-  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/gitleaks-scan@v2.1.0
+  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/gitleaks-scan@v2.2.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/trivy-vuln@v2.1.0
+  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/trivy-vuln@v2.2.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/trivy-secret@v2.1.0
+  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/trivy-secret@v2.2.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/trivy-license@v2.1.0
+  - component: $CI_SERVER_FQDN/YouKyi-Infra/ci-infrastructure/ci-catalog/trivy-license@v2.2.0
     inputs:
       stage: verify
 
