@@ -172,9 +172,8 @@ nvm install 24 && nvm use 24          # https://github.com/nvm-sh/nvm
 brew install node@24                  # macOS
 docker run --rm -it -v "$PWD":/src -w /src node:24-alpine sh
 
-# pnpm ships with Node through corepack; nothing to download
-corepack enable
-corepack prepare pnpm@11.11.0 --activate
+# corepack is gone from Node 25 on: install the pinned pnpm with npm
+npm install -g pnpm@11.11.0
 ```
 
 Verify: `node -v` prints `v24.` or higher, `pnpm --version` prints `11.11.0`.
