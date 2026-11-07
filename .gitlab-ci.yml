@@ -1,11 +1,24 @@
 # Verify on every push; submit to AMO on a version tag.
 #
+# Releases (ci-catalog auto-release v5): on every push to main, CI keeps the
+# release/next branch and its "chore(release): X.Y.Z" merge request up to date
+# (CHANGELOG.md and package.json), never set to auto-merge. A human merges it;
+# the next main pipeline tags its head vX.Y.Z, signed with the CI release key
+# (SSH). On the tag, catalog:release-provenance checks the signature before
+# anything is submitted. Never push to release/next: notes go under
+# [Unreleased] in CHANGELOG.md, through a regular merge request. A tag signed by
+# hand is checked the same way: OpenPGP against release-signers.asc, SSH
+# against allowed_signers.
+#
 # Runner requirements: a Docker executor, or any runner with Node 24+ available.
 # Node 24 is not optional - tests run .ts files directly via native type
 # stripping, so an older runtime cannot execute the suite at all.
 #
 # CI/CD variables to set (Settings → CI/CD → Variables), both **Masked** and
 # **Protected** so they are only exposed to protected tags:
+#
+#   RELEASE_TOKEN        release-bot personal token (api), environment release
+#   RELEASE_SIGNING_KEY  CI release key (SSH, base64), environment release
 #
 #   AMO_JWT_ISSUER   JWT issuer from addons.mozilla.org → Developer Hub → Manage API Keys
 #   AMO_JWT_SECRET   the matching secret
@@ -17,27 +30,42 @@
 stages:
   - verify
   - sign
+  - release
 
 include:
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/gitleaks-scan@v4.0.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/gitleaks-scan@v5.0.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/ggshield-scan@v4.0.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/ggshield-scan@v5.0.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-vuln@v4.0.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-vuln@v5.0.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-secret@v4.0.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-secret@v5.0.0
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-license@v4.0.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-license@v5.0.0
     inputs:
       stage: verify
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/auto-release@v5.0.0
+    inputs:
+      version_files: package.json
+      gpg_public_keys: release-signers.asc
+      tag_needs:
+        - { job: check, artifacts: false }
+        - { job: 'catalog:gitleaks-scan', artifacts: false }
+        - { job: 'catalog:ggshield-scan', artifacts: false }
+        - { job: 'catalog:trivy-vuln', artifacts: false }
+        - { job: 'catalog:trivy-secret', artifacts: false }
+        - { job: 'catalog:trivy-license', artifacts: false }
 
-# An open MR already verifies the push in its own pipeline.
+# An open MR already verifies the push in its own pipeline. The release commit
+# reaches release/* before its MR exists: the MR pipeline is enough.
 workflow:
   rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^release\// && $CI_PIPELINE_SOURCE == "push"'
+      when: never
     - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"'
       when: never
     - when: always
@@ -94,6 +122,9 @@ version-matches-tag:
     - test "$PKG" = "$TAG" || { echo "tag $CI_COMMIT_TAG does not match package.json $PKG"; exit 1; }
     - echo "version $PKG"
 
+# No needs here, on purpose: sign waits for every earlier stage, including
+# catalog:release-provenance in .pre. A tag whose signature is refused stops
+# the pipeline before anything reaches AMO.
 sign:
   stage: sign
   rules:
