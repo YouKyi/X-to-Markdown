@@ -10,6 +10,15 @@ dependency at its latest version.
 
 ## [Unreleased]
 
+### Fixed
+
+- CI installs pnpm through npm: corepack no longer ships with Node 25 and later.
+
+### Security
+
+- AMO credentials reach only the `sign` job (environment `amo`), no longer every
+  job of protected refs.
+
 ## [0.3.0] - 2026-07-25
 
 ### Added
