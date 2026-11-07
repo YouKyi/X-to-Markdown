@@ -20,8 +20,8 @@
 #   RELEASE_TOKEN        release-bot personal token (api), environment release
 #   RELEASE_SIGNING_KEY  CI release key (SSH, base64), environment release
 #
-#   AMO_JWT_ISSUER   JWT issuer from addons.mozilla.org → Developer Hub → Manage API Keys
-#   AMO_JWT_SECRET   the matching secret
+#   AMO_JWT_ISSUER   AMO JWT issuer (Developer Hub → Manage API Keys), environment amo
+#   AMO_JWT_SECRET   the matching secret, environment amo
 #
 # Protect your version tags (Settings → Repository → Protected tags, pattern `v*`)
 # or the secrets will not be available to the sign job - and, more importantly,
@@ -129,6 +129,11 @@ sign:
   stage: sign
   rules:
     - if: $CI_COMMIT_TAG
+  # The only job that reads AMO_JWT_*, scoped to this environment: they reach
+  # no other job, check included. prepare records no deployment.
+  environment:
+    name: amo
+    action: prepare
   script:
     - pnpm build
     # --approval-timeout=0 submits and exits. On the listed channel review is
