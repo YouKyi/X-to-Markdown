@@ -16,6 +16,15 @@ pnpm package      # build the .zip for AMO
 `pnpm check` must be green before any commit. There is no CI shortcut around it -
 the same command runs on GitLab.
 
+## Releases
+
+CI prepares them (ci-catalog `auto-release` v5, see `.gitlab-ci.yml`): a
+`chore(release): X.Y.Z` merge request on `release/next`, kept up to date, that a
+human merges. Never bump `package.json`, push a tag or push to `release/next`
+by hand. Release notes go under `## [Unreleased]` in `CHANGELOG.md`, in the
+merge request of the change; when that section is empty, CI writes it from the
+Conventional Commit subjects.
+
 ## Measure, do not reason
 
 **This is the rule that matters most here.** Every parser bug in this project's
