@@ -33,22 +33,22 @@ stages:
   - release
 
 include:
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/gitleaks-scan@v5.2.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/gitleaks-scan@v5.2.1
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/ggshield-scan@v5.2.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/ggshield-scan@v5.2.1
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-vuln@v5.2.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-vuln@v5.2.1
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-secret@v5.2.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-secret@v5.2.1
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-license@v5.2.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/trivy-license@v5.2.1
     inputs:
       stage: verify
-  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/auto-release@v5.2.0
+  - component: $CI_SERVER_FQDN/youkyi-hq/platform/ci/ci-catalog/auto-release@v5.2.1
     inputs:
       version_files: package.json
       gpg_public_keys: release-signers.asc
